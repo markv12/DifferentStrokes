@@ -184,11 +184,8 @@ MonoBehaviour:
   success: {fileID: 8300000, guid: dfc273ffac55f46a6ac0cd1acb92a298, type: 3}
   startDrawing: {fileID: 8300000, guid: 53c611cd506864fa59780025dfda805f, type: 3}
   brushes:
-  - {fileID: 8300000, guid: 2e15e88955a67464bb57684246df0afe, type: 3}
   - {fileID: 8300000, guid: be97fe31c643448828a1db7e631ed30c, type: 3}
   - {fileID: 8300000, guid: 089ea3e8cced94b069dc723b8e0a70f3, type: 3}
-  - {fileID: 8300000, guid: 7dbb6da4bc0bf447c95a18998fc9e90e, type: 3}
-  - {fileID: 8300000, guid: 27a1493903a4940edac18642e433c474, type: 3}
   - {fileID: 8300000, guid: 8be1e251fefb34d01bedf0dbc45e34a0, type: 3}
 --- !u!1 &6057479461563318025
 GameObject:
