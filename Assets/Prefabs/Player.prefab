@@ -134,6 +134,7 @@ MonoBehaviour:
   t: {fileID: 8513072604476314262}
   playerUI: {fileID: 0}
   drawingSystem: {fileID: 0}
+  dialogueSystem: {fileID: 0}
   mainCamera: {fileID: 8513072604476804246}
   characterController: {fileID: 8513072604464528246}
   firstPersonController: {fileID: 8513072604465101654}
@@ -275,10 +276,10 @@ MonoBehaviour:
     BobAmount: 0.1
   m_StepInterval: 5
   m_FootstepSounds:
-  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
-  m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  - {fileID: 8300000, guid: 6c0cfbb5f71cd48c08884423e82c73c5, type: 3}
+  - {fileID: 8300000, guid: bc53401e8d9294f2492e9787b5bd6228, type: 3}
+  m_JumpSound: {fileID: 8300000, guid: cffc2e4f54e8143489c36999fa277f26, type: 3}
+  m_LandSound: {fileID: 8300000, guid: 2ca3ff98920794d178dc0d6fc9a7bfeb, type: 3}
 --- !u!54 &8513072604473454038
 Rigidbody:
   m_ObjectHideFlags: 0
