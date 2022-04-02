@@ -5,8 +5,7 @@ using System.IO;
 using UnityEngine;
 
 public class DrawingSystem : MonoBehaviour {
-    public GameObject Brush;
-    public float BrushSize = 0.1f;
+    public DrawingBrush brush;
     public RenderTexture RTexture;
 
     public Camera renderCamera;
@@ -35,6 +34,18 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
+    private int brushSize = 1;
+    public int BrushSize {
+        get {
+            return brushSize;
+        }
+        set {
+            brushSize = Mathf.Max(0, Mathf.Min(5, value));
+        }
+    }
+
+    private static readonly float[] BRUSH_SIZES = new float[] { 0.025f, 0.05f, 0.1f, 0.3f, 0.5f, 1f };
+
     public void DrawToCanvas(PaintingCanvas paintingCanvas, Camera _mainCamera, Action _onExit) {
         currentCanvas = paintingCanvas;
         mainCamera = _mainCamera;
@@ -47,7 +58,7 @@ public class DrawingSystem : MonoBehaviour {
         MoveCameraInFrontOfCanvas();
     }
 
-    private readonly List<GameObject> brushInstances = new List<GameObject>();
+    private readonly List<DrawingBrush> brushInstances = new List<DrawingBrush>();
     private bool isDrawing = false;
     void Update() {
         if (InDrawingMode) {
@@ -105,8 +116,9 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     private void DrawDot(Vector3 spawnPoint, Quaternion spawnRotation) {
-        GameObject brushInstance = Instantiate(Brush, spawnPoint, spawnRotation, transform);
-        brushInstance.transform.localScale = Vector3.one * BrushSize;
+        DrawingBrush brushInstance = Instantiate(brush, spawnPoint, spawnRotation, transform);
+        brushInstance.transform.localScale = Vector3.one * BRUSH_SIZES[BrushSize];
+        brushInstance.SetColor(Color.blue);
         brushInstances.Add(brushInstance);
     }
 
@@ -154,7 +166,7 @@ public class DrawingSystem : MonoBehaviour {
 
     public void Clear() {
         for (int i = 0; i < brushInstances.Count; i++) {
-            Destroy(brushInstances[i]);
+            Destroy(brushInstances[i].gameObject);
         }
         brushInstances.Clear();
     }

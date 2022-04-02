@@ -2,7 +2,7 @@
 
 Shader "Brush" {
     Properties{
-        _TintColor("Tint Color", Color) = (0.5,0.5,0.5,0.5)
+        _Color("Color", Color) = (0.5,0.5,0.5,0.5)
         _MainTex("Particle Texture", 2D) = "white" {}
     }
 
@@ -25,7 +25,7 @@ Shader "Brush" {
                     #include "UnityCG.cginc"
 
                     sampler2D _MainTex;
-                    fixed4 _TintColor;
+                    fixed4 _Color;
 
                     struct appdata_t {
                         float4 vertex : POSITION;
@@ -51,7 +51,7 @@ Shader "Brush" {
                         UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
                         o.vertex = UnityObjectToClipPos(v.vertex);
     
-                        o.color = v.color * _TintColor;
+                        o.color = v.color * _Color;
                         o.texcoord = TRANSFORM_TEX(v.texcoord,_MainTex);
                         UNITY_TRANSFER_FOG(o,o.vertex);
                         return o;
