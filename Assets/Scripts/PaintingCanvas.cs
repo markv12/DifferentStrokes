@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PaintingCanvas : InteractiveObject {
     public override string InteractText => "Press 'E' to Draw";
+    public override bool Interactable => PaintingStatus != PaintingStatus.Complete;
 
     public SpriteRenderer canvasSpriteRenderer;
 
@@ -10,6 +11,8 @@ public class PaintingCanvas : InteractiveObject {
     public Sprite blankFrame;
     public Sprite needsFixingFrame;
     public Sprite completeFrame;
+
+    public GameObject barrier;
 
     private PaintingStatus paintingStatus;
     public PaintingStatus PaintingStatus {
@@ -42,6 +45,7 @@ public class PaintingCanvas : InteractiveObject {
 
     private void RefreshForPaintingStatus() {
         frameRenderer.sprite = GetFrameForStatus();
+        barrier.SetActive(PaintingStatus == PaintingStatus.Complete);
     }
 
     private Sprite GetFrameForStatus() {

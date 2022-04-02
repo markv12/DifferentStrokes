@@ -6,6 +6,7 @@ public class NPC : InteractiveObject {
     [TextArea(4, 8)]
     public string dialogueText;
     public override string InteractText => "Press 'E' to Talk";
+    public override bool Interactable => !string.IsNullOrWhiteSpace(dialogueText);
 
     public SpriteRenderer mainRenderer;
     public Sprite[] sprites;

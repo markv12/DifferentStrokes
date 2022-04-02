@@ -30,7 +30,7 @@ public class ArtManager : MonoBehaviour {
 
     private Vector3 lastCanvasPos = new Vector3(0, 1.9f, 2.38f);
     private void CreateCanvasForTexture(Texture tex, bool step1, string imageID) {
-        lastCanvasPos += new Vector3(3, 0, 0);
+        lastCanvasPos += new Vector3(4, 0, 0);
         PaintingCanvas newCanvas = Instantiate(canvasPrefab, lastCanvasPos, Quaternion.identity);
         newCanvas.SetCanvasTexture(tex as Texture2D);
         newCanvas.ImageID = imageID;
