@@ -17,4 +17,5 @@ public class InteractiveObject : MonoBehaviour {
     }
 
     public virtual string InteractText => "";
+    public virtual bool Interactable => false;
 }
