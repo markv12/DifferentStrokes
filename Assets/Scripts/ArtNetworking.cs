@@ -27,22 +27,22 @@ public class ArtNetworking : Singleton<ArtNetworking> {
     public void SendUnfinishedImage(Texture2D imageTex) {
         string imageID = getFileId();
         byte[] pngData = imageTex.EncodeToPNG();
-        string url = urlBase + "upload1/" + imageID;
-        UnityWebRequest WebRequest = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
-        UploadHandlerRaw UploadHandler = new UploadHandlerRaw(pngData);
-        UploadHandler.contentType = "application/x-www-form-urlencoded";
-        WebRequest.uploadHandler = UploadHandler;
-        WebRequest.SendWebRequest();
+        string url = urlBase + "uploadv1/" + imageID;
+        Debug.Log(url);
+
+        Action<string> onComplete = (string result) => {
+            Debug.Log(result);
+        };
+        StartCoroutine(Post(url, pngData, onComplete));
     }
 
     public void SendFinishedImage(Texture2D imageTex, string imageID) {
         byte[] pngData = imageTex.EncodeToPNG();
-        string url = urlBase + "upload2/" + imageID;
-        UnityWebRequest WebRequest = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
-        UploadHandlerRaw UploadHandler = new UploadHandlerRaw(pngData);
-        UploadHandler.contentType = "application/x-www-form-urlencoded";
-        WebRequest.uploadHandler = UploadHandler;
-        WebRequest.SendWebRequest();
+        string url = urlBase + "uploadv2/" + imageID;
+        Action<string> onComplete = (string result) => {
+            Debug.Log(result);
+        };
+        StartCoroutine(Post(url, pngData, onComplete));
     }
 
     public void SendLike(string imageID) {
@@ -91,4 +91,32 @@ public class ArtNetworking : Singleton<ArtNetworking> {
             }
         }
     }
+
+    IEnumerator Post(string uri, byte[] pngData, Action<string> onComplete) {
+        using (UnityWebRequest webRequest = new UnityWebRequest(uri, UnityWebRequest.kHttpVerbPOST)) {
+            UploadHandlerRaw UploadHandler = new UploadHandlerRaw(pngData);
+            UploadHandler.contentType = "application/x-www-form-urlencoded";
+            webRequest.uploadHandler = UploadHandler;
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (webRequest.result) {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    onComplete?.Invoke(webRequest.result.ToString());
+                    break;
+            }
+        }
+    }
+
+
+
 }

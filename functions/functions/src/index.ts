@@ -17,7 +17,7 @@ export const files = functions.https.onRequest(
   async (req, res): Promise<void> => {
     let page = 0
     try {
-      page = parseInt(req.params[0].split(`/`).slice(1)[0])
+      page = parseInt(req.params[`0`].replace(`/`, ``))
     } catch (e) {
       page = 0
     }
@@ -36,7 +36,7 @@ export const files = functions.https.onRequest(
 
 // export const unfinishedFiles = functions.https.onRequest(
 //   async (req, res): Promise<void> => {
-//     const [startFrom] = req.params[0].split(`/`).slice(1)
+//     const [startFrom] = req.params[(req.params.length) - 1].split(`/`).slice(1)
 //     const files = await getFilesByIteration(0, startFrom)
 //     if (`error` in files) {
 //       res.send([])
@@ -48,7 +48,7 @@ export const files = functions.https.onRequest(
 
 // export const doneFiles = functions.https.onRequest(
 //   async (req, res): Promise<void> => {
-//     const [startFrom] = req.params[0].split(`/`).slice(1)
+//     const [startFrom] = req.params[(req.params.length) - 1].split(`/`).slice(1)
 //     const files = await getBestDoneFiles(startFrom)
 //     if (`error` in files) {
 //       res.send([])
@@ -58,44 +58,65 @@ export const files = functions.https.onRequest(
 //   },
 // )
 
-export const upload1 = functions.https.onRequest(
+export const uploadv1 = functions.https.onRequest(
   async (req, res): Promise<void> => {
-    const id = req.params[0].split(`/`).slice(1)[0]
+    console.log(req.params)
+    const id = req.params[`0`].replace(`/`, ``)
     if (!id) {
+      console.log(`no id`)
       res.send(`No file name`)
       return
     }
 
     const bufferRes = await parseBufferFromUpload(req)
-    if (`error` in bufferRes) {
-      res.send(bufferRes)
+    if (!bufferRes || (bufferRes as any).error) {
+      console.log(
+        `bufferRes`,
+        bufferRes,
+        !bufferRes,
+        (bufferRes as any).error,
+      )
+      res.send(bufferRes || `No buffer`)
       return
     }
-    const uploadRes = await upload(id, 0, bufferRes)
-    if (typeof uploadRes === `object`) {
-      res.send(uploadRes)
+    const uploadRes = await upload(
+      id,
+      0,
+      bufferRes as Buffer,
+    )
+    if (!uploadRes || typeof uploadRes === `object`) {
+      console.log(uploadRes)
+      res.send(uploadRes || `No upload`)
       return
     }
+    console.log(`ok`)
     res.send(`ok`)
   },
 )
 
-export const upload2 = functions.https.onRequest(
+export const uploadv2 = functions.https.onRequest(
   async (req, res): Promise<void> => {
-    const id = req.params[0].split(`/`).slice(1)[0]
+    const id = req.params[`0`].replace(`/`, ``)
     if (!id) {
+      console.log(`no id`)
       res.send(`No file name`)
       return
     }
 
     const bufferRes = await parseBufferFromUpload(req)
-    if (`error` in bufferRes) {
-      res.send(bufferRes)
+    if (!bufferRes || (bufferRes as any).error) {
+      console.log(`bufferRes`, bufferRes)
+      res.send(bufferRes || `No buffer`)
       return
     }
-    const uploadRes = await upload(id, 2, bufferRes)
-    if (typeof uploadRes === `object`) {
-      res.send(uploadRes)
+    const uploadRes = await upload(
+      id,
+      2,
+      bufferRes as Buffer,
+    )
+    if (!uploadRes || typeof uploadRes === `object`) {
+      console.log(uploadRes)
+      res.send(uploadRes || `No upload`)
       return
     }
 
@@ -103,13 +124,14 @@ export const upload2 = functions.https.onRequest(
     console.log(`updating initial version name`)
     updateFilePrefix(`0_${id}.png`, `1`)
 
+    console.log(`ok`)
     res.send(`ok`)
   },
 )
 
 export const like = functions.https.onRequest(
   async (req, res): Promise<void> => {
-    const [id] = req.params[0].split(`/`).slice(1)
+    const [id] = req.params[`0`].replace(`/`, ``)
     if (!id) {
       res.send({ error: `no id` })
       return
@@ -121,7 +143,7 @@ export const like = functions.https.onRequest(
 
 export const dislike = functions.https.onRequest(
   async (req, res): Promise<void> => {
-    const [id] = req.params[0].split(`/`).slice(1)
+    const [id] = req.params[`0`].replace(`/`, ``)
     if (!id) {
       res.send({ error: `no id` })
       return
@@ -153,6 +175,6 @@ export const dislike = functions.https.onRequest(
 
 export const test = functions.https.onRequest(
   async (req, res): Promise<void> => {
-    res.send(`test`)
+    res.send(`test` + JSON.stringify(req.params))
   },
 )

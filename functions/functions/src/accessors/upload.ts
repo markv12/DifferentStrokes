@@ -1,5 +1,4 @@
 import formidable from 'formidable-serverless'
-import fs from 'fs'
 
 export default async function parseBufferFromUpload(
   req,
@@ -8,7 +7,7 @@ export default async function parseBufferFromUpload(
     console.log(
       `parseBufferFromUpload`,
       req.rawBody,
-      typeof req.body,
+      typeof req.rawBody,
     )
     resolve(req.rawBody)
 
