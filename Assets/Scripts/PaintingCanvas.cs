@@ -15,6 +15,10 @@ public class PaintingCanvas : InteractiveObject {
         tex.ReadPixels(new Rect(0, 0, tex.width, tex.height), 0, 0);
         tex.Apply();
         RenderTexture.active = prevActiveRT;
+        SetCanvasTexture(tex);
+    }
+
+    public void SetCanvasTexture(Texture2D tex) {
         canvasSpriteRenderer.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 512);
     }
 }

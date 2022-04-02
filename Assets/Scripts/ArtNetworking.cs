@@ -12,12 +12,12 @@ public class ArtNetworking : Singleton<ArtNetworking> {
 
     static int FileListPageIndex = 0;
 
-    public void LoadNextPageOfFiles() {
+    public void LoadNextPageOfFiles(Action<FileListResponse> onGetFiles) {
         string url = urlBase + "files/" + FileListPageIndex;
 
         Action<string> onComplete = (string result) => {
             FileListResponse fileListResponse = FileListResponse.CreateFromJsonString(result);
-            // todo use this new data to generate a room etc
+            onGetFiles?.Invoke(fileListResponse);
         };
         StartCoroutine(Get(url, onComplete));
 
