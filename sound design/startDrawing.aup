@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="startDrawing_data" version="1.3.0" audacityversion="2.4.1" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="0.0000000000" zoom="56.8046433248" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="COMMENTS" value="0000007D6750434D2D443130300000000000000000010202000400010208004B000000000000000002010096020000000000000000000000000101000001"/>
+		<tag name="ARTIST" value="My Recording"/>
+		<tag name="TITLE" value="220131_001"/>
+	</tags>
+	<wavetrack name="66775__kevinkace__canvas-tent-3" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="59055">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f556.au" len="59055" min="-0.231171" max="0.277588" rms="0.031474"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="616824__cupido-1__drag-chair-moving" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.22885417" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="64278">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f07b.au" len="64278" min="-0.407776" max="0.384216" rms="0.026445"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="616824__cupido-1__drag-chair-moving" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.22885417" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="64278">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fb66.au" len="64278" min="-0.464752" max="0.484283" rms="0.031984"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
