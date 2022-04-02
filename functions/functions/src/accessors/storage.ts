@@ -22,10 +22,11 @@ export async function getFiles(
 ): Promise<ResponseOrError<UsefulFileData[]>> {
   if (
     !force &&
-    cachedFiles.lastUpdated + cacheExpirationTime <
+    cachedFiles.lastUpdated + cacheExpirationTime >
       Date.now() &&
     cachedFiles.cache.length > 0
   ) {
+    console.log(`using cached files`)
     return cachedFiles.cache
   }
 
