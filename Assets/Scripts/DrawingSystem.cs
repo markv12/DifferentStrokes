@@ -78,7 +78,7 @@ public class DrawingSystem : MonoBehaviour {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 10, layerMask)) {
             Transform canvasT = hit.collider.transform;
-            Vector3 spawnPoint = hit.point + (canvasT.forward * -0.05f);
+            Vector3 spawnPoint = hit.point + (canvasT.forward * -0.005f);
             GameObject brushInstance = Instantiate(Brush, spawnPoint, canvasT.rotation, transform);
             brushInstance.transform.localScale = Vector3.one * BrushSize;
             brushInstances.Add(brushInstance);

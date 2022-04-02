@@ -4,7 +4,7 @@ using UnityEngine;
 public class PaintingCanvasManager : Singleton<PaintingCanvasManager> {
     private static readonly List<PaintingCanvas> activeCanvases = new List<PaintingCanvas>();
 
-    private const float MAX_SQUARE_DISTANCE = 12f;
+    private const float MAX_SQUARE_DISTANCE = 20f;
     public PaintingCanvas GetNearestCanvas(Vector3 pos) {
         PaintingCanvas result = null;
         float minDistance = float.MaxValue;
