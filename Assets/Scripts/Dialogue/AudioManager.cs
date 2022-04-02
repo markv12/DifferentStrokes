@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
 	public AudioClip success;
 	public AudioClip startDrawing;
 	public AudioClip[] brushes;
+	public AudioClip talk;
 
 	//public void PlaySuccessSound(float intensity) {
 	//	PlaySFX(success, 1.4f * intensity);
@@ -38,6 +39,10 @@ public class AudioManager : MonoBehaviour
 	public void PlayBrushSound(float intensity) {
 		AudioClip sound = brushes[Random.Range(0, brushes.Length)];
 		PlaySFX(sound, 1.0f * intensity);
+	}
+
+	public void PlayTalkSound(float intensity) {
+		PlaySFX(talk, 1.0f * Random.Range(0.5f, 1.5f) * intensity, Random.Range(0.5f, 1.5f));
 	}
 
 	public void PlaySFX(AudioClip clip, float volume)

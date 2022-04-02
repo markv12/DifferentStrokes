@@ -73,6 +73,7 @@ public class DialogueVertexAnimator {
                     if (visableCharacterIndex < charCount && ShouldShowNextCharacter(secondsPerCharacter, timeOfLastCharacter)) {
                         charAnimStartTimes[visableCharacterIndex] = Time.unscaledTime;
                         PlayDialogueSound(voice_sound);
+                        if (UnityEngine.Random.value > 0.75f) AudioManager.Instance.PlayTalkSound(1.0f);
                         visableCharacterIndex++;
                         timeOfLastCharacter = Time.unscaledTime;
                         if (visableCharacterIndex == charCount) {
