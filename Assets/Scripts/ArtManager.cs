@@ -11,7 +11,7 @@ public class ArtManager : MonoBehaviour {
     private void Awake() {
         ArtNetworking.Instance.LoadNextPageOfFiles((FileListResponse result) => {
             for (int i = 0; i < result.step1.Length; i++) {
-                Debug.Log(result.step1.Length);
+                Debug.Log("Got Step1 Textures: " + result.step1.Length);
                 FileData fileData = result.step1[i];
                 StartCoroutine(GetTexture(fileData.path, fileData.id, OnGetStep1Texture));
             }
