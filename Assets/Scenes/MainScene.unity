@@ -448,7 +448,6 @@ MonoBehaviour:
   Brush: {fileID: 5164166083023367913, guid: 8037ac8fcd86b264eab8c1ffbcdc056a, type: 3}
   BrushSize: 0.1
   RTexture: {fileID: 8400000, guid: 82f1027b4d6b87a4685b04ef32ceef52, type: 2}
-  mainCamera: {fileID: 1338700459}
   renderCamera: {fileID: 1521763186}
   renderCameraTransform: {fileID: 1521763184}
   drawingUI: {fileID: 660443638}
@@ -789,11 +788,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &1338700459 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8513072604476804246, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
-  m_PrefabInstance: {fileID: 8513072603641896978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1521763183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1170,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb39ce5b40dc73468509a5670906c5d, type: 3}
+--- !u!1 &8170057856405056245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8170057854730723026, guid: ffb39ce5b40dc73468509a5670906c5d, type: 3}
+  m_PrefabInstance: {fileID: 8170057856405056244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8170057856405056246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170057856405056245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fb646a0d13342c5a0a7b213bdff957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.1
+  frequency: 0.3
 --- !u!1001 &8513072603641896978
 PrefabInstance:
   m_ObjectHideFlags: 0
