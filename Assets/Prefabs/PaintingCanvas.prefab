@@ -211,6 +211,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasSpriteRenderer: {fileID: 2562678381949082874}
+  frameRenderer: {fileID: 7758314123838678999}
+  blankFrame: {fileID: 21300000, guid: b662e74e91f9b7d48aae903c7928b79e, type: 3}
+  needsFixingFrame: {fileID: 21300000, guid: 835e013b19298f344ae9907424c06874, type: 3}
+  completeFrame: {fileID: 21300000, guid: e711f9e9f0aa86b45bca3534fdb123b2, type: 3}
 --- !u!65 &8794521157210328691
 BoxCollider:
   m_ObjectHideFlags: 0

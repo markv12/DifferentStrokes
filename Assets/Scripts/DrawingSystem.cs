@@ -90,7 +90,8 @@ public class DrawingSystem : MonoBehaviour {
         Vector3 startPos = mainCameraTransform.position;
         Quaternion startRotation = mainCameraTransform.rotation;
         Vector3 endPos = currentCanvas.transform.position + (currentCanvas.transform.forward * -2.05f);
-        Quaternion endRotation = Quaternion.Euler(-currentCanvas.transform.forward);
+        Quaternion endRotation = Quaternion.LookRotation(currentCanvas.transform.forward, currentCanvas.transform.up);
+        renderCamera.transform.SetPositionAndRotation(endPos, endRotation);
         this.CreateAnimationRoutine(1f, (float progress) => {
             float easedProgress = Easing.easeInOutSine(0f, 1f, progress);
             mainCameraTransform.SetPositionAndRotation(Vector3.Lerp(startPos, endPos, easedProgress), Quaternion.Lerp(startRotation, endRotation, easedProgress));
@@ -115,7 +116,15 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     public void SubmitCurrentDrawing() {
-        ArtNetworking.Instance.SendUnfinishedImage(currentCanvas.canvasSpriteRenderer.sprite.texture);
+        Texture2D tex = currentCanvas.canvasSpriteRenderer.sprite.texture;
+        switch (currentCanvas.PaintingStatus) {
+            case PaintingStatus.Blank:
+                ArtNetworking.Instance.SendUnfinishedImage(tex);
+                break;
+            case PaintingStatus.NeedsFixing:
+                ArtNetworking.Instance.SendFinishedImage(tex, currentCanvas.ImageID);
+                break;
+        }
         ReturnCameraToPlayer();
     }
 

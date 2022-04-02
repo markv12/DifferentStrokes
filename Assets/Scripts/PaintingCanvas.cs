@@ -6,7 +6,25 @@ public class PaintingCanvas : InteractiveObject {
 
     public SpriteRenderer canvasSpriteRenderer;
 
-    [NonSerialized] public PaintingStatus paintingStatus;
+    public SpriteRenderer frameRenderer;
+    public Sprite blankFrame;
+    public Sprite needsFixingFrame;
+    public Sprite completeFrame;
+
+    private PaintingStatus paintingStatus;
+    public PaintingStatus PaintingStatus {
+        get {
+            return paintingStatus;
+        }
+        set {
+            paintingStatus = value;
+            RefreshForPaintingStatus();
+        }
+    }
+
+    public string ImageID {
+        get; set;
+    }
 
     public void SetCanvasTexture(RenderTexture rTex) {
         RenderTexture prevActiveRT = RenderTexture.active;
@@ -20,6 +38,23 @@ public class PaintingCanvas : InteractiveObject {
 
     public void SetCanvasTexture(Texture2D tex) {
         canvasSpriteRenderer.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 512);
+    }
+
+    private void RefreshForPaintingStatus() {
+        frameRenderer.sprite = GetFrameForStatus();
+    }
+
+    private Sprite GetFrameForStatus() {
+        switch (PaintingStatus) {
+            case PaintingStatus.Blank:
+                return blankFrame;
+            case PaintingStatus.NeedsFixing:
+                return needsFixingFrame;
+            case PaintingStatus.Complete:
+                return completeFrame;
+            default:
+                return completeFrame;
+        }
     }
 }
 public enum PaintingStatus {
