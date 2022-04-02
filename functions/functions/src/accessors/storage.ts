@@ -15,7 +15,7 @@ const cachedFiles: {
   cache: [],
   lastUpdated: 0,
 }
-const cacheExpirationTime = 1000 * 60 * 10 // 10 minutes
+const cacheExpirationTime = 0 // 1000 * 60 * 10 // 10 minutes
 
 export async function getFiles(
   force = false,
