@@ -187,6 +187,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: be97fe31c643448828a1db7e631ed30c, type: 3}
   - {fileID: 8300000, guid: 089ea3e8cced94b069dc723b8e0a70f3, type: 3}
   - {fileID: 8300000, guid: 8be1e251fefb34d01bedf0dbc45e34a0, type: 3}
+  talk: {fileID: 8300000, guid: 26e57945d176f42148a263a83f33ba01, type: 3}
 --- !u!1 &6057479461563318025
 GameObject:
   m_ObjectHideFlags: 0

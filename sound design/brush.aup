@@ -1,8 +1,8 @@
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
-<project xmlns="http://audacity.sourceforge.net/xml/" projname="brush_data" version="1.3.0" audacityversion="2.4.1" sel0="0.0000000000" sel1="1.0869583333" vpos="0" h="0.0000000000" zoom="36.6985170033" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="brush_data" version="1.3.0" audacityversion="2.4.1" sel0="0.0000000000" sel1="0.6945859534" vpos="0" h="0.0000000000" zoom="11.5176530143" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
 	<tags/>
-	<wavetrack name="332572__ramston__paint-brush" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="0" solo="1" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+	<wavetrack name="332572__ramston__paint-brush" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
 		<waveclip offset="4.41791704" colorindex="0">
 			<sequence maxsamples="262144" sampleformat="262159" numsamples="20196">
 				<waveblock start="0">
@@ -23,6 +23,16 @@
 			<sequence maxsamples="262144" sampleformat="262159" numsamples="41719">
 				<waveblock start="0">
 					<simpleblockfile filename="eff1f8eb.au" len="41719" min="-0.162055" max="0.162604" rms="0.019599"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="332572__ramston__paint-brush" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="0" solo="1" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="165839">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fac6.au" len="165839" min="-0.349972" max="0.298072" rms="0.039641"/>
 				</waveblock>
 			</sequence>
 			<envelope numpoints="0"/>
