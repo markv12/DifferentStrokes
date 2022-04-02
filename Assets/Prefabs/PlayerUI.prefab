@@ -181,8 +181,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press "D" to Draw
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f21a1f633ef674cd0b7a7371baa650cf, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 9576a85ccc63d6441bf0b1275918d1ef, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9c9e87a18f15848ae892e2568ee97b77, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 1e566079e9b76984bbb68095f5b3ee4a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -206,8 +206,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 75
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

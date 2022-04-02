@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +13,7 @@ public class DrawingUI : MonoBehaviour {
 
     public Color[] brushColors;
     public Button[] brushColorSquares;
+    public Image[] brushColorImages;
 
     private void Awake() {
         submitButton.onClick.AddListener(Submit);
@@ -23,7 +23,9 @@ public class DrawingUI : MonoBehaviour {
         brushSizeDownButton.onClick.AddListener(() => ChangeBrushSize(-1));
 
         for (int i = 0; i < brushColorSquares.Length; i++) {
-            brushColorSquares[i].onClick.AddListener(() => { SetBrushColor(brushColors[i]); });
+            Color c = brushColors[i];
+            brushColorSquares[i].onClick.AddListener(() => { SetBrushColor(c); });
+            brushColorImages[i].color = c;
         }
     }
 
