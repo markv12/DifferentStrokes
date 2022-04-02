@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -12,9 +13,8 @@ public class DrawingSystem : MonoBehaviour {
     public Camera renderCamera;
     public Transform renderCameraTransform;
 
+    public GameObject drawingUI;
     public LayerMask layerMask;
-
-    private bool inDrawingMode = false;
 
     private PaintingCanvas currentCanvas;
     private Action onExit;
@@ -23,6 +23,16 @@ public class DrawingSystem : MonoBehaviour {
     private Vector3 mainCameraOriginalPos;
     private Quaternion mainCameraOriginalRotation;
 
+    private bool inDrawingMode = false;
+    private bool InDrawingMode {
+        get {
+            return inDrawingMode;
+        }
+        set {
+            inDrawingMode = value;
+            drawingUI.SetActive(inDrawingMode);
+        }
+    }
 
     public void DrawToCanvas(PaintingCanvas paintingCanvas, Action _onExit) {
         currentCanvas = paintingCanvas;
@@ -35,19 +45,18 @@ public class DrawingSystem : MonoBehaviour {
         MoveCameraInFrontOfCanvas();
     }
 
+    private List<GameObject> brushInstances = new List<GameObject>();
     void Update() {
-        if (inDrawingMode) {
+        if (InDrawingMode) {
             if (Input.GetMouseButton(0)) {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                Debug.DrawRay(ray.origin, ray.direction*4, Color.red, 1000);
                 if (Physics.Raycast(ray, out RaycastHit hit, 10, layerMask)) {
-                    GameObject go = Instantiate(Brush, hit.point, Quaternion.identity, transform);
-                    go.transform.localScale = Vector3.one * BrushSize;
-                    //renderCamera.Render();
+                    Transform canvasT = hit.collider.transform;
+                    Vector3 spawnPoint = hit.point + (canvasT.forward * -0.05f);
+                    GameObject brushInstance = Instantiate(Brush, spawnPoint, canvasT.rotation, transform);
+                    brushInstance.transform.localScale = Vector3.one * BrushSize;
+                    brushInstances.Add(brushInstance);
                 }
-            }
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                ReturnCameraToPlayer();
             }
         }
     }
@@ -61,12 +70,12 @@ public class DrawingSystem : MonoBehaviour {
             float easedProgress = Easing.easeInOutSine(0f, 1f, progress);
             mainCameraTransform.SetPositionAndRotation(Vector3.Lerp(startPos, endPos, easedProgress), Quaternion.Lerp(startRotation, endRotation, easedProgress));
         }, () => {
-            inDrawingMode = true;
+            InDrawingMode = true;
         });
     }
 
-    private void ReturnCameraToPlayer() {
-        inDrawingMode = false;
+    public void ReturnCameraToPlayer() {
+        InDrawingMode = false;
         Vector3 startPos = mainCameraTransform.localPosition;
         Quaternion startRotation = mainCameraTransform.localRotation;
         Vector3 endPos = mainCameraOriginalPos;
@@ -77,6 +86,13 @@ public class DrawingSystem : MonoBehaviour {
         }, () => {
             onExit?.Invoke();
         });
+    }
+
+    public void Clear() {
+        for (int i = 0; i < brushInstances.Count; i++) {
+            Destroy(brushInstances[i]);
+        }
+        brushInstances.Clear();
     }
 
     public void Save() {
