@@ -3,7 +3,6 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
 public class ArtNetworking : Singleton<ArtNetworking> {
     static bool useLocalhost = false;
 
@@ -17,21 +16,8 @@ public class ArtNetworking : Singleton<ArtNetworking> {
         string url = urlBase + "files/" + FileListPageIndex;
 
         Action<string> onComplete = (string result) => {
-            // data comes back in this shape:
-            // { "step1": FileData[], "step2": FileData[] }
-            // where FileData is:
-            /*
-                {
-                    id: string
-                    iteration: number
-                    date: number
-                    likes: number
-                    dislikes: number
-                    path: string
-                    originalPath: string
-                }
-            */
-            Debug.Log(result);
+            FileListResponse fileListResponse = FileListResponse.CreateFromJsonString(result);
+            // todo use this new data to generate a room etc
         };
         StartCoroutine(Get(url, onComplete));
 

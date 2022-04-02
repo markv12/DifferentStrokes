@@ -15,7 +15,7 @@ public class FileListResponse {
 public class FileData {
     public string id;
     public int iteration;
-    public int date;
+    public long date;
     public int likes;
     public int dislikes;
     public string path;
