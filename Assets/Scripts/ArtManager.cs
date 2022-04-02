@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class ArtManager : MonoBehaviour {
 
     public PaintingCanvas canvasPrefab;
-    private List<PaintingCanvas> step1Canvases;
+    private List<PaintingCanvas> step1Canvases = new List<PaintingCanvas>();
     private void Awake() {
         ArtNetworking.Instance.LoadNextPageOfFiles((FileListResponse result) => {
             Debug.Log("Got page");
