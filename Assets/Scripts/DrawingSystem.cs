@@ -132,13 +132,14 @@ public class DrawingSystem : MonoBehaviour {
         brushInstances.Add(brushInstance);
     }
 
+    public const float ANIM_DURATION = 0.8f;
     private void MoveCameraInFrontOfCanvas() {
         Vector3 startPos = mainCameraTransform.position;
         Quaternion startRotation = mainCameraTransform.rotation;
         Vector3 endPos = currentCanvas.transform.position + (currentCanvas.transform.forward * -2.05f);
         Quaternion endRotation = Quaternion.LookRotation(currentCanvas.transform.forward, currentCanvas.transform.up);
         renderCamera.transform.SetPositionAndRotation(endPos, endRotation);
-        this.CreateAnimationRoutine(1f, (float progress) => {
+        this.CreateAnimationRoutine(ANIM_DURATION, (float progress) => {
             float easedProgress = Easing.easeInOutSine(0f, 1f, progress);
             mainCameraTransform.SetPositionAndRotation(Vector3.Lerp(startPos, endPos, easedProgress), Quaternion.Lerp(startRotation, endRotation, easedProgress));
         }, () => {
@@ -152,7 +153,7 @@ public class DrawingSystem : MonoBehaviour {
         Vector3 startPos = mainCameraTransform.localPosition;
         Quaternion startRotation = mainCameraTransform.localRotation;
         Vector3 endPos = mainCameraOriginalPos;
-        this.CreateAnimationRoutine(1f, (float progress) => {
+        this.CreateAnimationRoutine(ANIM_DURATION, (float progress) => {
             float easedProgress = Easing.easeInOutSine(0f, 1f, progress);
             mainCameraTransform.localPosition = Vector3.Lerp(startPos, mainCameraOriginalPos, easedProgress);
             mainCameraTransform.localRotation = Quaternion.Lerp(startRotation, mainCameraOriginalRotation, easedProgress);
