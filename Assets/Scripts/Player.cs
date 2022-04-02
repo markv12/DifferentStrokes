@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
     public Transform t;
     public PlayerUI playerUI;
     public DrawingSystem drawingSystem;
+    public DialogueSystem dialogueSystem;
     public Camera mainCamera;
     private Transform mainCameraTransform;
 
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour {
     }
 
     private PaintingCanvas currentCanvas;
+    private NPC currentNPC;
     private InteractiveObject currentObject;
     private InteractiveObject CurrentObject {
         get {
@@ -34,22 +36,29 @@ public class Player : MonoBehaviour {
             InteractiveObject nearestObject = InteractiveObjectManager.Instance.GetNearestObject(t.position, mainCameraTransform.forward);
             CurrentObject = nearestObject;
             currentCanvas = nearestObject as PaintingCanvas;
+            currentNPC = nearestObject as NPC;
         }
-        if(currentCanvas != null && Input.GetKeyDown(KeyCode.E)) {
-            enabled = false;
-            characterController.enabled = false;
-            firstPersonController.enabled = false;
-            playerUI.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            drawingSystem.DrawToCanvas(currentCanvas, mainCamera, () => {
-                enabled = true;
-                characterController.enabled = true;
-                firstPersonController.enabled = true;
-                playerUI.gameObject.SetActive(true);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            });
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (currentCanvas != null) {
+                SetFPSControllerActive(false);
+                drawingSystem.DrawToCanvas(currentCanvas, mainCamera, () => {
+                    SetFPSControllerActive(true);
+                });
+            } else if (currentNPC != null) {
+                SetFPSControllerActive(false);
+                dialogueSystem.TalkToNPC(currentNPC, mainCamera, () => {
+                    SetFPSControllerActive(true);
+                });
+            }
         }
+    }
+
+    private void SetFPSControllerActive(bool isActive) {
+        enabled = isActive;
+        characterController.enabled = isActive;
+        firstPersonController.enabled = isActive;
+        playerUI.gameObject.SetActive(isActive);
+        Cursor.lockState = isActive ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !isActive;
     }
 }

@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410e6010d22ddcf499bc07e44fb7914c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueText: Terribly Derivative
   mainRenderer: {fileID: 8170057854730723036}
   sprites:
   - {fileID: 21300000, guid: 98a08b8aa9b7d124fb74cea4c699b637, type: 3}

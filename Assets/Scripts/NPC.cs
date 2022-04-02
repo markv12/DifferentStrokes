@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class NPC : InteractiveObject {
 
+    [TextArea(4, 8)]
+    public string dialogueText;
     public override string InteractText => "Press 'E' to Talk";
 
     public SpriteRenderer mainRenderer;
