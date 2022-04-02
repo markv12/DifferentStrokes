@@ -44,6 +44,16 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
+    private Color brushColor = Color.white;
+    public Color BrushColor {
+        get {
+            return brushColor;
+        }
+        set {
+            brushColor = value;
+        }
+    }
+
     private static readonly float[] BRUSH_SIZES = new float[] { 0.025f, 0.05f, 0.1f, 0.3f, 0.5f, 1f };
 
     public void DrawToCanvas(PaintingCanvas paintingCanvas, Camera _mainCamera, Action _onExit) {
@@ -118,7 +128,7 @@ public class DrawingSystem : MonoBehaviour {
     private void DrawDot(Vector3 spawnPoint, Quaternion spawnRotation) {
         DrawingBrush brushInstance = Instantiate(brush, spawnPoint, spawnRotation, transform);
         brushInstance.transform.localScale = Vector3.one * BRUSH_SIZES[BrushSize];
-        brushInstance.SetColor(Color.blue);
+        brushInstance.SetColor(BrushColor);
         brushInstances.Add(brushInstance);
     }
 
