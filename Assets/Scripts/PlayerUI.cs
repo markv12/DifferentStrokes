@@ -1,17 +1,19 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerUI : MonoBehaviour {
-    public GameObject drawIndicator;
+    public TMP_Text interactText;
 
     private void Awake() {
-        drawIndicator.SetActive(false);
+        interactText.gameObject.SetActive(false);
     }
 
-    public void RefreshForCanvas(PaintingCanvas currentCanvas) {
-        if(currentCanvas != null) {
-            drawIndicator.SetActive(true);
+    public void RefreshForObject(InteractiveObject interactiveObject) {
+        if(interactiveObject != null) {
+            interactText.text = interactiveObject.InteractText;
+            interactText.gameObject.SetActive(true);
         } else {
-            drawIndicator.SetActive(false);
+            interactText.gameObject.SetActive(false);
         }
     }
 }

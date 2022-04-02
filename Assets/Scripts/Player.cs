@@ -5,35 +5,44 @@ public class Player : MonoBehaviour {
     public Transform t;
     public PlayerUI playerUI;
     public DrawingSystem drawingSystem;
+    public Camera mainCamera;
+    private Transform mainCameraTransform;
 
     public CharacterController characterController;
     public FirstPersonController firstPersonController;
 
+    private void Awake() {
+        mainCameraTransform = mainCamera.transform;
+    }
+
     private PaintingCanvas currentCanvas;
-    private PaintingCanvas CurrentCanvas {
+    private InteractiveObject currentObject;
+    private InteractiveObject CurrentObject {
         get {
-            return currentCanvas;
+            return currentObject;
         }
         set {
-            if(currentCanvas != value) {
-                currentCanvas = value;
-                playerUI.RefreshForCanvas(currentCanvas);
+            if(currentObject != value) {
+                currentObject = value;
+                playerUI.RefreshForObject(currentObject);
             }
         }
     }
 
     private void Update() {
         if(Time.frameCount % 6 == 0) {
-            CurrentCanvas = PaintingCanvasManager.Instance.GetNearestCanvas(t.position);
+            InteractiveObject nearestObject = InteractiveObjectManager.Instance.GetNearestObject(t.position, mainCameraTransform.forward);
+            CurrentObject = nearestObject;
+            currentCanvas = nearestObject as PaintingCanvas;
         }
-        if(CurrentCanvas != null && Input.GetMouseButtonDown(0)) {
+        if(currentCanvas != null && Input.GetKeyDown(KeyCode.E)) {
             enabled = false;
             characterController.enabled = false;
             firstPersonController.enabled = false;
             playerUI.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            drawingSystem.DrawToCanvas(CurrentCanvas, () => {
+            drawingSystem.DrawToCanvas(currentCanvas, mainCamera, () => {
                 enabled = true;
                 characterController.enabled = true;
                 firstPersonController.enabled = true;

@@ -8,7 +8,6 @@ public class DrawingSystem : MonoBehaviour {
     public GameObject Brush;
     public float BrushSize = 0.1f;
     public RenderTexture RTexture;
-    public Camera mainCamera;
 
     public Camera renderCamera;
     public Transform renderCameraTransform;
@@ -20,6 +19,7 @@ public class DrawingSystem : MonoBehaviour {
     private PaintingCanvas currentCanvas;
     private Action onExit;
 
+    private Camera mainCamera;
     private Transform mainCameraTransform;
     private Vector3 mainCameraOriginalPos;
     private Quaternion mainCameraOriginalRotation;
@@ -35,9 +35,10 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
-    public void DrawToCanvas(PaintingCanvas paintingCanvas, Action _onExit) {
+    public void DrawToCanvas(PaintingCanvas paintingCanvas, Camera _mainCamera, Action _onExit) {
         currentCanvas = paintingCanvas;
-        mainCameraTransform = mainCamera.transform;
+        mainCamera = _mainCamera;
+        mainCameraTransform = _mainCamera.transform;
         onExit = _onExit;
 
         mainCameraOriginalPos = mainCameraTransform.localPosition;
@@ -100,6 +101,7 @@ public class DrawingSystem : MonoBehaviour {
 
     public void ReturnCameraToPlayer() {
         InDrawingMode = false;
+        isDrawing = false;
         Vector3 startPos = mainCameraTransform.localPosition;
         Quaternion startRotation = mainCameraTransform.localRotation;
         Vector3 endPos = mainCameraOriginalPos;
