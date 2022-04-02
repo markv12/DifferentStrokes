@@ -13,13 +13,6 @@ import parseBufferFromUpload, {
   parseBody,
 } from './accessors/upload'
 
-// export const allFiles = functions.https.onRequest(
-//   async (req, res): Promise<void> => {
-//     const files = await listFiles()
-//     res.send(files)
-//   },
-// )
-
 export const files = functions.https.onRequest(
   async (req, res): Promise<void> => {
     let page = 0
@@ -33,6 +26,13 @@ export const files = functions.https.onRequest(
     res.send(files)
   },
 )
+
+// export const allFiles = functions.https.onRequest(
+//   async (req, res): Promise<void> => {
+//     const files = await listFiles()
+//     res.send(files)
+//   },
+// )
 
 // export const unfinishedFiles = functions.https.onRequest(
 //   async (req, res): Promise<void> => {
@@ -60,16 +60,18 @@ export const files = functions.https.onRequest(
 
 export const upload1 = functions.https.onRequest(
   async (req, res): Promise<void> => {
-    const bufferRes = await parseBufferFromUpload(req, res)
+    const id = req.params[0].split(`/`).slice(1)[0]
+    if (!id) {
+      res.send(`No file name`)
+      return
+    }
+
+    const bufferRes = await parseBufferFromUpload(req)
     if (`error` in bufferRes) {
       res.send(bufferRes)
       return
     }
-    const uploadRes = await upload(
-      bufferRes.id,
-      0,
-      bufferRes.buffer,
-    )
+    const uploadRes = await upload(id, 0, bufferRes)
     if (typeof uploadRes === `object`) {
       res.send(uploadRes)
       return
@@ -80,16 +82,18 @@ export const upload1 = functions.https.onRequest(
 
 export const upload2 = functions.https.onRequest(
   async (req, res): Promise<void> => {
-    const bufferRes = await parseBufferFromUpload(req, res)
+    const id = req.params[0].split(`/`).slice(1)[0]
+    if (!id) {
+      res.send(`No file name`)
+      return
+    }
+
+    const bufferRes = await parseBufferFromUpload(req)
     if (`error` in bufferRes) {
       res.send(bufferRes)
       return
     }
-    const uploadRes = await upload(
-      bufferRes.id,
-      2,
-      bufferRes.buffer,
-    )
+    const uploadRes = await upload(id, 2, bufferRes)
     if (typeof uploadRes === `object`) {
       res.send(uploadRes)
       return
@@ -97,7 +101,7 @@ export const upload2 = functions.https.onRequest(
 
     // update the initial file to have the 1_ prefix
     console.log(`updating initial version name`)
-    updateFilePrefix(`0_${bufferRes.id}.png`, `1`)
+    updateFilePrefix(`0_${id}.png`, `1`)
 
     res.send(`ok`)
   },
