@@ -52,6 +52,9 @@ public class DrawingSystem : MonoBehaviour {
     void Update() {
         if (InDrawingMode) {
             if (Input.GetMouseButtonDown(0)) {
+                if (isDrawing == false) {
+                    AudioManager.Instance.PlayBrushSound(UnityEngine.Random.Range(0.1f, 0.4f));
+                }
                 isDrawing = true;
             } else if (Input.GetMouseButtonUp(0)) {
                 isDrawing = false;

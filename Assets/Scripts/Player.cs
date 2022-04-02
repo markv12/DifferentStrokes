@@ -41,6 +41,7 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (currentCanvas != null) {
                 SetFPSControllerActive(false);
+                AudioManager.Instance.PlayStartDrawingSound(0.5f);
                 drawingSystem.DrawToCanvas(currentCanvas, mainCamera, () => {
                     SetFPSControllerActive(true);
                 });

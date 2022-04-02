@@ -23,9 +23,21 @@ public class AudioManager : MonoBehaviour
 
 	private int audioSourceIndex = 0;
 
-	public AudioClip exitWater;
-	public void PlayExitWaterSound(float intensity) {
-		PlaySFX(exitWater, 1.4f * intensity);
+	public AudioClip success;
+	public AudioClip startDrawing;
+	public AudioClip[] brushes;
+
+	//public void PlaySuccessSound(float intensity) {
+	//	PlaySFX(success, 1.4f * intensity);
+	//}
+
+	public void PlayStartDrawingSound(float intensity) {
+		PlaySFX(startDrawing, 1.4f * intensity);
+	}
+
+	public void PlayBrushSound(float intensity) {
+		AudioClip sound = brushes[Random.Range(0, brushes.Length)];
+		PlaySFX(sound, 1.0f * intensity);
 	}
 
 	public void PlaySFX(AudioClip clip, float volume)
