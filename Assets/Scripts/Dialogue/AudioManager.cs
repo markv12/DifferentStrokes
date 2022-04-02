@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,8 +9,8 @@ public class AudioManager : MonoBehaviour
 		get
 		{
 			if (instance == null) {
-				GameObject gameOverScreenObject = (GameObject)Resources.Load(AUDIO_MANAGER_PATH);
-				GameObject instantiated = Instantiate(gameOverScreenObject);
+				GameObject audioManagerObject = (GameObject)Resources.Load(AUDIO_MANAGER_PATH);
+				GameObject instantiated = Instantiate(audioManagerObject);
 				DontDestroyOnLoad(instantiated);
 				instance = instantiated.GetComponent<AudioManager>();
 			}
@@ -26,21 +26,6 @@ public class AudioManager : MonoBehaviour
 	public AudioClip exitWater;
 	public void PlayExitWaterSound(float intensity) {
 		PlaySFX(exitWater, 1.4f * intensity);
-	}
-
-	public AudioClip enterWater;
-	public void PlayEnterWaterSound(float intensity) {
-		PlaySFX(enterWater, 8.0f * intensity);
-	}
-
-	public AudioClip hit;
-	public void PlayHitSound(float intensity) {
-		PlaySFX(hit, 0.065f * intensity, intensity * 0.2f);
-	}
-
-	public AudioClip boost;
-	public void PlayBoostSound(float intensity) {
-		PlaySFX(boost, 0.3f * intensity / 2500, 1 + intensity/10000);
 	}
 
 	public void PlaySFX(AudioClip clip, float volume)
