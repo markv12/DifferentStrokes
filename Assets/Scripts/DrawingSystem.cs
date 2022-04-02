@@ -58,11 +58,12 @@ public class DrawingSystem : MonoBehaviour {
                 isDrawing = true;
             } else if (Input.GetMouseButtonUp(0)) {
                 isDrawing = false;
+                lastDrawPosition = Vector3.zero;
                 WriteBrushesToTexture();
             }
 
             if (isDrawing) {
-                DrawDot();
+                Draw();
             }
         }
     }
@@ -78,15 +79,35 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
-    private void DrawDot() {
+    private Vector3 lastDrawPosition;
+    private const float MAX_DOT_DISTANCE = 0.025f;
+    private void Draw() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 10, layerMask)) {
             Transform canvasT = hit.collider.transform;
             Vector3 spawnPoint = hit.point + (canvasT.forward * -0.005f);
-            GameObject brushInstance = Instantiate(Brush, spawnPoint, canvasT.rotation, transform);
-            brushInstance.transform.localScale = Vector3.one * BrushSize;
-            brushInstances.Add(brushInstance);
+            float diffMagnitude = (spawnPoint - lastDrawPosition).magnitude;
+            if (diffMagnitude > MAX_DOT_DISTANCE && lastDrawPosition != Vector3.zero) {
+                FillInBetween(lastDrawPosition, spawnPoint, canvasT.rotation, diffMagnitude);
+            }
+            DrawDot(spawnPoint, canvasT.rotation);
+            lastDrawPosition = spawnPoint;
         }
+    }
+
+    private void FillInBetween(Vector3 startPos, Vector3 endPos, Quaternion spawnRotation, float diffMagnitude) {
+        int dotsToDraw = Mathf.CeilToInt(diffMagnitude / MAX_DOT_DISTANCE);
+        for (int i = 1; i < dotsToDraw; i++) {
+            float progress = (float)i / (float)dotsToDraw;
+            Vector3 drawPos = Vector3.Lerp(startPos, endPos, progress);
+            DrawDot(drawPos, spawnRotation);
+        }
+    }
+
+    private void DrawDot(Vector3 spawnPoint, Quaternion spawnRotation) {
+        GameObject brushInstance = Instantiate(Brush, spawnPoint, spawnRotation, transform);
+        brushInstance.transform.localScale = Vector3.one * BrushSize;
+        brushInstances.Add(brushInstance);
     }
 
     private void MoveCameraInFrontOfCanvas() {
