@@ -12,7 +12,7 @@ public class DrawingUI : MonoBehaviour {
     }
 
     private void Submit() {
-        drawingSystem.ReturnCameraToPlayer();
+        drawingSystem.SubmitCurrentDrawing();
     }
 
     private void Cancel() {

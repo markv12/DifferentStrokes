@@ -84,7 +84,7 @@ public class ArtNetworking : Singleton<ArtNetworking> {
         return result;
     }
 
-     IEnumerator Get(string uri, Action<string>? onComplete) {
+     IEnumerator Get(string uri, Action<string> onComplete) {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri)) {
             yield return webRequest.SendWebRequest();
 

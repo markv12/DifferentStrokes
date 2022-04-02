@@ -14,6 +14,7 @@ public class DrawingSystem : MonoBehaviour {
     public Transform renderCameraTransform;
 
     public GameObject drawingUI;
+
     public LayerMask layerMask;
 
     private PaintingCanvas currentCanvas;
@@ -45,19 +46,42 @@ public class DrawingSystem : MonoBehaviour {
         MoveCameraInFrontOfCanvas();
     }
 
-    private List<GameObject> brushInstances = new List<GameObject>();
+    private readonly List<GameObject> brushInstances = new List<GameObject>();
+    private bool isDrawing = false;
     void Update() {
         if (InDrawingMode) {
-            if (Input.GetMouseButton(0)) {
-                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit, 10, layerMask)) {
-                    Transform canvasT = hit.collider.transform;
-                    Vector3 spawnPoint = hit.point + (canvasT.forward * -0.05f);
-                    GameObject brushInstance = Instantiate(Brush, spawnPoint, canvasT.rotation, transform);
-                    brushInstance.transform.localScale = Vector3.one * BrushSize;
-                    brushInstances.Add(brushInstance);
-                }
+            if (Input.GetMouseButtonDown(0)) {
+                isDrawing = true;
+            } else if (Input.GetMouseButtonUp(0)) {
+                isDrawing = false;
+                WriteBrushesToTexture();
             }
+
+            if (isDrawing) {
+                DrawDot();
+            }
+        }
+    }
+
+    private void WriteBrushesToTexture() {
+        StartCoroutine(WriteRoutine());
+
+        IEnumerator WriteRoutine() {
+            renderCamera.Render();
+            currentCanvas.SetCanvasTexture(RTexture);
+            yield return null;
+            Clear();
+        }
+    }
+
+    private void DrawDot() {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 10, layerMask)) {
+            Transform canvasT = hit.collider.transform;
+            Vector3 spawnPoint = hit.point + (canvasT.forward * -0.05f);
+            GameObject brushInstance = Instantiate(Brush, spawnPoint, canvasT.rotation, transform);
+            brushInstance.transform.localScale = Vector3.one * BrushSize;
+            brushInstances.Add(brushInstance);
         }
     }
 
@@ -86,6 +110,11 @@ public class DrawingSystem : MonoBehaviour {
         }, () => {
             onExit?.Invoke();
         });
+    }
+
+    public void SubmitCurrentDrawing() {
+        ArtNetworking.Instance.SendUnfinishedImage(currentCanvas.canvasSpriteRenderer.sprite.texture);
+        ReturnCameraToPlayer();
     }
 
     public void Clear() {
