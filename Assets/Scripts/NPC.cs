@@ -1,7 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class NPC : MonoBehaviour {
+public class NPC : InteractiveObject {
+
+    public override string InteractText => "Press 'E' to Talk";
+
     public SpriteRenderer mainRenderer;
     public Sprite[] sprites;
     public float frameRate;

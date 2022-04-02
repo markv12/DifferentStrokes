@@ -1,16 +1,12 @@
 using System;
 using UnityEngine;
 
-public class PaintingCanvas : MonoBehaviour {
+public class PaintingCanvas : InteractiveObject {
+    public override string InteractText => "Press 'E' to Draw";
+
     public SpriteRenderer canvasSpriteRenderer;
 
-    [NonSerialized] public Vector3 pos;
     [NonSerialized] public PaintingStatus paintingStatus;
-
-    private void Awake() {
-        pos = transform.position;
-        PaintingCanvasManager.Instance.RegisterCanvas(this);
-    }
 
     public void SetCanvasTexture(RenderTexture rTex) {
         RenderTexture prevActiveRT = RenderTexture.active;
@@ -20,12 +16,6 @@ public class PaintingCanvas : MonoBehaviour {
         tex.Apply();
         RenderTexture.active = prevActiveRT;
         canvasSpriteRenderer.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 512);
-    }
-
-    private void OnDestroy() {
-        if(PaintingCanvasManager.Instance != null) {
-            PaintingCanvasManager.Instance.UnregisterCanvas(this);
-        }
     }
 }
 public enum PaintingStatus {

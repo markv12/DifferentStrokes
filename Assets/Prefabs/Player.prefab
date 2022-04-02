@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8513072604476314260}
   - component: {fileID: 8513072604476804246}
   - component: {fileID: 8513072604470710454}
-  - component: {fileID: 8513072604466372336}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -84,14 +83,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8513072604476346036}
   m_Enabled: 1
---- !u!124 &8513072604466372336
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8513072604476346036}
-  m_Enabled: 1
 --- !u!1 &8513072604476346038
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +134,7 @@ MonoBehaviour:
   t: {fileID: 8513072604476314262}
   playerUI: {fileID: 0}
   drawingSystem: {fileID: 0}
+  mainCamera: {fileID: 8513072604476804246}
   characterController: {fileID: 8513072604464528246}
   firstPersonController: {fileID: 8513072604465101654}
 --- !u!143 &8513072604464528246

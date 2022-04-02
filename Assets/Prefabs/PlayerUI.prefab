@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c519ea1d6753fc746aaa1e066fbdd9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawIndicator: {fileID: 7486567194812119450}
+  interactText: {fileID: 7486567194812119451}
 --- !u!223 &7486567193929087299
 Canvas:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7486567194812119452}
   - component: {fileID: 7486567194812119451}
   m_Layer: 5
-  m_Name: DrawText
+  m_Name: InteractText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
