@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 
@@ -69,7 +70,9 @@ public class DialogueSystem : MonoBehaviour {
     private void StartDialogue() {
         StopTyping();
         dialogueText.text = "";
-        List<DialogueCommand> commands = DialogueUtility.ProcessInputString(currentNPC.dialogueText, out string processedMessage);
+        string[] textLines = Regex.Split(currentNPC.dialogueText, "\n\n");
+        Debug.Log(textLines.Length);
+        List<DialogueCommand> commands = DialogueUtility.ProcessInputString(textLines[0], out string processedMessage);
         typeRoutine = StartCoroutine(dialogueVertexAnimator.AnimateTextIn(commands, processedMessage, null, currentNPC.pitchCenter, null));
     }
 

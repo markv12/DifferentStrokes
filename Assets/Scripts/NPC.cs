@@ -1,21 +1,27 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class NPC : InteractiveObject {
 
-    [TextArea(4, 8)]
+    [TextArea(4, 12)]
     public string dialogueText;
     [Range(0.1f, 5f)]
     public float pitchCenter = 1;
-    [TextArea(4, 8)]
-    public string speechBubbleText;
-    public SpeechBubble speechBubble;
+    [TextArea(2, 3)]
+    public string[] speechBubbleTexts;
+    [NonSerialized] public SpeechBubble speechBubble;
     public override string InteractText => "Press 'E' to Talk";
     public override bool Interactable => !string.IsNullOrWhiteSpace(dialogueText);
     public override void OnNearChanged(bool isNear) {
-        if(isNear && !string.IsNullOrWhiteSpace(speechBubbleText)) {
-            SetSpeechBubbleActive(true);
-            speechBubble.SetText(speechBubbleText);
+        if(isNear && speechBubbleTexts.Length > 0) {
+            string text = speechBubbleTexts[UnityEngine.Random.Range(0, speechBubbleTexts.Length)];
+            if (!string.IsNullOrWhiteSpace(text)) {
+                SetSpeechBubbleActive(true);
+                speechBubble.SetText(text);
+            } else {
+                SetSpeechBubbleActive(false);
+            }
         } else {
             SetSpeechBubbleActive(false);
         }
@@ -55,7 +61,7 @@ public class NPC : InteractiveObject {
         yield return null;
         yield return null;
         float timePerFrame = 1f / frameRate;
-        float waitTime = Random.Range(0f, timePerFrame);
+        float waitTime = UnityEngine.Random.Range(0f, timePerFrame);
         yield return new WaitForSeconds(waitTime);
 
         while (true) {
