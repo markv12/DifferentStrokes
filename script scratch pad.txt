@@ -3,6 +3,88 @@
 
 
 collab-irate
+collaboratorium
+keep it classy (, folks)
+exhibitionists
+the exhibit
+the anonymous paintbrush
+the masterstroke
+stroke of genius (strokes)
+different strokes
+disasterpiece
+stank canvas
+paint over it!
+troll scroll
+impressionist expressionist 
+a million monkeys with a million paintbrushes
+highbrow helper
+no virtuosos here
+everyone's a critic...
+canvas critique
+PLEASE FIX!!
+PAINT ME!
+sometimes in life, you just gotta paint over your mistakes.
+"Art."
+Highbrow
+Lowbrow
+The Joy Of Painting
+X gon' give it to ya (because his name is xzibit get it)
+A painting of goku making love to spider-man
+Anything can be art (I guess)
+Rip my art into pieces, this is my last resort
+artsy fartsy
+
+
+
+paint
+painter
+artisan
+artiste
+paint-slinger
+exhibition
+gallery
+museum
+art
+stroke
+color
+piece
+draw
+doodle
+sketch
+critic
+critique
+help
+repaint
+fix
+troll
+canvas
+paintbrush
+pointillism
+art deco
+new media
+impressionist
+modernist
+art nouveau
+art modern
+abstract
+expressionism
+cubist
+highbrow
+lowbrow
+classy
+creator
+master
+virtuoso
+different
+multiple
+shared
+collaborative
+together
+team
+rivals
+
+
+
 
 <anim:shake>
 </anim>
@@ -29,6 +111,17 @@ collab-irate
 <size=100%></size>
 
 <space=5em>
+
+
+
+
+
+
+
+All of the art has been created and remixed by players!
+
+
+
 
 
 
@@ -388,7 +481,7 @@ I can get behind.
 This is art for the
 people, by the people.
 
-Wow, this really speaks to me.
+This really speaks to me!!
 
 I'm lost...
 
@@ -402,6 +495,26 @@ top this...
 Cripes!
 
 Ooh la la~
+
+Drab. But, I like it.
+
+Hmmmmmmm...
+
+The next Michaelangelo!
+
+I feel like its eyes are
+following me wherever I go.
+
+Jinkies!
+
+Criminy!
+
+I can't wait to visit
+the gift shop.
+
+
+
+
 
 
 

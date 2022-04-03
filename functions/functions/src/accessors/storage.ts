@@ -349,6 +349,7 @@ export async function updateFilePrefix(
 }
 
 export async function incrementLikes(file: string) {
+  console.log(file)
   try {
     const [fileObject] = await storage
       .bucket(bucketName)
