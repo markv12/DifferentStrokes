@@ -4,7 +4,7 @@ using UnityEngine;
 public class RatingSystem : MonoBehaviour {
     public RatingUI ratingUI;
 
-    private PaintingCanvas currentCanvas;
+    public PaintingCanvas currentCanvas;
     private Action onExit;
 
     private Camera mainCamera;
