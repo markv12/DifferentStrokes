@@ -19,6 +19,7 @@ public class NPC : InteractiveObject {
     [NonSerialized] public SpeechBubble speechBubble;
     public override string InteractText => "Press 'E' to Talk";
     public override bool Interactable => !string.IsNullOrWhiteSpace(dialogueText);
+    public override bool MustBeFacing => false;
     public override void OnNearChanged(bool isNear) {
         string text = GetSpeechBubbleText(isNear);
         if(text != null) {

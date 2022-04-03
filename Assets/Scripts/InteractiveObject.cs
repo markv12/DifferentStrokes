@@ -17,6 +17,7 @@ public abstract class InteractiveObject : MonoBehaviour {
 
     public abstract string InteractText { get; }
     public abstract bool Interactable { get; }
+    public abstract bool MustBeFacing { get; }
 
     public abstract void OnNearChanged(bool isNear);
 }

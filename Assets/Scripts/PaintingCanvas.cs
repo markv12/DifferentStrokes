@@ -4,6 +4,7 @@ using UnityEngine;
 public class PaintingCanvas : InteractiveObject {
     public override string InteractText => PaintingStatus == PaintingStatus.Complete ? "Press 'E' to Rate" : "Press 'E' to Paint";
     public override bool Interactable => !locked;
+    public override bool MustBeFacing => true;
     public override void OnNearChanged(bool isNear) {}
 
     public SpriteRenderer canvasSpriteRenderer;
