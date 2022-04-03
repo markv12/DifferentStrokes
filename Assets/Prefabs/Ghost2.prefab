@@ -1,0 +1,527 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8170057854730723026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8170057854730723037}
+  - component: {fileID: 8170057854730723036}
+  - component: {fileID: 8170057854730723027}
+  - component: {fileID: 8170057856405056246}
+  m_Layer: 0
+  m_Name: Ghost2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8170057854730723037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170057854730723026}
+  m_LocalRotation: {x: 0, y: 0.30411616, z: 0, w: 0.952635}
+  m_LocalPosition: {x: 1.2, y: 1.31, z: 1.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 35.41, z: 0}
+--- !u!212 &8170057854730723036
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170057854730723026}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 98a08b8aa9b7d124fb74cea4c699b637, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &8170057854730723027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170057854730723026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410e6010d22ddcf499bc07e44fb7914c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 8170057854730723036}
+  sprites:
+  - {fileID: 21300000, guid: 98a08b8aa9b7d124fb74cea4c699b637, type: 3}
+  - {fileID: 21300000, guid: ba1b4d33289d89943a88065ad6c6a6f8, type: 3}
+  frameRate: 3
+  dialogueText: 
+  pitchCenter: 0.5
+  speechBubbleText: 'Ugh, how derivative!
+
+
+    Not my taste,
+
+    no, not at all.
+
+
+    Oy.
+
+
+    No
+    me gusta.
+
+
+    How could they show
+
+    something like this??
+
+
+    Yuck.
+
+
+    Eww,
+    really?
+
+
+    Seriously?
+
+
+    I have half a mind to fix
+
+    this one... permanently.
+
+
+    (chuckles
+    softly)
+
+
+    Oof.
+
+
+    Uneven. Churlish.
+
+
+    Amateurish!
+
+
+    Gah!
+
+
+    Jiminy
+    Cricket!
+
+
+    Boo.
+
+
+    Booooooooo.
+
+
+    This is SO 2020s...
+
+
+    Only a
+    zoomer would paint this.
+
+
+    Only a millenial would paint this.
+
+
+    Only
+    a boomer would paint this.
+
+
+    I didn''t pay 15 ghost
+
+    bucks to see this...
+
+
+    Ugh,
+    childish.
+
+
+    (laughs aloud)
+
+
+    (snorts)
+
+
+    (looks away sheepishly)
+
+
+    (blushes)
+
+
+    When
+    I close my eyes,
+
+    I still see it...
+
+
+    Interesting use of color.
+
+
+    Interesting
+    shapes.
+
+
+    Yes, a dynamic approach, yes.
+
+
+    The chiaroscuro!
+
+    The drama!
+
+
+    Ah,
+    notes of the struggle
+
+    between good and evil.
+
+
+    The textural elements
+
+    are
+    really working here.
+
+
+    Can you feel it?
+
+    Can you?
+
+
+    Do you get what
+    they
+
+    were going for here?
+
+
+    Have you worked with
+
+    this artist before?
+
+
+    I''ve
+    been following
+
+    this artist for years.
+
+
+    They call me the
+
+    ''in-spectre''...
+    get it?
+
+
+    What do you think, honey
+
+    -- wait, who are you?
+
+
+    How much
+    would
+
+    you pay for this?
+
+
+    I''m thinking of buying
+
+    the coffee mug
+    of this.
+
+
+    Spooky.
+
+
+    Don''t you think
+
+    it looks like me?
+
+
+    Wow,
+    this looks
+
+    just like you!
+
+
+    Did you paint this?
+
+
+    A return to nature...
+
+
+    How
+    pastoral.
+
+
+    Lovely asymmetry
+
+    in this piece.
+
+
+    The use of motif
+
+    is
+    glorious.
+
+
+    Note the stippling
+
+    in the sublayer.
+
+
+    I''m just here
+    for
+
+    the snacks, honestly.
+
+
+    Wait, there are
+
+    no free snacks???
+
+
+    Are
+    you friends
+
+    with the artist?
+
+
+    I think that guard
+
+    is watching me...
+
+
+    That
+    guard keeps
+
+    giving me weird looks.
+
+
+    Is it just me, or is
+
+    that
+    guard kinda cute?
+
+
+    Hi, are you...
+
+    here alone?
+
+
+    Everyone always
+    looks
+
+    cute at an exhibition.
+
+
+    I came here to
+
+    see this one!
+
+
+    My
+    friend did this one!
+
+
+    I read about this
+
+    one in the paper.
+
+
+    The
+    6 o''clock news
+
+    had a story about this.
+
+
+    I see these three as a triptych.
+
+
+    I''ve
+    heard this artist
+
+    is famous in France.
+
+
+    They recently did a show
+
+    in
+    London.
+
+
+    How bold!
+
+
+    Very dreamy.
+
+
+    I wanna buy this one!
+
+
+    Reminiscent
+    of Pollock, no?
+
+
+    Reminiscent of Manet.
+
+
+    Reminiscent of myself
+
+    in
+    my youth.
+
+
+    Reminds me of Monet''s
+
+    early period.
+
+
+    Reminds me of
+    a piece
+
+    by van Gogh.
+
+
+    Reminds me of Bosch''s
+
+    dreamscapes.
+
+
+    Teamwork
+    makes the
+
+    dream work, eh?
+
+
+    I love their use of light.
+
+
+    What fine
+    brushwork!
+
+
+    The flowing lines,
+
+    the subtle motion...
+
+
+    Quite good,
+    quite good.
+
+
+    Yes. Yes.
+
+
+    I appreciate the
+
+    artist''s restraint.
+
+
+    I''m
+    a sucker for subtle depth.
+
+
+    Ooh, how organic.
+
+
+    Curvaceous!
+
+
+    Looks
+    delicious!
+
+
+    Oh, delectable!
+
+
+    Now that''s fine!
+
+
+    How tantalizing!
+
+
+    The
+    gentle motion...
+
+
+    I wonder if this
+
+    is life-size...
+
+
+    How huge!
+    How grand!
+
+
+    I want to reach out
+
+    and touch it!
+
+
+    So realistic,
+
+    I
+    can almost feel it.'
+  chanceOfSpeechBubbleText: 0.476
+--- !u!114 &8170057856405056246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170057854730723026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fb646a0d13342c5a0a7b213bdff957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.1
+  frequency: 0.3

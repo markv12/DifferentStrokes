@@ -14,14 +14,12 @@ public class BobUpAndDown : MonoBehaviour
     Vector3 posOffset = new Vector3();
     Vector3 tempPos = new Vector3();
 
-    // Use this for initialization
     void Start() {
         // Store the starting position & rotation of the object
         posOffset = transform.position;
-        randomOffset = Random.value;
+        randomOffset = Random.Range(0f, 5f);
     }
 
-    // Update is called once per frame
     void Update() {
         // Float up/down with a Sin()
         tempPos = posOffset;
