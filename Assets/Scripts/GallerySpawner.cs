@@ -27,7 +27,7 @@ public class GallerySpawner : MonoBehaviour
         GalleryChunk existingChunk = galleryChunkArray.Get(chunkIndex);
         if(existingChunk == null) {
             GalleryChunk newChunk = Instantiate(galleryChunkPrefabs[UnityEngine.Random.Range(0, galleryChunkPrefabs.Length)]);
-            newChunk.transform.position = IndexToPosition(chunkIndex);
+            newChunk.MoveToPosition(IndexToPosition(chunkIndex));
             galleryChunkArray.Set(chunkIndex, newChunk);
         }
     }
