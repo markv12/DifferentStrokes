@@ -6,6 +6,9 @@ public class GalleryChunk : MonoBehaviour {
     public Transform[] paintingSpawnLocations;
 
     public void MoveToPosition(Vector3 endPos) {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.Play();
+
         Vector3 startPos = endPos.SetY(endPos.y - 10f);
         t.position = startPos;
         this.CreateAnimationRoutine(1.5f, (float progress) => {
@@ -16,6 +19,7 @@ public class GalleryChunk : MonoBehaviour {
 
     private void Start() {
         StartCoroutine(Load());
+
 
         IEnumerator Load() {
             while(ArtManager.instance == null || !ArtManager.instance.Initialized) {
