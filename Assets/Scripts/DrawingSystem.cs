@@ -86,6 +86,10 @@ public class DrawingSystem : MonoBehaviour {
             if (isDrawing) {
                 Draw();
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                Cancel();
+            }
         }
     }
 

@@ -34,16 +34,22 @@ public class RatingSystem : MonoBehaviour {
     }
 
     public void Like() {
-
+        ArtNetworking.Instance.SendLike(currentCanvas.ImageID);
+        currentCanvas.Locked = true;
+        ReturnCameraToPlayer();
     }
 
     public void Dislike() {
-
+        ArtNetworking.Instance.SendDislike(currentCanvas.ImageID);
+        currentCanvas.Locked = true;
+        ReturnCameraToPlayer();
     }
 
     void Update() {
         if (InRatingMode) {
-
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                ReturnCameraToPlayer();
+            }
         }
     }
 
