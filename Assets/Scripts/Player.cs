@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -5,6 +6,7 @@ public class Player : MonoBehaviour {
     public Transform t;
     public PlayerUI playerUI;
     public DrawingSystem drawingSystem;
+    public RatingSystem ratingSystem;
     public DialogueSystem dialogueSystem;
     public Camera mainCamera;
     private Transform mainCameraTransform;
@@ -41,10 +43,19 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (currentCanvas != null) {
                 SetFPSControllerActive(false);
-                AudioManager.Instance.PlayStartDrawingSound(0.5f);
-                drawingSystem.DrawToCanvas(currentCanvas, mainCamera, () => {
+                Action onExit = () => {
                     SetFPSControllerActive(true);
-                });
+                };
+                switch (currentCanvas.PaintingStatus) {
+                    case PaintingStatus.Blank:
+                    case PaintingStatus.NeedsFixing:
+                        AudioManager.Instance.PlayStartDrawingSound(0.5f);
+                        drawingSystem.DrawToCanvas(currentCanvas, mainCamera, onExit);
+                        break;
+                    case PaintingStatus.Complete:
+                        ratingSystem.EnterRatingMode(currentCanvas, mainCamera.transform, onExit);
+                        break;
+                }
             } else if (currentNPC != null) {
                 if(currentNPC.speechBubble != null) {
                     currentNPC.speechBubble.Fade(false);

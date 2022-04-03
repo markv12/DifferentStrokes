@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 
 public class PaintingCanvas : InteractiveObject {
-    public override string InteractText => "Press 'E' to Draw";
-    public override bool Interactable => PaintingStatus != PaintingStatus.Complete && !locked;
+    public override string InteractText => PaintingStatus == PaintingStatus.Complete ? "Press 'E' to Rate" : "Press 'E' to Paint";
+    public override bool Interactable => !locked;
     public override void OnNearChanged(bool isNear) {}
 
     public SpriteRenderer canvasSpriteRenderer;

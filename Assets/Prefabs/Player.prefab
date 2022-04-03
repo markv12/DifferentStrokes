@@ -134,6 +134,7 @@ MonoBehaviour:
   t: {fileID: 8513072604476314262}
   playerUI: {fileID: 0}
   drawingSystem: {fileID: 0}
+  ratingSystem: {fileID: 0}
   dialogueSystem: {fileID: 0}
   mainCamera: {fileID: 8513072604476804246}
   characterController: {fileID: 8513072604464528246}
