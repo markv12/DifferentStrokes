@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GallerySpawner : MonoBehaviour
@@ -9,6 +10,11 @@ public class GallerySpawner : MonoBehaviour
     public GalleryChunk[] galleryChunkPrefabs;
     public Transform player;
 
+    private static readonly HashSet<Vector2Int> OFF_LIMITS_INDICES = new HashSet<Vector2Int> {
+        new Vector2Int(1, 0),
+        new Vector2Int(2, 0),
+        new Vector2Int(3, 0)
+    };
     private GalleryChunkArray galleryChunkArray = new GalleryChunkArray();
 
     private void Awake() {
@@ -24,11 +30,13 @@ public class GallerySpawner : MonoBehaviour
     }
 
     private void EnsureChunk(Vector2Int chunkIndex) {
-        GalleryChunk existingChunk = galleryChunkArray.Get(chunkIndex);
-        if(existingChunk == null) {
-            GalleryChunk newChunk = Instantiate(galleryChunkPrefabs[UnityEngine.Random.Range(0, galleryChunkPrefabs.Length)]);
-            newChunk.MoveToPosition(IndexToPosition(chunkIndex));
-            galleryChunkArray.Set(chunkIndex, newChunk);
+        if (!OFF_LIMITS_INDICES.Contains(chunkIndex)) {
+            GalleryChunk existingChunk = galleryChunkArray.Get(chunkIndex);
+            if (existingChunk == null) {
+                GalleryChunk newChunk = Instantiate(galleryChunkPrefabs[UnityEngine.Random.Range(0, galleryChunkPrefabs.Length)]);
+                newChunk.MoveToPosition(IndexToPosition(chunkIndex));
+                galleryChunkArray.Set(chunkIndex, newChunk);
+            }
         }
     }
 
