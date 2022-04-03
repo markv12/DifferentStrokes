@@ -17,9 +17,7 @@ public class SpeechBubble : MonoBehaviour {
     }
 
     public void Fade(bool fadeIn) {
-        if (fadeIn) {
-            gameObject.SetActive(true);
-        }
+        gameObject.SetActive(true);
         Vector3 startScale = rectT.localScale;
         Vector3 endScale = fadeIn ? initialScale : Vector3.zero;
         this.CreateAnimationRoutine(0.4f, (float progress) => {
