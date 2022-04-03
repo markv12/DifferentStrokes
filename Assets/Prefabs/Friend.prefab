@@ -114,7 +114,7 @@ MonoBehaviour:
     help me <b>\n<color=#FF6539>fix the bad pieces, <p:short>\n<color=#00F236>vote
     to keep the good ones, <p:short>\n<color=#000000>and <color=#00B5EE>paint new
     pictures</b> for the exhibition!"
-  pitchCenter: 1.4
+  pitchCenter: 1.59
   speechBubbleText: 'Hey! You made it!
 
     Let''s talk!'

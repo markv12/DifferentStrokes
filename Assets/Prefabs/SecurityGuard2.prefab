@@ -102,5 +102,46 @@ MonoBehaviour:
   frameRate: 3
   dialogueText: 
   pitchCenter: 1
-  speechBubbleText: 
-  chanceOfSpeechBubbleText: 1
+  speechBubbleText: 'I think my partner has a
+
+    crush on his coworker.
+
+
+    Greetings!
+
+
+    Salutations
+    to you!
+
+
+    I''m a painter too, you know.
+
+
+    One of the paintings
+
+    in
+    this room is mine!
+
+
+    I mostly paint nudes,
+
+    personally.
+
+
+    How about
+    you take a break?
+
+
+    (snoring)
+
+
+    My arms are connected in a
+
+    U-shape
+    behind my back.
+
+
+    I think I look better in these
+
+    pants than my coworkers.'
+  chanceOfSpeechBubbleText: 0.286
