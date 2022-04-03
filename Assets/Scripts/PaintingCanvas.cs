@@ -13,8 +13,9 @@ public class PaintingCanvas : InteractiveObject {
     public Sprite needsFixingFrame;
     public Sprite completeFrame;
 
-    public GameObject barrier;
+    public GameObject paintMeSign;
     public GameObject fixThisSign;
+    public GameObject barrier;
 
     private PaintingStatus paintingStatus;
     public PaintingStatus PaintingStatus {
@@ -27,7 +28,16 @@ public class PaintingCanvas : InteractiveObject {
         }
     }
 
-    [NonSerialized] public bool locked = false;
+    private bool locked = false;
+    public bool Locked {
+        get {
+            return locked;
+        }
+        set {
+            locked = value;
+            RefreshForPaintingStatus();
+        }
+    }
 
     public string ImageID {
         get; set;
@@ -53,8 +63,9 @@ public class PaintingCanvas : InteractiveObject {
 
     private void RefreshForPaintingStatus() {
         frameRenderer.sprite = GetFrameForStatus();
-        barrier.SetActive(PaintingStatus == PaintingStatus.Complete || locked);
+        paintMeSign.SetActive(PaintingStatus == PaintingStatus.Blank && !locked);
         fixThisSign.SetActive(PaintingStatus == PaintingStatus.NeedsFixing && !locked);
+        barrier.SetActive(PaintingStatus == PaintingStatus.Complete || locked);
     }
 
     private Sprite GetFrameForStatus() {
