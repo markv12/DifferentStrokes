@@ -149,7 +149,10 @@ export const like = functions.https.onRequest(
   async (req, res): Promise<void> => {
     res.set(`Access-Control-Allow-Origin`, `*`)
 
-    const [id] = req.params[`0`].replace(`/`, ``)
+    console.log(req.params)
+    const id = req.params[`0`]
+      .replace(`/`, ``)
+      .replace(/^\d_/g, ``)
     if (!id) {
       res.send({ error: `no id` })
       return
@@ -163,7 +166,9 @@ export const dislike = functions.https.onRequest(
   async (req, res): Promise<void> => {
     res.set(`Access-Control-Allow-Origin`, `*`)
 
-    const [id] = req.params[`0`].replace(`/`, ``)
+    const id = req.params[`0`]
+      .replace(`/`, ``)
+      .replace(/^\d_/g, ``)
     if (!id) {
       res.send({ error: `no id` })
       return
