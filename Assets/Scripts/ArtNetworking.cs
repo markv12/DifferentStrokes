@@ -4,16 +4,14 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class ArtNetworking : Singleton<ArtNetworking> {
-    static bool useLocalhost = false;
+    private const bool useLocalhost = false;
+    private const string localHostUrlBase = "http://localhost:5001/ld50-346003/us-central1/";
+    private const string publicUrlBase = "https://us-central1-ld50-346003.cloudfunctions.net/";
+    private const string urlBase = useLocalhost ? localHostUrlBase : publicUrlBase;
 
-    static string localHostUrlBase = "http://localhost:5001/ld50-346003/us-central1/";
-    static string publicUrlBase = "https://us-central1-ld50-346003.cloudfunctions.net/";
-    static string urlBase = useLocalhost ? localHostUrlBase : publicUrlBase;
-
-    static int FileListPageIndex = 0;
-
+    private int fileListPageIndex = 0;
     public void LoadNextPageOfFiles(Action<FileListResponse> onGetFiles) {
-        string url = urlBase + "files/" + FileListPageIndex;
+        string url = urlBase + "files/" + fileListPageIndex;
 
         Action<string> onComplete = (string result) => {
             FileListResponse fileListResponse = FileListResponse.CreateFromJsonString(result);
@@ -21,7 +19,7 @@ public class ArtNetworking : Singleton<ArtNetworking> {
         };
         StartCoroutine(Get(url, onComplete));
 
-        FileListPageIndex++;
+        fileListPageIndex++;
     }
 
     public void loadTopFiles(Action<FileListResponse> onGetFiles) {

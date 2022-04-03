@@ -22,6 +22,8 @@ public class ArtManager : MonoBehaviour {
             FileData result = step1FileData[currentStep1Index];
             currentStep1Index++;
             return result;
+        } else {
+            LoadNextPage();
         }
         return null;
     }
@@ -31,17 +33,32 @@ public class ArtManager : MonoBehaviour {
             FileData result = step2FileData[currentStep2Index];
             currentStep2Index++;
             return result;
+        } else {
+            LoadNextPage();
         }
         return null;
     }
 
+    private bool gotToEndOfPages = false;
+    private bool isLoadingPage = false;
     private void Awake() {
         instance = this;
-        ArtNetworking.Instance.LoadNextPageOfFiles((FileListResponse result) => {
-            step1FileData.AddRange(result.step1);
-            step2FileData.AddRange(result.step2);
-            Initialized = true;
-        });
+        LoadNextPage();
+    }
+
+    private void LoadNextPage() {
+        if (!isLoadingPage && !gotToEndOfPages) {
+            isLoadingPage = true;
+            ArtNetworking.Instance.LoadNextPageOfFiles((FileListResponse result) => {
+                step1FileData.AddRange(result.step1);
+                step2FileData.AddRange(result.step2);
+                isLoadingPage = false;
+                Initialized = true;
+                if(!result.HasImages) {
+                    gotToEndOfPages = true;
+                }
+            });
+        }
     }
 
     public void AddPaintingsForChunk(Transform[] spawnLocations) {

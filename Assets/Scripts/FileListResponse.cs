@@ -6,6 +6,8 @@ public class FileListResponse {
     public FileData[] step1;
     public FileData[] step2;
 
+    public bool HasImages => (step1 != null && step1.Length > 0) || (step2 != null && step2.Length > 0);
+
     public static FileListResponse CreateFromJsonString(string json) {
         return JsonConvert.DeserializeObject<FileListResponse>(json);
     }
