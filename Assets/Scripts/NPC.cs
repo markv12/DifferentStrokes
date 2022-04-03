@@ -58,7 +58,7 @@ public class NPC : InteractiveObject {
 
 protected override void Awake() {
         base.Awake();
-        speechBubbleTexts = speechBubbleText.Split('\n');
+        speechBubbleTexts = speechBubbleText.Split(DialogueSystem.DOUBLE_NEW_LINE, StringSplitOptions.None);
     }
 
     private Coroutine animateRoutine = null;

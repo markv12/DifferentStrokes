@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         if(Time.frameCount % 6 == 0) {
-            InteractiveObject nearestObject = InteractiveObjectManager.Instance.GetNearestObject(t.position, mainCameraTransform.forward);
+            InteractiveObject nearestObject = InteractiveObjectManager.Instance.GetNearestInteractableObject(t.position, mainCameraTransform.forward);
             CurrentObject = nearestObject;
             currentCanvas = nearestObject as PaintingCanvas;
             currentNPC = nearestObject as NPC;

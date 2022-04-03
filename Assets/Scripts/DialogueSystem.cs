@@ -67,10 +67,11 @@ public class DialogueSystem : MonoBehaviour {
     }
 
     private Coroutine typeRoutine = null;
+    public static readonly string[] DOUBLE_NEW_LINE = new string[] { "\n\n" };
     private void StartDialogue() {
         StopTyping();
         dialogueText.text = "";
-        string[] textLines = Regex.Split(currentNPC.dialogueText, "\n\n");
+        string[] textLines = currentNPC.dialogueText.Split(DOUBLE_NEW_LINE, StringSplitOptions.None);
         Debug.Log(textLines.Length);
         List<DialogueCommand> commands = DialogueUtility.ProcessInputString(textLines[0], out string processedMessage);
         typeRoutine = StartCoroutine(dialogueVertexAnimator.AnimateTextIn(commands, processedMessage, null, currentNPC.pitchCenter, null));
