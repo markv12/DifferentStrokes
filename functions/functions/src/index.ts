@@ -149,7 +149,6 @@ export const like = functions.https.onRequest(
   async (req, res): Promise<void> => {
     res.set(`Access-Control-Allow-Origin`, `*`)
 
-    console.log(req.params)
     const id = req.params[`0`]
       .replace(`/`, ``)
       .replace(/^\d_/g, ``)

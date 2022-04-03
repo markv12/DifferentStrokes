@@ -1,8 +1,6 @@
 import * as c from '../common/index'
 
-import axios from 'axios'
 import { File, Storage } from '@google-cloud/storage'
-import { cache } from 'sharp'
 const storage = new Storage()
 export const bucketName = `ld50-game`
 
@@ -15,7 +13,7 @@ const cachedFiles: {
   cache: [],
   lastUpdated: 0,
 }
-const cacheExpirationTime = 0 // 1000 * 60 * 10 // 10 minutes
+const cacheExpirationTime = 1000 * 60 // 1 minute // 1000 * 60 * 60 // 1 hour
 
 export async function getFiles(
   force = false,
@@ -26,7 +24,10 @@ export async function getFiles(
       Date.now() &&
     cachedFiles.cache.length > 0
   ) {
-    console.log(`using cached files`)
+    console.log(
+      `using cached files`,
+      cachedFiles.cache.length,
+    )
     return cachedFiles.cache
   }
 
@@ -39,7 +40,7 @@ export async function getFiles(
     )
     cachedFiles.cache = files
     cachedFiles.lastUpdated = Date.now()
-    console.log(`cached files`, files)
+    console.log(`cached files`, files.length)
     return files
   } catch (error) {
     cachedFiles.cache = []
@@ -62,8 +63,8 @@ export async function getTopFiles(): Promise<
       const bLikes = b.likes
       const aDisLikes = a.dislikes
       const bDisLikes = b.dislikes
-      const aScoreRatio = aLikes / aDisLikes
-      const bScoreRatio = bLikes / bDisLikes
+      const aScoreRatio = aLikes / (aDisLikes || 1)
+      const bScoreRatio = bLikes / (bDisLikes || 1)
       const aAgeModifier =
         (a.date - Date.now()) /
         (1000 * 60 * 60 * 24 * 30 * 12)
@@ -97,13 +98,13 @@ export async function getRelevantFiles(
       .filter((f) => f.iteration === 1)
       .sort((a, b) => String(b.id).localeCompare(a.id))
       .slice(start, start + perPage)
-    c.log(
-      `step1Files`,
-      step1Files,
-      files.filter((f) => f.iteration === 1),
-      start,
-      start + perPage,
-    )
+    // c.log(
+    //   `step1Files`,
+    //   step1Files,
+    //   files.filter((f) => f.iteration === 1),
+    //   start,
+    //   start + perPage,
+    // )
     fileResponse.step1.push(...shuffle(step1Files))
   } catch (error) {
     console.log(error)
@@ -112,11 +113,11 @@ export async function getRelevantFiles(
   try {
     let step2Files = files.filter((f) => f.iteration === 2)
 
-    c.log(
-      `step2Files`,
-      step2Files,
-      files.filter((f) => f.iteration === 2),
-    )
+    // c.log(
+    //   `step2Files`,
+    //   step2Files,
+    //   files.filter((f) => f.iteration === 2),
+    // )
 
     step2Files = step2Files
       .sort((a, b) => {
@@ -124,15 +125,15 @@ export async function getRelevantFiles(
         const bLikes = b.likes
         const aDisLikes = a.dislikes
         const bDisLikes = b.dislikes
-        const aScoreRatio = aLikes / aDisLikes
-        const bScoreRatio = bLikes / bDisLikes
+        const aScoreRatio = aLikes / (aDisLikes || 1)
+        const bScoreRatio = bLikes / (bDisLikes || 1)
         const aAgeModifier =
           (a.date - Date.now()) /
           (1000 * 60 * 60 * 24 * 30 * 12)
         const bAgeModifier =
           (b.date - Date.now()) /
           (1000 * 60 * 60 * 24 * 30 * 12)
-        console.log({ aAgeModifier, bAgeModifier })
+        // console.log({ aAgeModifier, bAgeModifier })
         return (
           bScoreRatio +
           bAgeModifier -
@@ -148,76 +149,6 @@ export async function getRelevantFiles(
   }
   return fileResponse
 }
-
-// export async function getFilesByIteration(
-//   iteration: number,
-//   startFrom: string | undefined,
-// ): Promise<ResponseOrError<File[]>> {
-//   let start = 0
-//   try {
-//     start = parseInt(startFrom || `0`)
-//   } catch (e) {
-//     start = 0
-//   }
-
-//   try {
-//     const [files] = await storage
-//       .bucket(bucketName)
-//       .getFiles({
-//         maxResults: perPage,
-//         prefix: iteration + `_`,
-//         startOffset: `${start}`,
-//       })
-//     return files
-//   } catch (error) {
-//     return { error }
-//   }
-// }
-
-// export async function getBestDoneFiles(
-//   startFrom: string | undefined,
-// ): Promise<ResponseOrError<File[]>> {
-//   let start = 0
-//   try {
-//     start = parseInt(startFrom || `0`)
-//   } catch (e) {
-//     start = 0
-//   }
-
-//   // this will get 100 files at once and only show the top 50
-//   try {
-//     let [files] = await storage
-//       .bucket(bucketName)
-//       .getFiles({
-//         prefix: `2_`,
-//         startOffset: `${start * 2}`,
-//         maxResults: perPage * 2,
-//       })
-
-//     files = files.sort((a, b) => {
-//       const aLikes = parseInt(
-//         a.metadata.metadata.likes || `0`,
-//       )
-//       const bLikes = parseInt(
-//         b.metadata.metadata.likes || `0`,
-//       )
-//       const aDisLikes = parseInt(
-//         a.metadata.metadata.dislikes || `0`,
-//       )
-//       const bDisLikes = parseInt(
-//         b.metadata.metadata.dislikes || `0`,
-//       )
-//       const aScore = aLikes / aDisLikes
-//       const bScore = bLikes / bDisLikes
-//       return bScore - aScore
-//     })
-//     // take the best 50 and shuffle them
-//     files = shuffle(files.slice(0, 50))
-//     return files
-//   } catch (error) {
-//     return { error }
-//   }
-// }
 
 export async function upload(
   objectId: string,
@@ -250,8 +181,22 @@ export async function upload(
     c.error(publicPath.error)
     return { error: publicPath.error }
   }
-  // reload our cache
-  getFiles(true)
+
+  // update our cache
+  cachedFiles.cache = cachedFiles.cache.filter(
+    (f) => f.id !== objectId,
+  )
+  cachedFiles.cache.push({
+    id: objectId,
+    iteration: parseInt(`${iterationCount}`) || 1,
+    date: Date.now(),
+    likes: 0,
+    dislikes: 0,
+    path: publicPath,
+    originalPath: publicPath.replace(`2_`, `1_`),
+  })
+  console.log(`cached new upload`)
+
   return publicPath
 }
 
@@ -324,6 +269,11 @@ export async function deleteFile(
       return { error }
     }
   }
+
+  cachedFiles.cache = cachedFiles.cache.filter(
+    (f) => f.path !== path && f.originalPath !== path,
+  )
+
   return { error: `${path} does not exist` }
 }
 
@@ -349,7 +299,6 @@ export async function updateFilePrefix(
 }
 
 export async function incrementLikes(file: string) {
-  console.log(file)
   try {
     const [fileObject] = await storage
       .bucket(bucketName)
@@ -364,6 +313,10 @@ export async function incrementLikes(file: string) {
       likes: `${likes + 1}`,
       dislikes: `${dislikes}`,
     }
+    const found = cachedFiles.cache.find(
+      (f) => f.path === file,
+    )
+    if (found) found.likes = likes + 1
     await updateFileMetadata(fileObject, newMetadata)
   } catch (error) {
     console.log(error)
@@ -385,6 +338,10 @@ export async function incrementDislikes(file: string) {
       likes: `${likes}`,
       dislikes: `${dislikes + 1}`,
     }
+    const found = cachedFiles.cache.find(
+      (f) => f.path === file,
+    )
+    if (found) found.likes = likes + 1
     await updateFileMetadata(fileObject, newMetadata)
   } catch (error) {
     console.log(error)
