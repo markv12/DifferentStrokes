@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
 	public AudioClip startDrawing;
 	public AudioClip[] brushes;
 	public AudioClip talk;
+	public AudioClip paperFlip;
 
 	public void PlaySuccessSound(float intensity) {
 		PlaySFX(success, 1.0f * intensity);
@@ -35,6 +36,10 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayFailureSound(float intensity) {
 		PlaySFX(failure, 1.0f * intensity);
+	}
+
+	public void PlayPaperFlip(float intensity) {
+		PlaySFX(paperFlip, 1.4f * intensity);
 	}
 
 	public void PlayStartDrawingSound(float intensity) {

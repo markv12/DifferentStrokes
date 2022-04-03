@@ -27,6 +27,7 @@ public class RatingUI : MonoBehaviour {
     }
 
     private void ShowBack() {
+        AudioManager.Instance.PlayPaperFlip(0.5f);
         likeButton.gameObject.SetActive(false);
         dislikeButton.gameObject.SetActive(false);
         showBackButton.gameObject.SetActive(false);
@@ -35,6 +36,7 @@ public class RatingUI : MonoBehaviour {
     }
 
     private void ShowFront() {
+        AudioManager.Instance.PlayPaperFlip(0.5f);
         likeButton.gameObject.SetActive(true);
         dislikeButton.gameObject.SetActive(true);
         showBackButton.gameObject.SetActive(true);
