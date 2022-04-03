@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class InteractiveObject : MonoBehaviour {
     [NonSerialized] public Vector3 pos;
 
-    protected void Awake() {
+    protected virtual void Awake() {
         pos = transform.position;
         InteractiveObjectManager.Instance.RegisterObject(this);
     }

@@ -95,6 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410e6010d22ddcf499bc07e44fb7914c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 1961299333231633577}
+  sprites:
+  - {fileID: 21300000, guid: 35e70a3fda27ad448a5f768fef01b907, type: 3}
+  - {fileID: 21300000, guid: 99019dc41d1814342a61f265eb9d629c, type: 3}
+  frameRate: 3
   dialogueText: 'Hello! Welcome to the gallery!
 
     I''m glad you could make it!
@@ -106,9 +111,11 @@ MonoBehaviour:
 
     Another line'
   pitchCenter: 1.4
-  speechBubbleTexts: []
-  mainRenderer: {fileID: 1961299333231633577}
-  sprites:
-  - {fileID: 21300000, guid: 35e70a3fda27ad448a5f768fef01b907, type: 3}
-  - {fileID: 21300000, guid: 99019dc41d1814342a61f265eb9d629c, type: 3}
-  frameRate: 3
+  speechBubbleText: 'Text1
+
+    Text2
+
+    Text3
+
+    Text4'
+  chanceOfSpeechBubbleText: 1
