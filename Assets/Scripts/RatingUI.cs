@@ -25,15 +25,19 @@ public class RatingUI : MonoBehaviour {
     }
 
     private void ShowBack() {
+        likeButton.gameObject.SetActive(false);
+        dislikeButton.gameObject.SetActive(false);
         showBackButton.gameObject.SetActive(false);
         showFrontButton.gameObject.SetActive(true);
-        //ratingSystem.currentCanvas.SetCanvasTexture(backTexture);
+        ratingSystem.ShowOriginal();
     }
 
     private void ShowFront() {
+        likeButton.gameObject.SetActive(true);
+        dislikeButton.gameObject.SetActive(true);
         showBackButton.gameObject.SetActive(true);
         showFrontButton.gameObject.SetActive(false);
-        //ratingSystem.currentCanvas.SetCanvasTexture(frontTexture);
+        ratingSystem.ShowCompleted();
     }
 
     private Coroutine moveRoutine;
