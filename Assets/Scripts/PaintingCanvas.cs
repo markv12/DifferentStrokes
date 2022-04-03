@@ -44,6 +44,10 @@ public class PaintingCanvas : InteractiveObject {
         canvasSpriteRenderer.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 512);
     }
 
+    public Texture2D GetCanvasTexture() {
+        return canvasSpriteRenderer.sprite.texture;
+    }
+
     private void RefreshForPaintingStatus() {
         frameRenderer.sprite = GetFrameForStatus();
         barrier.SetActive(PaintingStatus == PaintingStatus.Complete);

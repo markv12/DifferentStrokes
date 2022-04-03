@@ -54,9 +54,10 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     private static readonly float[] BRUSH_SIZES = new float[] { 0.025f, 0.05f, 0.1f, 0.3f, 0.5f, 1f };
-
+    private Texture2D prevTex;
     public void DrawToCanvas(PaintingCanvas paintingCanvas, Camera _mainCamera, Action _onExit) {
         currentCanvas = paintingCanvas;
+        prevTex = currentCanvas.GetCanvasTexture();
         mainCamera = _mainCamera;
         mainCameraTransform = _mainCamera.transform;
         onExit = _onExit;
@@ -177,7 +178,14 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     public void Cancel() {
-        currentCanvas.SetCanvasTexture(WhiteTex);
+        switch (currentCanvas.PaintingStatus) {
+            case PaintingStatus.Blank:
+                currentCanvas.SetCanvasTexture(WhiteTex);
+                break;
+            case PaintingStatus.NeedsFixing:
+                currentCanvas.SetCanvasTexture(prevTex);
+                break;
+        }
         Clear();
         ReturnCameraToPlayer();
     }
