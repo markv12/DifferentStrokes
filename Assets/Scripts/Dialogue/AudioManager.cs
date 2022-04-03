@@ -24,13 +24,18 @@ public class AudioManager : MonoBehaviour
 	private int audioSourceIndex = 0;
 
 	public AudioClip success;
+	public AudioClip failure;
 	public AudioClip startDrawing;
 	public AudioClip[] brushes;
 	public AudioClip talk;
 
-	//public void PlaySuccessSound(float intensity) {
-	//	PlaySFX(success, 1.4f * intensity);
-	//}
+	public void PlaySuccessSound(float intensity) {
+		PlaySFX(success, 1.0f * intensity);
+	}
+
+	public void PlayFailureSound(float intensity) {
+		PlaySFX(failure, 1.0f * intensity);
+	}
 
 	public void PlayStartDrawingSound(float intensity) {
 		PlaySFX(startDrawing, 1.4f * intensity);
@@ -57,6 +62,7 @@ public class AudioManager : MonoBehaviour
 		source.pitch = pitch;
 		source.PlayOneShot(clip);
 	}
+
 
 	private AudioSource GetNextAudioSource()
 	{
