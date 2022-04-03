@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PaintingCanvas : InteractiveObject {
     public override string InteractText => "Press 'E' to Draw";
-    public override bool Interactable => PaintingStatus != PaintingStatus.Complete;
+    public override bool Interactable => PaintingStatus != PaintingStatus.Complete && !locked;
     public override void OnNearChanged(bool isNear) {}
 
     public SpriteRenderer canvasSpriteRenderer;
@@ -25,6 +25,8 @@ public class PaintingCanvas : InteractiveObject {
             RefreshForPaintingStatus();
         }
     }
+
+    public bool locked = false;
 
     public string ImageID {
         get; set;

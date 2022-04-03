@@ -165,16 +165,21 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     public void SubmitCurrentDrawing() {
-        Texture2D tex = currentCanvas.canvasSpriteRenderer.sprite.texture;
-        switch (currentCanvas.PaintingStatus) {
-            case PaintingStatus.Blank:
-                ArtNetworking.Instance.SendUnfinishedImage(tex);
-                break;
-            case PaintingStatus.NeedsFixing:
-                ArtNetworking.Instance.SendFinishedImage(tex, currentCanvas.ImageID);
-                break;
+        if (InDrawingMode) {
+            Texture2D tex = currentCanvas.canvasSpriteRenderer.sprite.texture;
+            switch (currentCanvas.PaintingStatus) {
+                case PaintingStatus.Blank:
+                    ArtNetworking.Instance.SendUnfinishedImage(tex);
+                    currentCanvas.PaintingStatus = PaintingStatus.NeedsFixing;
+                    break;
+                case PaintingStatus.NeedsFixing:
+                    ArtNetworking.Instance.SendFinishedImage(tex, currentCanvas.ImageID);
+                    currentCanvas.PaintingStatus = PaintingStatus.Complete;
+                    break;
+            }
+            currentCanvas.locked = true;
+            ReturnCameraToPlayer();
         }
-        ReturnCameraToPlayer();
     }
 
     public void Cancel() {
