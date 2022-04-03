@@ -337,6 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b05241ea8e014479eb2bc3bd8f1d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  t: {fileID: 8468440850431654553}
+  paintingSpawnLocations: []
 --- !u!1 &4016287296366433492
 GameObject:
   m_ObjectHideFlags: 0
