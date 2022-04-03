@@ -61,7 +61,6 @@ public class DialogueSystem : MonoBehaviour {
             mainCameraTransform.SetPositionAndRotation(Vector3.Lerp(startPos, endPos, easedProgress), Quaternion.Lerp(startRotation, endRotation, easedProgress));
         }, () => {
             InDialogueMode = true;
-
             StartDialogue();
         });
     }

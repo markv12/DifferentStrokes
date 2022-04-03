@@ -11,7 +11,7 @@ public class DrawingSystem : MonoBehaviour {
     public Camera renderCamera;
     public Transform renderCameraTransform;
 
-    public GameObject drawingUI;
+    public DrawingUI drawingUI;
 
     public LayerMask layerMask;
 
@@ -30,7 +30,6 @@ public class DrawingSystem : MonoBehaviour {
         }
         set {
             inDrawingMode = value;
-            drawingUI.SetActive(inDrawingMode);
         }
     }
 
@@ -134,6 +133,7 @@ public class DrawingSystem : MonoBehaviour {
 
     public const float ANIM_DURATION = 0.8f;
     private void MoveCameraInFrontOfCanvas() {
+        drawingUI.Move(true);
         Vector3 startPos = mainCameraTransform.position;
         Quaternion startRotation = mainCameraTransform.rotation;
         Vector3 endPos = currentCanvas.transform.position + (currentCanvas.transform.forward * -2.05f);
@@ -148,6 +148,7 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     public void ReturnCameraToPlayer() {
+        drawingUI.Move(false);
         InDrawingMode = false;
         isDrawing = false;
         Vector3 startPos = mainCameraTransform.localPosition;

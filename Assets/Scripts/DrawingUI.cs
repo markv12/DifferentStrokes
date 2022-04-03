@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class DrawingUI : MonoBehaviour {
     public DrawingSystem drawingSystem;
+    public RectTransform mainContainer;
     public Button submitButton;
     public Button cancelButton;
 
@@ -45,5 +46,23 @@ public class DrawingUI : MonoBehaviour {
 
     private void SetBrushColor(Color color) {
         drawingSystem.BrushColor = color;
+    }
+
+    private Coroutine moveRoutine;
+    public void Move(bool moveIn) {
+        if (moveIn) {
+            gameObject.SetActive(true);
+        }
+        this.EnsureCoroutineStopped(ref moveRoutine);
+        Vector2 startPos = mainContainer.anchoredPosition;
+        Vector2 endPos = moveIn ? Vector2.zero : new Vector2(0, -1050);
+        moveRoutine = this.CreateAnimationRoutine(DrawingSystem.ANIM_DURATION, (float progress) => {
+            float easedProgress = Easing.easeInOutSine(0f, 1f, progress);
+            mainContainer.anchoredPosition = Vector2.Lerp(startPos, endPos, easedProgress);
+        }, () => {
+            if (!moveIn) {
+                gameObject.SetActive(false);
+            }
+        });
     }
 }

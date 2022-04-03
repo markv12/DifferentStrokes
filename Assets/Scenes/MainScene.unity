@@ -564,7 +564,7 @@ MonoBehaviour:
   RTexture: {fileID: 8400000, guid: 82f1027b4d6b87a4685b04ef32ceef52, type: 2}
   renderCamera: {fileID: 1521763186}
   renderCameraTransform: {fileID: 1521763184}
-  drawingUI: {fileID: 660443638}
+  drawingUI: {fileID: 660443642}
   layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -583,11 +583,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &660443638 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 948417433926834795, guid: 0b5f29c3dd0e9074e8d23ddb3425e700, type: 3}
+--- !u!114 &660443642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 948417433926834791, guid: 0b5f29c3dd0e9074e8d23ddb3425e700, type: 3}
   m_PrefabInstance: {fileID: 948417434340199325}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd35722ecc347e04ba1e0ec90a5a1f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1284437668
 GameObject:
   m_ObjectHideFlags: 0
