@@ -6,10 +6,14 @@ public class RatingUI : MonoBehaviour {
     public RectTransform mainContainer;
     public Button likeButton;
     public Button dislikeButton;
+    public Button showBackButton;
+    public Button showFrontButton;
 
     private void Awake() {
         likeButton.onClick.AddListener(Like);
         dislikeButton.onClick.AddListener(Dislike);
+        showBackButton.onClick.AddListener(ShowBack);
+        showFrontButton.onClick.AddListener(ShowFront);
     }
 
     private void Like() {
@@ -18,6 +22,18 @@ public class RatingUI : MonoBehaviour {
 
     private void Dislike() {
         ratingSystem.Dislike();
+    }
+
+    private void ShowBack() {
+        showBackButton.gameObject.SetActive(false);
+        showFrontButton.gameObject.SetActive(true);
+        //ratingSystem.currentCanvas.SetCanvasTexture(backTexture);
+    }
+
+    private void ShowFront() {
+        showBackButton.gameObject.SetActive(true);
+        showFrontButton.gameObject.SetActive(false);
+        //ratingSystem.currentCanvas.SetCanvasTexture(frontTexture);
     }
 
     private Coroutine moveRoutine;
