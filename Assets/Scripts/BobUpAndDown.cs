@@ -12,7 +12,7 @@ public class BobUpAndDown : MonoBehaviour {
 
     void Start() {
         // Store the starting position & rotation of the object
-        posOffset = transform.position;
+        posOffset = transform.localPosition;
         randomOffset = Random.Range(0f, 5f);
     }
 
@@ -21,6 +21,6 @@ public class BobUpAndDown : MonoBehaviour {
         tempPos = posOffset;
         tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * frequency + randomOffset) * amplitude;
 
-        transform.position = tempPos;
+        transform.localPosition = tempPos;
     }
 }

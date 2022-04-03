@@ -27,5 +27,6 @@ public class GalleryChunk : MonoBehaviour {
             }
             ArtManager.instance.AddPaintingsForChunk(paintingSpawnLocations);
         }
+        GhostSpawner.instance.SpawnGhostsAtSpawnLocations(ghostSpawnLocations);
     }
 }
