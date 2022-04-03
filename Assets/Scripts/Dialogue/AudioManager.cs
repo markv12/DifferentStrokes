@@ -41,8 +41,8 @@ public class AudioManager : MonoBehaviour
 		PlaySFX(sound, 1.0f * intensity);
 	}
 
-	public void PlayTalkSound(float intensity) {
-		PlaySFX(talk, 1.0f * Random.Range(0.5f, 1.5f) * intensity, Random.Range(0.5f, 1.5f));
+	public void PlayTalkSound(float intensity, float pitchCenter) {
+		PlaySFX(talk, 1.0f * Random.Range(0.5f, 1.5f) * intensity, Random.Range(0.6f, 1.4f) * pitchCenter);
 	}
 
 	public void PlaySFX(AudioClip clip, float volume)
@@ -54,8 +54,8 @@ public class AudioManager : MonoBehaviour
 	public void PlaySFX(AudioClip clip, float volume, float pitch) {
 		AudioSource source = GetNextAudioSource();
 		source.volume = volume;
-		source.PlayOneShot(clip);
 		source.pitch = pitch;
+		source.PlayOneShot(clip);
 	}
 
 	private AudioSource GetNextAudioSource()

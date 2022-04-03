@@ -71,7 +71,7 @@ public class DialogueSystem : MonoBehaviour {
         StopTyping();
         dialogueText.text = "";
         List<DialogueCommand> commands = DialogueUtility.ProcessInputString(currentNPC.dialogueText, out string processedMessage);
-        typeRoutine = StartCoroutine(dialogueVertexAnimator.AnimateTextIn(commands, processedMessage, null, null));
+        typeRoutine = StartCoroutine(dialogueVertexAnimator.AnimateTextIn(commands, processedMessage, null, currentNPC.pitchCenter, null));
     }
 
     public void StopTyping() {

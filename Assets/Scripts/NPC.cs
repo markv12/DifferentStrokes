@@ -5,6 +5,8 @@ public class NPC : InteractiveObject {
 
     [TextArea(4, 8)]
     public string dialogueText;
+    [Range(0.1f, 5f)]
+    public float pitchCenter = 1;
     public override string InteractText => "Press 'E' to Talk";
     public override bool Interactable => !string.IsNullOrWhiteSpace(dialogueText);
 

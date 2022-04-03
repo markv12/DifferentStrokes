@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: Hello! Welcome to the gallery!
+  pitchCenter: 1.4
   mainRenderer: {fileID: 1961299333231633577}
   sprites:
   - {fileID: 21300000, guid: 35e70a3fda27ad448a5f768fef01b907, type: 3}

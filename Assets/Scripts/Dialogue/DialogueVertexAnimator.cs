@@ -20,7 +20,7 @@ public class DialogueVertexAnimator {
     private static readonly Color32 clear = new Color32(0, 0, 0, 0);
     private const float CHAR_ANIM_TIME = 0.07f;
     private static readonly Vector3 vecZero = Vector3.zero;
-    public IEnumerator AnimateTextIn(List<DialogueCommand> commands, string processedMessage, AudioClip voice_sound, Action onFinish) {
+    public IEnumerator AnimateTextIn(List<DialogueCommand> commands, string processedMessage, AudioClip voice_sound, float _pitchCenter, Action onFinish) {
         textAnimating = true;
         float secondsPerCharacter = 1f / 60f;
         float timeOfLastCharacter = 0;
@@ -73,7 +73,7 @@ public class DialogueVertexAnimator {
                     if (visableCharacterIndex < charCount && ShouldShowNextCharacter(secondsPerCharacter, timeOfLastCharacter)) {
                         charAnimStartTimes[visableCharacterIndex] = Time.unscaledTime;
                         PlayDialogueSound(voice_sound);
-                        if (UnityEngine.Random.value > 0.75f) AudioManager.Instance.PlayTalkSound(1.0f);
+                        if (UnityEngine.Random.value > 0.75f) AudioManager.Instance.PlayTalkSound(1.0f, _pitchCenter);
                         visableCharacterIndex++;
                         timeOfLastCharacter = Time.unscaledTime;
                         if (visableCharacterIndex == charCount) {
