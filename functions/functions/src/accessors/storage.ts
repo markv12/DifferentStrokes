@@ -139,11 +139,8 @@ export async function getRelevantFiles(
           (aScoreRatio + aAgeModifier)
         )
       })
-      // take the best 50 and shuffle them (skip the ones that are in the top files)
-      .slice(
-        start + topFilesCount,
-        start + perPage + topFilesCount,
-      )
+      // take the best 50 and shuffle them
+      .slice(start, start + perPage)
     step2Files = shuffle(step2Files)
     fileResponse.step2.push(...step2Files)
   } catch (error) {

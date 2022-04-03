@@ -140,7 +140,7 @@ MonoBehaviour:
     <size=50%>Oh, <p:normal>and,
     uh...</size>
 
-    <p:normal>Don''t be scared of Wallace, the guard. <p:tiny>I
+    <p:normal>Don''t be scared of <b>Wallace, the guard.</b> <p:tiny>I
     know he''s got a <anim:shake><color=#FF6539>mean glare</color></anim>, but he
     won''t judge you for what you paint.
 

@@ -100,8 +100,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3579d2817b314a949ab95c11d9b6d00a, type: 3}
   - {fileID: 21300000, guid: 68423d38d24b1a74ea325e6bed2eb72b, type: 3}
   frameRate: 3
-  dialogueText: 
-  pitchCenter: 1
+  dialogueText: 'Wh --
+
+    Who, me? I''m not a main character, <p:normal>there''s
+    no need to talk to me.
+
+
+    At least, <p:long>that''s how it feels sometimes.
+    Know what I mean? <p:normal>Do you feel like a main character in your own life?
+    <p:normal>Do you even <p:normal>know your own name?
+
+
+    <size=50%>I guess <p:normal>some
+    of us aren''t destined for the limelight.</size>'
+  pitchCenter: 0.47
   speechBubbleText: 'I think my partner has a
 
     crush on his coworker.
