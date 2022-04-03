@@ -17,10 +17,12 @@ public class RatingUI : MonoBehaviour {
     }
 
     private void Like() {
+        AudioManager.Instance.PlaySuccessSound(0.3f);
         ratingSystem.Like();
     }
 
     private void Dislike() {
+        AudioManager.Instance.PlayFailureSound(0.3f);
         ratingSystem.Dislike();
     }
 
