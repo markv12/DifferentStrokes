@@ -99,9 +99,11 @@ public class ArtManager : MonoBehaviour {
 
     private void CreateCanvasForTexture(Texture loadedTex, bool step1, FileData data, Transform parent) {
         PaintingCanvas newCanvas = Instantiate(canvasPrefab, parent);
-        newCanvas.transform.localPosition = new Vector3(0, -2.234f, 0.562f);
+        //newCanvas.transform.localPosition = new Vector3(0, -2.234f, 0.562f);
+        // Y 1.766
+
         newCanvas.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        if(loadedTex != null) {
+        if (loadedTex != null) {
             newCanvas.SetCanvasTexture(loadedTex as Texture2D);
         }
         if(data != null) {
