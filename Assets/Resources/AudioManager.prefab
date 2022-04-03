@@ -181,14 +181,14 @@ MonoBehaviour:
   - {fileID: 7120992839186476774}
   - {fileID: 5223382317715453453}
   - {fileID: 749065538843305395}
-  success: {fileID: 8300000, guid: dfc273ffac55f46a6ac0cd1acb92a298, type: 3}
+  success: {fileID: 8300000, guid: 5fdef448a17154949a6205103ae49555, type: 3}
+  failure: {fileID: 8300000, guid: a1f5c2e3234f44db4aec70a850b6aeed, type: 3}
   startDrawing: {fileID: 8300000, guid: 53c611cd506864fa59780025dfda805f, type: 3}
   brushes:
   - {fileID: 8300000, guid: be97fe31c643448828a1db7e631ed30c, type: 3}
   - {fileID: 8300000, guid: 089ea3e8cced94b069dc723b8e0a70f3, type: 3}
   - {fileID: 8300000, guid: 8be1e251fefb34d01bedf0dbc45e34a0, type: 3}
   talk: {fileID: 8300000, guid: 26e57945d176f42148a263a83f33ba01, type: 3}
-  roomSpawn: {fileID: 8300000, guid: 4c07f93ce3f6a461ca7c5109fe49a024, type: 3}
 --- !u!1 &6057479461563318025
 GameObject:
   m_ObjectHideFlags: 0
