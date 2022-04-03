@@ -4,6 +4,7 @@ using UnityEngine;
 public class GalleryChunk : MonoBehaviour {
     public Transform t;
     public Transform[] paintingSpawnLocations;
+    public Transform[] ghostSpawnLocations;
 
     public void MoveToPosition(Vector3 endPos) {
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
@@ -19,7 +20,6 @@ public class GalleryChunk : MonoBehaviour {
 
     private void Start() {
         StartCoroutine(Load());
-
 
         IEnumerator Load() {
             while(ArtManager.instance == null || !ArtManager.instance.Initialized) {
