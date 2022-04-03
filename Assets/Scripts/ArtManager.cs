@@ -94,7 +94,7 @@ public class ArtManager : MonoBehaviour {
 
         if(loadedTex && !step1 && data != null && !string.IsNullOrWhiteSpace(data.originalPath)) {
             GetTexture(data.originalPath, (Texture originalTex) => {
-                newCanvas.SetOriginalTexture(loadedTex as Texture2D);
+                newCanvas.SetOriginalTexture(originalTex as Texture2D);
             });
         }
 

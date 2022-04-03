@@ -45,6 +45,14 @@ public class RatingSystem : MonoBehaviour {
         ReturnCameraToPlayer();
     }
 
+    public void ShowOriginal() {
+        currentCanvas.ShowOriginalTexture();
+    }
+
+    public void ShowCompleted() {
+        currentCanvas.ShowCompleteTexture();
+    }
+
     void Update() {
         if (InRatingMode) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
