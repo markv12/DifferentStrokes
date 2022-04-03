@@ -8,7 +8,7 @@ public class ArtManager : MonoBehaviour {
 
     public PaintingCanvas canvasPrefab;
     public static ArtManager instance;
-    private readonly List<PaintingCanvas> step1Canvases = new List<PaintingCanvas>();
+    private readonly List<PaintingCanvas> allCanvases = new List<PaintingCanvas>();
 
     private readonly List<FileData> step1FileData = new List<FileData>();
     private int currentStep1Index = 0;
@@ -75,22 +75,30 @@ public class ArtManager : MonoBehaviour {
             CreateCanvasForTexture(null, false, null, parent);
         } else {
             GetTexture(data.path, (Texture tex) => {
-                CreateCanvasForTexture(tex, step1, data.id, parent);
+                CreateCanvasForTexture(tex, step1, data, parent);
             });
         }
     }
 
-    private void CreateCanvasForTexture(Texture tex, bool step1, string imageID, Transform parent) {
+    private void CreateCanvasForTexture(Texture loadedTex, bool step1, FileData data, Transform parent) {
         PaintingCanvas newCanvas = Instantiate(canvasPrefab, parent);
         newCanvas.transform.localPosition = new Vector3(0, -2.234f, 0.562f);
         newCanvas.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        if(tex != null) {
-            newCanvas.SetCanvasTexture(tex as Texture2D);
+        if(loadedTex != null) {
+            newCanvas.SetCanvasTexture(loadedTex as Texture2D);
         }
-        newCanvas.ImageID = imageID;
-        newCanvas.PaintingStatus = (tex == null) ? PaintingStatus.Blank : (step1 ? PaintingStatus.NeedsFixing : PaintingStatus.Complete);
+        if(data != null) {
+            newCanvas.ImageID = data.id;
+        }
+        newCanvas.PaintingStatus = (loadedTex == null) ? PaintingStatus.Blank : (step1 ? PaintingStatus.NeedsFixing : PaintingStatus.Complete);
 
-        step1Canvases.Add(newCanvas);
+        if(loadedTex && !step1 && data != null && !string.IsNullOrWhiteSpace(data.originalPath)) {
+            GetTexture(data.originalPath, (Texture originalTex) => {
+                newCanvas.SetOriginalTexture(loadedTex as Texture2D);
+            });
+        }
+
+        allCanvases.Add(newCanvas);
     }
 
     void GetTexture(string url, Action<Texture> onGetTexture) {

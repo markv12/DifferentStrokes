@@ -17,6 +17,9 @@ public class PaintingCanvas : InteractiveObject {
     public GameObject fixThisSign;
     public GameObject barrier;
 
+    private Texture2D mainTex;
+    private Texture2D originalTex;
+
     private PaintingStatus paintingStatus;
     public PaintingStatus PaintingStatus {
         get {
@@ -54,7 +57,12 @@ public class PaintingCanvas : InteractiveObject {
     }
 
     public void SetCanvasTexture(Texture2D tex) {
+        mainTex = tex;
         canvasSpriteRenderer.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 512);
+    }
+
+    public void SetOriginalTexture(Texture2D tex) {
+        originalTex = tex;
     }
 
     public Texture2D GetCanvasTexture() {
