@@ -13,6 +13,7 @@ public class SpeechBubble : MonoBehaviour {
 
     public void SetText(string text) {
         speechText.text = text;
+        rectT.sizeDelta = new Vector2(speechText.preferredWidth + 10, speechText.preferredHeight + 10);
     }
 
     public void Fade(bool fadeIn) {
