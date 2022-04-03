@@ -34,7 +34,7 @@ public class GallerySpawner : MonoBehaviour
             GalleryChunk existingChunk = galleryChunkArray.Get(chunkIndex);
             if (existingChunk == null) {
                 GalleryChunk newChunk = Instantiate(galleryChunkPrefabs[UnityEngine.Random.Range(0, galleryChunkPrefabs.Length)]);
-                newChunk.t.localRotation = Quaternion.Euler(new Vector3(0, 90 * UnityEngine.Random.Range(0, 3), 0));
+                newChunk.t.localRotation = Quaternion.Euler(new Vector3(0, 90 * UnityEngine.Random.Range(0, 4), 0));
                 newChunk.MoveToPosition(IndexToPosition(chunkIndex));
                 galleryChunkArray.Set(chunkIndex, newChunk);
             }
