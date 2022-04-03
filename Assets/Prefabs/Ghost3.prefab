@@ -103,412 +103,49 @@ MonoBehaviour:
   frameRate: 3
   dialogueText: 
   pitchCenter: 1
-  speechBubbleText: 'Ugh, how derivative!
-
-
-    Not my taste,
-
-    no, not at all.
-
-
-    Oy.
-
-
-    No
-    me gusta.
-
-
-    How could they show
-
-    something like this??
-
-
-    Yuck.
-
-
-    Eww,
-    really?
-
-
-    Seriously?
-
-
-    I have half a mind to fix
-
-    this one... permanently.
-
-
-    (chuckles
-    softly)
-
-
-    Oof.
-
-
-    Uneven. Churlish.
-
-
-    Amateurish!
-
-
-    Gah!
-
-
-    Jiminy
-    Cricket!
-
-
-    Boo.
-
-
-    Booooooooo.
-
-
-    This is SO 2020s...
-
-
-    Only a
-    zoomer would paint this.
-
-
-    Only a millenial would paint this.
-
-
-    Only
-    a boomer would paint this.
-
-
-    I didn''t pay 15 ghost
-
-    bucks to see this...
-
-
-    Ugh,
-    childish.
-
-
-    (laughs aloud)
-
-
-    (snorts)
-
-
-    (looks away sheepishly)
-
-
-    (blushes)
-
-
-    When
-    I close my eyes,
-
-    I still see it...
-
-
-    Interesting use of color.
-
-
-    Interesting
-    shapes.
-
-
-    Yes, a dynamic approach, yes.
-
-
-    The chiaroscuro!
-
-    The drama!
-
-
-    Ah,
-    notes of the struggle
-
-    between good and evil.
-
-
-    The textural elements
-
-    are
-    really working here.
-
-
-    Can you feel it?
-
-    Can you?
-
-
-    Do you get what
-    they
-
-    were going for here?
-
-
-    Have you worked with
-
-    this artist before?
-
-
-    I''ve
-    been following
-
-    this artist for years.
-
-
-    They call me the
-
-    ''in-spectre''...
-    get it?
-
-
-    What do you think, honey
-
-    -- wait, who are you?
-
-
-    How much
-    would
-
-    you pay for this?
-
-
-    I''m thinking of buying
-
-    the coffee mug
-    of this.
-
-
-    Spooky.
-
-
-    Don''t you think
-
-    it looks like me?
-
-
-    Wow,
-    this looks
-
-    just like you!
-
-
-    Did you paint this?
-
-
-    A return to nature...
-
-
-    How
-    pastoral.
-
-
-    Lovely asymmetry
-
-    in this piece.
-
-
-    The use of motif
-
-    is
-    glorious.
-
-
-    Note the stippling
-
-    in the sublayer.
-
-
-    I''m just here
-    for
-
-    the snacks, honestly.
-
-
-    Wait, there are
-
-    no free snacks???
-
-
-    Are
-    you friends
-
-    with the artist?
-
-
-    I think that guard
-
-    is watching me...
-
-
-    That
-    guard keeps
-
-    giving me weird looks.
-
-
-    Is it just me, or is
-
-    that
-    guard kinda cute?
-
-
-    Hi, are you...
-
-    here alone?
-
-
-    Everyone always
-    looks
-
-    cute at an exhibition.
-
-
-    I came here to
-
-    see this one!
-
-
-    My
-    friend did this one!
-
-
-    I read about this
-
-    one in the paper.
-
-
-    The
-    6 o''clock news
-
-    had a story about this.
-
-
-    I see these three as a triptych.
-
-
-    I''ve
-    heard this artist
-
-    is famous in France.
-
-
-    They recently did a show
-
-    in
-    London.
-
-
-    How bold!
-
-
-    Very dreamy.
-
-
-    I wanna buy this one!
-
-
-    Reminiscent
-    of Pollock, no?
-
-
-    Reminiscent of Manet.
-
-
-    Reminiscent of myself
-
-    in
-    my youth.
-
-
-    Reminds me of Monet''s
-
-    early period.
-
-
-    Reminds me of
-    a piece
-
-    by van Gogh.
-
-
-    Reminds me of Bosch''s
-
-    dreamscapes.
-
-
-    Teamwork
-    makes the
-
-    dream work, eh?
-
-
-    I love their use of light.
-
-
-    What fine
-    brushwork!
-
-
-    The flowing lines,
-
-    the subtle motion...
-
-
-    Quite good,
-    quite good.
-
-
-    Yes. Yes.
-
-
-    Now that''s fine!
-
-
-    I appreciate the
-
-    artist''s
-    restraint.
-
-
-    I''m a sucker for subtle depth.
-
-
-    Ooh, how organic.
-
-
-    Curvaceous!
-
-
-    Looks
-    delicious!
-
-
-    Oh, delectable!
-
-
-    How tantalizing!
-
-
-    The gentle motion...
-
-
-    I
-    wonder if this
-
-    is life-size...
-
-
-    How huge! How grand!
-
-
-    I want to
-    reach out
-
-    and touch it!
-
-
-    So realistic,
-
-    I can almost feel it.'
+  speechBubbleText: "Ugh, how derivative!\n\nNot my taste,\nno, not at all.\n\nOy.\n\nNo
+    me gusta.\n\nHow could they show\nsomething like this??\n\nYuck.\n\nEww, really?\n\nSeriously?\n\nI
+    have half a mind to fix\nthis one... permanently.\n\n(chuckles softly)\n\nOof.\n\nUneven.
+    Churlish.\n\nAmateurish!\n\nGah!\n\nJiminy Cricket!\n\nBoo.\n\nBooooooooo.\n\nThis
+    is SO 2020s...\n\nOnly a zoomer would paint this.\n\nOnly a millenial would paint
+    this.\n\nOnly a boomer would paint this.\n\nI didn't pay 15 ghost\nbucks to see
+    this...\n\nUgh, childish.\n\n(laughs aloud)\n\n(snorts)\n\n(looks away sheepishly)\n\n(blushes)\n\nWhen
+    I close my eyes,\nI still see it...\n\nInteresting use of color.\n\nInteresting
+    shapes.\n\nYes, a dynamic approach, yes.\n\nThe chiaroscuro!\nThe drama!\n\nAh,
+    notes of the struggle\nbetween good and evil.\n\nThe textural elements\nare really
+    working here.\n\nCan you feel it?\nCan you?\n\nDo you get what they\nwere going
+    for here?\n\nHave you worked with\nthis artist before?\n\nI've been following\nthis
+    artist for years.\n\nThey call me the\n'in-spectre'... get it?\n\nWhat do you
+    think, honey\n-- wait, who are you?\n\nHow much would\nyou pay for this?\n\nI'm
+    thinking of buying\nthe coffee mug of this.\n\nSpooky.\n\nDon't you think\nit
+    looks like me?\n\nWow, this looks\njust like you!\n\nDid you paint this?\n\nA
+    return to nature...\n\nHow pastoral.\n\nLovely asymmetry\nin this piece.\n\nThe
+    use of motif\nis glorious.\n\nNote the stippling\nin the sublayer.\n\nI'm just
+    here for\nthe snacks, honestly.\n\nWait, there are\nno free snacks???\n\nAre
+    you friends\nwith the artist?\n\nI think that guard\nis watching me...\n\nThat
+    guard keeps\ngiving me weird looks.\n\nIs it just me, or is\nthat guard kinda
+    cute?\n\nHi, are you...\nhere alone?\n\nEveryone always looks\ncute at an exhibition.\n\nI
+    came here to\nsee this one!\n\nMy friend did this one!\n\nI read about this\none
+    in the paper.\n\nThe 6 o'clock news\nhad a story about this.\n\nI see these three
+    as a triptych.\n\nI've heard this artist\nis famous in France.\n\nThey recently
+    did a show\nin London.\n\nHow bold!\n\nVery dreamy.\n\nI wanna buy this one!\n\nReminiscent
+    of Pollock, no?\n\nReminiscent of Manet.\n\nReminiscent of myself\nin my youth.\n\nReminds
+    me of Monet's\nearly period.\n\nReminds me of a piece\nby van Gogh.\n\nReminds
+    me of Bosch's\ndreamscapes.\n\nTeamwork makes the\ndream work, eh?\n\nI love
+    their use of light.\n\nWhat fine brushwork!\n\nThe flowing lines,\nthe subtle
+    motion...\n\nQuite good, quite good.\n\nYes. Yes.\n\nNow that's fine!\n\nI appreciate
+    the\nartist's restraint.\n\nI'm a sucker for subtle depth.\n\nOoh, how organic.\n\nCurvaceous!\n\nLooks
+    delicious!\n\nOh, delectable!\n\nHow tantalizing!\n\nThe gentle motion...\n\nI
+    wonder if this\nis life-size...\n\nHow huge! How grand!\n\nI want to reach out\nand
+    touch it!\n\nSo realistic,\nI can almost feel it.\n\nIs... is that what\nI think
+    it is?\n\nPhew, this is the\nreal deal.\n\nWould you like to\nbe friends?\n\nI
+    thought paintings were\nsupposed to make you happy?\n\nHi! What's your name?\n\nI've
+    been here for\nfour days now.\n\nDo you remember\nthe way back?\n\nPffffff \u2014
+    can you believe\nthey really did that?\n\nWow, a diamond\nin the rough!\n\nFinally,
+    art that even\nI can get behind.\n\nThis is art for the\npeople, by the people.\n\nWow,
+    this really speaks to me.\n\nI'm lost...\n\nHave you met my partner?\n\nWould
+    you look at that...\n\nWell, nothing's gonna\ntop this...\n\nCripes!\n\nOoh la
+    la~"
   chanceOfSpeechBubbleText: 0.491
 --- !u!114 &8170057856405056246
 MonoBehaviour:

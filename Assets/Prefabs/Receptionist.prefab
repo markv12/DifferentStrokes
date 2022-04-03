@@ -100,22 +100,54 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35e70a3fda27ad448a5f768fef01b907, type: 3}
   - {fileID: 21300000, guid: 99019dc41d1814342a61f265eb9d629c, type: 3}
   frameRate: 3
-  dialogueText: 'Hello! Welcome to the gallery!
+  dialogueText: 'Thanks for visiting!
 
-    I''m glad you could make it!
-
-
-    New
-    LIne
+    <p:tiny>Here''s how the exhibition works.
 
 
-    Another line'
+    Browse
+    through the gallery at your leisure. <p:tiny>Every painting you see has been
+    made by another visitor!
+
+
+    <size=120%>Blank canvases</size> are open for
+    you to paint! <p:tiny>Please don''t hesitate to add your own piece to the exhibition.
+
+
+    <size=120%>Roped-off
+    paintings</size> are part of our <anim:wave><i>Permanent Collection</i></anim>,
+    and can no longer be painted over. <p:tiny>Please do take the time to <color=#00F236>rate</color>
+    the pieces you like, <p:tiny>or the ones you dislike!
+
+
+    <size=120%>Everything
+    else</size> can be painted over! <p:tiny>If you see something you''d like to
+    add to, <p:tiny>or fix, <p:tiny>or redo, feel free to get creative!
+
+
+    <size=90%>Once
+    a painting has been painted over once, it goes in the <i>permanent collection</i>.
+    <p:tiny>From there, visitors can vote to keep it in the collection, but the painting
+    itself can <anim:shake><color=#FF6539>never be changed again...</color></anim></size>
+
+
+    No
+    pressure, <p:tiny>though ;)
+
+    <p:normal>Have fun!
+
+
+    <size=50%>Oh, <p:normal>and,
+    uh...</size>
+
+    <p:normal>Don''t be scared of Wallace, the guard. <p:tiny>I
+    know he''s got a <anim:shake><color=#FF6539>mean glare</color></anim>, but he
+    won''t judge you for what you paint.
+
+    <p:normal><size=50%>He sure freaks
+    me out, though...</size>'
   pitchCenter: 1.4
-  speechBubbleText: 'Text1
+  speechBubbleText: 'Welcome to the exhibition!
 
-    Text2
-
-    Text3
-
-    Text4'
+    I''ll be your guide.'
   chanceOfSpeechBubbleText: 1

@@ -71,7 +71,7 @@ Browse through the gallery at your leisure. <p:tiny>Every painting you see has b
 
 <size=120%>Everything else</size> can be painted over! <p:tiny>If you see something you'd like to add to, <p:tiny>or fix, <p:tiny>or redo, feel free to get creative!
 
-<size=90%>Once a painting has been painted over once, it goes in the <i>permanent collection</i>, so you've only got one shot. <p:tiny>From there, visitors can vote to keep it in the collection, but the painting itself can <anim:shake><color=#FF6539>never be changed again...</color></anim></size>
+<size=90%>Once a painting has been painted over once, it goes in the <i>permanent collection</i>. <p:tiny>From there, visitors can vote to keep it in the collection, but the painting itself can <anim:shake><color=#FF6539>never be changed again...</color></anim></size>
 
 No pressure, <p:tiny>though ;)
 <p:normal>Have fun!
@@ -352,7 +352,88 @@ and touch it!
 So realistic,
 I can almost feel it.
 
+Is... is that what
+I think it is?
 
+Phew, this is the
+real deal.
+
+Would you like to
+be friends?
+
+I thought paintings were
+supposed to make you happy?
+
+Hi! What's your name?
+
+I've been here for
+four days now.
+
+Do you remember
+the way back?
+
+Pffffff — can you believe
+they really did that?
+
+Wow, a diamond
+in the rough!
+
+Finally, art that even
+I can get behind.
+
+This is art for the
+people, by the people.
+
+Wow, this really speaks to me.
+
+I'm lost...
+
+Have you met my partner?
+
+Would you look at that...
+
+Well, nothing's gonna
+top this...
+
+Cripes!
+
+Ooh la la~
+
+
+
+
+
+
+
+
+
+
+
+
+I think my partner has a
+crush on his coworker.
+
+Greetings!
+
+Salutations to you!
+
+I'm a painter too, you know.
+
+One of the paintings
+in this room is mine!
+
+I mostly paint nudes,
+personally.
+
+How about you take a break?
+
+(snoring)
+
+My arms are connected in a
+U-shape behind my back.
+
+I think I look better in these
+pants than my coworkers.
 
 
 
