@@ -48,9 +48,19 @@ public class DialogueSystem : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 ReturnCameraToPlayer();
             }
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space)) {
+                if (dialogueVertexAnimator.textAnimating) {
+                    dialogueVertexAnimator.SkipToEndOfCurrentMessage();
+                } else {
+                    if (currentTextLine < textLines.Length) {
+                        AnimateNextTextLine();
+                    } else {
+                        ReturnCameraToPlayer();
+                    }
+                }
+            }
         }
     }
-
 
     private void MoveCameraInFrontOfCanvas() {
         Vector3 startPos = mainCameraTransform.position;
@@ -67,13 +77,20 @@ public class DialogueSystem : MonoBehaviour {
     }
 
     private Coroutine typeRoutine = null;
+    private int currentTextLine = 0;
+    private string[] textLines;
     public static readonly string[] DOUBLE_NEW_LINE = new string[] { "\n\n" };
     private void StartDialogue() {
-        StopTyping();
         dialogueText.text = "";
-        string[] textLines = currentNPC.dialogueText.Split(DOUBLE_NEW_LINE, StringSplitOptions.None);
-        Debug.Log(textLines.Length);
-        List<DialogueCommand> commands = DialogueUtility.ProcessInputString(textLines[0], out string processedMessage);
+        textLines = currentNPC.dialogueText.Split(DOUBLE_NEW_LINE, StringSplitOptions.None);
+        currentTextLine = 0;
+        AnimateNextTextLine();
+    }
+
+    private void AnimateNextTextLine() {
+        StopTyping();
+        List<DialogueCommand> commands = DialogueUtility.ProcessInputString(textLines[currentTextLine], out string processedMessage);
+        currentTextLine++;
         typeRoutine = StartCoroutine(dialogueVertexAnimator.AnimateTextIn(commands, processedMessage, null, currentNPC.pitchCenter, null));
     }
 
