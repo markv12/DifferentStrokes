@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BobUpAndDown : MonoBehaviour
-{
-
+public class BobUpAndDown : MonoBehaviour {
     // User Inputs
     public float amplitude = 0.1f;
     public float frequency = 0.3f;
