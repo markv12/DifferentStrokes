@@ -12,7 +12,7 @@ public class InteractiveObjectManager : Singleton<InteractiveObjectManager> {
         float minDot = float.MaxValue;
         for (int i = 0; i < activeObjects.Count; i++) {
             InteractiveObject interactiveObject = activeObjects[i];
-            Vector3 posDiff = pos - interactiveObject.pos;
+            Vector3 posDiff = pos - interactiveObject.t.position;
             float sqDistance = posDiff.sqrMagnitude;
             bool isNear = sqDistance < MAX_SQUARE_DISTANCE;
             HandleEnterExitNear(isNear, interactiveObject);

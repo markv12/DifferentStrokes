@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class InteractiveObject : MonoBehaviour {
-    [NonSerialized] public Vector3 pos;
+    [NonSerialized] public Transform t;
 
     protected virtual void Awake() {
-        pos = transform.position;
+        t = transform;
         InteractiveObjectManager.Instance.RegisterObject(this);
     }
 
