@@ -1,3 +1,7 @@
+
+
+
+
 collab-irate
 
 <anim:shake>
@@ -77,7 +81,7 @@ No pressure, <p:tiny>though ;)
 <p:normal>Have fun!
 
 <size=50%>Oh, <p:normal>and, uh...</size>
-<p:normal>Don't be scared of Wallace, the guard. <p:tiny>I know he's got a <anim:shake><color=#FF6539>mean glare</color></anim>, but he won't judge you for what you paint.
+<p:normal>Don't be scared of <b>Wallace, the guard.</b> <p:tiny>I know he's got a <anim:shake><color=#FF6539>mean glare</color></anim>, but he won't judge you for what you paint.
 <p:normal><size=50%>He sure freaks me out, though...</size>
 
 
@@ -443,3 +447,25 @@ pants than my coworkers.
 Yes, some <anim:shake>jokers</anim> have been drawing, <p:short>er, <p:short><i>less than ideal</i> art in my exhibition. 
 
 The truth is, <p:short>and I'm only telling you this because we're friends, but... <p:short>I've got a <color=#FF6539>problem</color>.
+
+
+
+
+
+Wh --
+Who, me? I'm not a main character, <p:normal>there's no need to talk to me.
+
+At least, <p:long>that's how it feels sometimes. Know what I mean? <p:normal>Do you feel like a main character in your own life? <p:normal>Do you even <p:normal>know your own name?
+
+<size=50%>I guess <p:normal>some of us aren't destined for the limelight.</size>
+
+
+
+
+
+
+
+I can't be<size=150%>lieve</size> my partner dragged me here. <p:normal>I'm not even sure what any of this is!
+
+If you see my partner, please tell them off for me.
+They're the ghost with the glasses.
