@@ -26,12 +26,12 @@ public class NPC : InteractiveObject {
             if(speechBubble == null) {
                 speechBubble = ResourceManager.InstantiatePrefab<SpeechBubble>("SpeechBubble", Vector3.zero);
                 speechBubble.transform.SetParent(transform, false);
-                speechBubble.transform.localPosition = new Vector3(1, 1, 0);
+                speechBubble.transform.localPosition = new Vector3(0.25f, 0.25f, 0);
             }
-            speechBubble.gameObject.SetActive(true);
+            speechBubble.Fade(true);
         } else {
             if(speechBubble != null) {
-                speechBubble.gameObject.SetActive(false);
+                speechBubble.Fade(false);
             }
         }
     }
