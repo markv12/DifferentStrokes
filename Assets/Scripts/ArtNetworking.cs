@@ -60,16 +60,6 @@ public class ArtNetworking : Singleton<ArtNetworking> {
         return myTime.Ticks.ToString() + "@" + UnityEngine.Random.value.ToString().Substring(2);
     }
 
-    public static Texture2D GetRandomTexture() {
-        Texture2D result = new Texture2D(64, 64);
-        Color[] pixels = result.GetPixels();
-        for (int i = 0; i < pixels.Length; i++) {
-            pixels[i] = UnityEngine.Random.ColorHSV(0, 1, 0.5f, 1, 0.5f, 1);
-        }
-        result.SetPixels(pixels);
-        return result;
-    }
-
      IEnumerator Get(string uri, Action<string> onComplete) {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri)) {
             yield return webRequest.SendWebRequest();
@@ -116,7 +106,4 @@ public class ArtNetworking : Singleton<ArtNetworking> {
             }
         }
     }
-
-
-
 }

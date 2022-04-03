@@ -35,8 +35,7 @@ public class DrawingUI : MonoBehaviour {
     }
 
     private void Cancel() {
-        drawingSystem.Clear();
-        drawingSystem.ReturnCameraToPlayer();
+        drawingSystem.Cancel();
     }
 
     private void ChangeBrushSize(int change) {
@@ -51,6 +50,7 @@ public class DrawingUI : MonoBehaviour {
     private Coroutine moveRoutine;
     public void Move(bool moveIn) {
         if (moveIn) {
+            SetBrushColor(brushColors[0]);
             gameObject.SetActive(true);
         }
         this.EnsureCoroutineStopped(ref moveRoutine);

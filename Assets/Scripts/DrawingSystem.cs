@@ -176,7 +176,29 @@ public class DrawingSystem : MonoBehaviour {
         ReturnCameraToPlayer();
     }
 
-    public void Clear() {
+    public void Cancel() {
+        currentCanvas.SetCanvasTexture(WhiteTex);
+        Clear();
+        ReturnCameraToPlayer();
+    }
+
+    private Texture2D whiteTex;
+    private Texture2D WhiteTex {
+        get {
+            if(whiteTex == null) {
+                whiteTex = new Texture2D(512, 512);
+                Color32[] pixels = whiteTex.GetPixels32();
+                for (int i = 0; i < pixels.Length; i++) {
+                    pixels[i] = new Color32(255, 255, 255, 255);
+                }
+                whiteTex.SetPixels32(pixels);
+                whiteTex.Apply();
+            }
+            return whiteTex;
+        }
+    }
+
+    private void Clear() {
         for (int i = 0; i < brushInstances.Count; i++) {
             Destroy(brushInstances[i].gameObject);
         }
