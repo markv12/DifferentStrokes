@@ -15,6 +15,8 @@ import parseBufferFromUpload, {
 
 export const files = functions.https.onRequest(
   async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+
     let page = 0
     try {
       page = parseInt(req.params[`0`].replace(`/`, ``))
@@ -60,6 +62,8 @@ export const files = functions.https.onRequest(
 
 export const uploadv1 = functions.https.onRequest(
   async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+
     console.log(req.params)
     const id = req.params[`0`].replace(`/`, ``)
     if (!id) {
@@ -96,6 +100,8 @@ export const uploadv1 = functions.https.onRequest(
 
 export const uploadv2 = functions.https.onRequest(
   async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+
     const id = req.params[`0`].replace(`/`, ``)
     if (!id) {
       console.log(`no id`)
@@ -131,6 +137,8 @@ export const uploadv2 = functions.https.onRequest(
 
 export const like = functions.https.onRequest(
   async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+
     const [id] = req.params[`0`].replace(`/`, ``)
     if (!id) {
       res.send({ error: `no id` })
@@ -143,6 +151,8 @@ export const like = functions.https.onRequest(
 
 export const dislike = functions.https.onRequest(
   async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+
     const [id] = req.params[`0`].replace(`/`, ``)
     if (!id) {
       res.send({ error: `no id` })
@@ -175,6 +185,8 @@ export const dislike = functions.https.onRequest(
 
 export const test = functions.https.onRequest(
   async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+
     res.send(`test` + JSON.stringify(req.params))
   },
 )

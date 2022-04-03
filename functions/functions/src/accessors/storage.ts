@@ -6,7 +6,7 @@ import { cache } from 'sharp'
 const storage = new Storage()
 export const bucketName = `ld50-game`
 
-const perPage = 2
+const perPage = 100
 
 const cachedFiles: {
   cache: UsefulFileData[]
@@ -63,6 +63,7 @@ export async function getRelevantFiles(
   try {
     let step1Files = files
       .filter((f) => f.iteration === 1)
+      .sort((a, b) => String(b.id).localeCompare(a.id))
       .slice(start, start + perPage)
     c.log(
       `step1Files`,
@@ -91,12 +92,23 @@ export async function getRelevantFiles(
         const bLikes = b.likes
         const aDisLikes = a.dislikes
         const bDisLikes = b.dislikes
-        const aScore = aLikes / aDisLikes
-        const bScore = bLikes / bDisLikes
-        return bScore - aScore
+        const aScoreRatio = aLikes / aDisLikes
+        const bScoreRatio = bLikes / bDisLikes
+        const aAgeModifier =
+          (a.date - Date.now()) /
+          (1000 * 60 * 60 * 24 * 30 * 12)
+        const bAgeModifier =
+          (b.date - Date.now()) /
+          (1000 * 60 * 60 * 24 * 30 * 12)
+        console.log({ aAgeModifier, bAgeModifier })
+        return (
+          bScoreRatio +
+          bAgeModifier -
+          (aScoreRatio + aAgeModifier)
+        )
       })
+      // take the best 50 and shuffle them
       .slice(start, start + perPage)
-    // take the best 50 and shuffle them
     step2Files = shuffle(step2Files)
     fileResponse.step2.push(...step2Files)
   } catch (error) {
@@ -437,8 +449,8 @@ function filesToUsefulData(
     const data: UsefulFileData = {
       id,
       iteration,
-      path: `https://storage.googleapis.com/${bucketName}/${found.name}`,
-      originalPath: `https://storage.googleapis.com/${bucketName}/${found.name}`,
+      path: `https://${bucketName}.storage.googleapis.com/${found.name}`,
+      originalPath: `https://${bucketName}.storage.googleapis.com/${found.name}`,
       likes: found.metadata?.metadata?.likes || 0,
       dislikes: found.metadata?.metadata?.dislikes || 0,
       date: new Date(
@@ -454,3 +466,21 @@ function filesToUsefulData(
 
   return filesWithData
 }
+
+async function configureBucketCors() {
+  await storage.bucket(bucketName).setCorsConfiguration([
+    {
+      maxAgeSeconds: 3600,
+      method: [`GET`, `POST`],
+      origin: [`*`],
+      responseHeader: [
+        `Content-Type`,
+        `X-Goog-Upload-Status`,
+      ],
+    },
+  ])
+
+  console.log(`Bucket ${bucketName} CORS config updated`)
+}
+
+configureBucketCors().catch(console.error)
