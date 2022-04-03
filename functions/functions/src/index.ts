@@ -3,6 +3,7 @@ import * as functions from 'firebase-functions'
 import {
   bucketName,
   getRelevantFiles,
+  getTopFiles,
   incrementDislikes,
   incrementLikes,
   updateFileMetadata,
@@ -25,6 +26,15 @@ export const files = functions.https.onRequest(
     }
     if (!page) page = 0
     const files = await getRelevantFiles(page)
+    res.send(files)
+  },
+)
+
+export const top = functions.https.onRequest(
+  async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+
+    const files = await getTopFiles()
     res.send(files)
   },
 )

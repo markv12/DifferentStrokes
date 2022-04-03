@@ -100,22 +100,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0782cf532e9ba9d428474e2912727af9, type: 3}
   - {fileID: 21300000, guid: 59ae68b0569bc9246b49bbe18cbe2feb, type: 3}
   frameRate: 3
-  dialogueText: 'Hello! Welcome to the gallery!
-
-    I''m glad you could make it!
-
-
-    New
-    LIne
-
-
-    Another line'
+  dialogueText: "<size=150%><anim:wave>Welcome to my exhibition!</anim></size><p:normal>\nI'm
+    so glad you came! <p:tiny>I've been working for <i>such</i> a long time to put
+    this together. \n\nThis is my <p:tiny>super-<p:tiny>spectacular <p:tiny><b><anim:wave>collaboratorium</anim>!</b>\n<p:normal><size=85%>It's
+    a social experiment to see how complete strangers can come together <p:tiny>through
+    the magic of art!</size>\n\nVisitors can paint their own masterpiece, <p:tiny>and
+    then have it finished off by another visitor! <p:tiny>Great, <p:tiny>huh?\n\n<size=70%>But...
+    <p:normal>You probably think I'm naive, <p:tiny>don't you?</size>\n\nLook, I
+    know that people are <i>probably</i> going to try to troll my exhibition. \n<p:short>But
+    I'm not worried!\n\nWhy do you think I invited <b>you,</b> <p:tiny>my <anim:wave>oldest,
+    dearest friend?</anim> I'm counting on you to help me keep things <color=#00F236>clean
+    and beautiful</color>! Here, take this paintbrush.\n\nPlease do your best to
+    help me <b>\n<color=#FF6539>fix the bad pieces, <p:short>\n<color=#00F236>vote
+    to keep the good ones, <p:short>\n<color=#000000>and <color=#00B5EE>paint new
+    pictures</b> for the exhibition!"
   pitchCenter: 1.4
-  speechBubbleText: 'Text1
+  speechBubbleText: 'Hey! You made it!
 
-    Text2
-
-    Text3
-
-    Text4'
+    Let''s talk!'
   chanceOfSpeechBubbleText: 1

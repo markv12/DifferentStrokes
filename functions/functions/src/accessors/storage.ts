@@ -48,6 +48,38 @@ export async function getFiles(
   }
 }
 
+const topFilesCount = 6
+export async function getTopFiles(): Promise<
+  UsefulFileData[]
+> {
+  let filesRes = await getFiles()
+  if (`error` in filesRes) return []
+  let files = filesRes as UsefulFileData[]
+  files = files
+    .filter((file) => file.iteration === 2)
+    .sort((a, b) => {
+      const aLikes = a.likes
+      const bLikes = b.likes
+      const aDisLikes = a.dislikes
+      const bDisLikes = b.dislikes
+      const aScoreRatio = aLikes / aDisLikes
+      const bScoreRatio = bLikes / bDisLikes
+      const aAgeModifier =
+        (a.date - Date.now()) /
+        (1000 * 60 * 60 * 24 * 30 * 12)
+      const bAgeModifier =
+        (b.date - Date.now()) /
+        (1000 * 60 * 60 * 24 * 30 * 12)
+      return (
+        bScoreRatio +
+        bAgeModifier -
+        (aScoreRatio + aAgeModifier)
+      )
+    })
+    .slice(0, topFilesCount)
+  return files
+}
+
 export async function getRelevantFiles(
   page: number = 0,
 ): Promise<{ step1: File[]; step2: File[] }> {
@@ -107,8 +139,11 @@ export async function getRelevantFiles(
           (aScoreRatio + aAgeModifier)
         )
       })
-      // take the best 50 and shuffle them
-      .slice(start, start + perPage)
+      // take the best 50 and shuffle them (skip the ones that are in the top files)
+      .slice(
+        start + topFilesCount,
+        start + perPage + topFilesCount,
+      )
     step2Files = shuffle(step2Files)
     fileResponse.step2.push(...step2Files)
   } catch (error) {

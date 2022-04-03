@@ -103,8 +103,413 @@ MonoBehaviour:
   frameRate: 3
   dialogueText: 
   pitchCenter: 1
-  speechBubbleText: 
-  chanceOfSpeechBubbleText: 1
+  speechBubbleText: 'Ugh, how derivative!
+
+
+    Not my taste,
+
+    no, not at all.
+
+
+    Oy.
+
+
+    No
+    me gusta.
+
+
+    How could they show
+
+    something like this??
+
+
+    Yuck.
+
+
+    Eww,
+    really?
+
+
+    Seriously?
+
+
+    I have half a mind to fix
+
+    this one... permanently.
+
+
+    (chuckles
+    softly)
+
+
+    Oof.
+
+
+    Uneven. Churlish.
+
+
+    Amateurish!
+
+
+    Gah!
+
+
+    Jiminy
+    Cricket!
+
+
+    Boo.
+
+
+    Booooooooo.
+
+
+    This is SO 2020s...
+
+
+    Only a
+    zoomer would paint this.
+
+
+    Only a millenial would paint this.
+
+
+    Only
+    a boomer would paint this.
+
+
+    I didn''t pay 15 ghost
+
+    bucks to see this...
+
+
+    Ugh,
+    childish.
+
+
+    (laughs aloud)
+
+
+    (snorts)
+
+
+    (looks away sheepishly)
+
+
+    (blushes)
+
+
+    When
+    I close my eyes,
+
+    I still see it...
+
+
+    Interesting use of color.
+
+
+    Interesting
+    shapes.
+
+
+    Yes, a dynamic approach, yes.
+
+
+    The chiaroscuro!
+
+    The drama!
+
+
+    Ah,
+    notes of the struggle
+
+    between good and evil.
+
+
+    The textural elements
+
+    are
+    really working here.
+
+
+    Can you feel it?
+
+    Can you?
+
+
+    Do you get what
+    they
+
+    were going for here?
+
+
+    Have you worked with
+
+    this artist before?
+
+
+    I''ve
+    been following
+
+    this artist for years.
+
+
+    They call me the
+
+    ''in-spectre''...
+    get it?
+
+
+    What do you think, honey
+
+    -- wait, who are you?
+
+
+    How much
+    would
+
+    you pay for this?
+
+
+    I''m thinking of buying
+
+    the coffee mug
+    of this.
+
+
+    Spooky.
+
+
+    Don''t you think
+
+    it looks like me?
+
+
+    Wow,
+    this looks
+
+    just like you!
+
+
+    Did you paint this?
+
+
+    A return to nature...
+
+
+    How
+    pastoral.
+
+
+    Lovely asymmetry
+
+    in this piece.
+
+
+    The use of motif
+
+    is
+    glorious.
+
+
+    Note the stippling
+
+    in the sublayer.
+
+
+    I''m just here
+    for
+
+    the snacks, honestly.
+
+
+    Wait, there are
+
+    no free snacks???
+
+
+    Are
+    you friends
+
+    with the artist?
+
+
+    I think that guard
+
+    is watching me...
+
+
+    That
+    guard keeps
+
+    giving me weird looks.
+
+
+    Is it just me, or is
+
+    that
+    guard kinda cute?
+
+
+    Hi, are you...
+
+    here alone?
+
+
+    Everyone always
+    looks
+
+    cute at an exhibition.
+
+
+    I came here to
+
+    see this one!
+
+
+    My
+    friend did this one!
+
+
+    I read about this
+
+    one in the paper.
+
+
+    The
+    6 o''clock news
+
+    had a story about this.
+
+
+    I see these three as a triptych.
+
+
+    I''ve
+    heard this artist
+
+    is famous in France.
+
+
+    They recently did a show
+
+    in
+    London.
+
+
+    How bold!
+
+
+    Very dreamy.
+
+
+    I wanna buy this one!
+
+
+    Reminiscent
+    of Pollock, no?
+
+
+    Reminiscent of Manet.
+
+
+    Reminiscent of myself
+
+    in
+    my youth.
+
+
+    Reminds me of Monet''s
+
+    early period.
+
+
+    Reminds me of
+    a piece
+
+    by van Gogh.
+
+
+    Reminds me of Bosch''s
+
+    dreamscapes.
+
+
+    Teamwork
+    makes the
+
+    dream work, eh?
+
+
+    I love their use of light.
+
+
+    What fine
+    brushwork!
+
+
+    The flowing lines,
+
+    the subtle motion...
+
+
+    Quite good,
+    quite good.
+
+
+    Yes. Yes.
+
+
+    Now that''s fine!
+
+
+    I appreciate the
+
+    artist''s
+    restraint.
+
+
+    I''m a sucker for subtle depth.
+
+
+    Ooh, how organic.
+
+
+    Curvaceous!
+
+
+    Looks
+    delicious!
+
+
+    Oh, delectable!
+
+
+    How tantalizing!
+
+
+    The gentle motion...
+
+
+    I
+    wonder if this
+
+    is life-size...
+
+
+    How huge! How grand!
+
+
+    I want to
+    reach out
+
+    and touch it!
+
+
+    So realistic,
+
+    I can almost feel it.'
+  chanceOfSpeechBubbleText: 0.486
 --- !u!114 &8170057856405056246
 MonoBehaviour:
   m_ObjectHideFlags: 0
