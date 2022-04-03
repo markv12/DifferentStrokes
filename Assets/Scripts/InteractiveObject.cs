@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractiveObject : MonoBehaviour {
+public abstract class InteractiveObject : MonoBehaviour {
     [NonSerialized] public Vector3 pos;
 
     protected void Awake() {
@@ -16,6 +16,8 @@ public class InteractiveObject : MonoBehaviour {
         }
     }
 
-    public virtual string InteractText => "";
-    public virtual bool Interactable => false;
+    public abstract string InteractText { get; }
+    public abstract bool Interactable { get; }
+
+    public abstract void OnNearChanged(bool isNear);
 }

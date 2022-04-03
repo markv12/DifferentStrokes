@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractiveObjectManager : Singleton<InteractiveObjectManager> {
     private static readonly List<InteractiveObject> activeObjects = new List<InteractiveObject>();
+    private static readonly HashSet<InteractiveObject> nearObjects = new HashSet<InteractiveObject>();
 
     private const float MAX_SQUARE_DISTANCE = 20f;
     private const float MAX_DOT = -0.5f;
@@ -14,7 +16,9 @@ public class InteractiveObjectManager : Singleton<InteractiveObjectManager> {
             if (interactiveObject.Interactable) {
                 Vector3 posDiff = pos - interactiveObject.pos;
                 float sqDistance = posDiff.sqrMagnitude;
-                if (sqDistance < MAX_SQUARE_DISTANCE) {
+                bool isNear = sqDistance < MAX_SQUARE_DISTANCE;
+                HandleEnterExitNear(isNear, interactiveObject);
+                if (isNear) {
                     float dot = Vector3.Dot(posDiff.normalized, faceDirection);
                     if (dot < MAX_DOT && dot < minDot) {
                         result = interactiveObject;
@@ -24,6 +28,17 @@ public class InteractiveObjectManager : Singleton<InteractiveObjectManager> {
             }
         }
         return result;
+    }
+
+    private void HandleEnterExitNear(bool isNear, InteractiveObject interactiveObject) {
+        bool alreadyContains = nearObjects.Contains(interactiveObject);
+        if (isNear && !alreadyContains) {
+            nearObjects.Add(interactiveObject);
+            interactiveObject.OnNearChanged(true);
+        } else if (!isNear && alreadyContains) {
+            nearObjects.Remove(interactiveObject);
+            interactiveObject.OnNearChanged(false);
+        }
     }
 
     public void RegisterObject(InteractiveObject interactiveObject) {

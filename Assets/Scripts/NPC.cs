@@ -7,8 +7,34 @@ public class NPC : InteractiveObject {
     public string dialogueText;
     [Range(0.1f, 5f)]
     public float pitchCenter = 1;
+    [TextArea(4, 8)]
+    public string speechBubbleText;
+    public SpeechBubble speechBubble;
     public override string InteractText => "Press 'E' to Talk";
     public override bool Interactable => !string.IsNullOrWhiteSpace(dialogueText);
+    public override void OnNearChanged(bool isNear) {
+        if(isNear && !string.IsNullOrWhiteSpace(speechBubbleText)) {
+            SetSpeechBubbleActive(true);
+            speechBubble.SetText(speechBubbleText);
+        } else {
+            SetSpeechBubbleActive(false);
+        }
+    }
+
+    private void SetSpeechBubbleActive(bool active) {
+        if (active) {
+            if(speechBubble == null) {
+                speechBubble = ResourceManager.InstantiatePrefab<SpeechBubble>("SpeechBubble", Vector3.zero);
+                speechBubble.transform.SetParent(transform, false);
+                speechBubble.transform.localPosition = new Vector3(1, 1, 0);
+            }
+            speechBubble.gameObject.SetActive(true);
+        } else {
+            if(speechBubble != null) {
+                speechBubble.gameObject.SetActive(false);
+            }
+        }
+    }
 
     public SpriteRenderer mainRenderer;
     public Sprite[] sprites;
