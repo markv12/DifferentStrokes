@@ -35,23 +35,24 @@ Hey! You made it!
 Let's talk!
 
 <size=150%><anim:wave>Welcome to my exhibition!</anim></size><p:normal>
-I'm so glad you came! I've been working for <i>such</i> a long time to put this together. 
+I'm so glad you came! <p:tiny>I've been working for <i>such</i> a long time to put this together. 
 
-This is my super-spectacular <anim:wave>collaboratorium</anim>!
-<p:normal>It's a social experiment to see how complete strangers can come together through the magic of art!
+This is my <p:tiny>super-<p:tiny>spectacular <p:tiny><b><anim:wave>collaboratorium</anim>!</b>
+<p:normal><size=85%>It's a social experiment to see how complete strangers can come together <p:tiny>through the magic of art!</size>
 
-Visitors can paint their own masterpiece, and then have it finished off by another visitor! <p:tiny>Great, <p:tiny>huh?
+Visitors can paint their own masterpiece, <p:tiny>and then have it finished off by another visitor! <p:tiny>Great, <p:tiny>huh?
 
-<size=70%>But... <p:normal>You probably think I'm naive, don't you?</size>
+<size=70%>But... <p:normal>You probably think I'm naive, <p:tiny>don't you?</size>
 
-Look, I know that people are probably going to try to troll my exhibition. <p:short>But I'm not worried!
-Why do you think I invited you, <p:tiny>my <anim:wave>oldest, dearest friend?</anim> I'm counting on you to help me keep things clean and beautiful!
+Look, I know that people are <i>probably</i> going to try to troll my exhibition. 
+<p:short>But I'm not worried!
 
-Here, take this paintbrush.
+Why do you think I invited <b>you,</b> <p:tiny>my <anim:wave>oldest, dearest friend?</anim> I'm counting on you to help me keep things <color=#00F236>clean and beautiful</color>! Here, take this paintbrush.
+
 Please do your best to help me <b>
-<color=#FF6539>fix the bad pieces, 
-<color=#00F236>vote to keep the good ones, 
-<color=#black>and <color=#00B5EE>paint new pictures</b> for the exhibition!
+<color=#FF6539>fix the bad pieces, <p:short>
+<color=#00F236>vote to keep the good ones, <p:short>
+<color=#000000>and <color=#00B5EE>paint new pictures</b> for the exhibition!
 
 
 

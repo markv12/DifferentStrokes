@@ -24,6 +24,15 @@ public class ArtNetworking : Singleton<ArtNetworking> {
         FileListPageIndex++;
     }
 
+    public void loadTopFiles(Action<FileListResponse> onGetFiles) {
+        string url = urlBase + "top";
+
+        Action<string> onComplete = (string result) => {
+            // todo parse 'em, use 'em
+        };
+        StartCoroutine(Get(url, onComplete));
+    }
+
     public void SendUnfinishedImage(Texture2D imageTex) {
         string imageID = getFileId();
         byte[] pngData = imageTex.EncodeToPNG();
