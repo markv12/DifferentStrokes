@@ -53,6 +53,7 @@ public class Player : MonoBehaviour {
                         drawingSystem.DrawToCanvas(currentCanvas, mainCamera, onExit);
                         break;
                     case PaintingStatus.Complete:
+                    case PaintingStatus.HallOfFame:
                         ratingSystem.EnterRatingMode(currentCanvas, mainCamera.transform, onExit);
                         break;
                 }

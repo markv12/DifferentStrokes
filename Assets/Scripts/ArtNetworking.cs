@@ -22,11 +22,10 @@ public class ArtNetworking : Singleton<ArtNetworking> {
         fileListPageIndex++;
     }
 
-    public void loadTopFiles(Action<FileListResponse> onGetFiles) {
+    public void LoadTopFiles(Action<FileData[]> onGetFiles) {
         string url = urlBase + "top";
-
-        Action<string> onComplete = (string result) => {
-            // todo parse 'em, use 'em
+        Action<string> onComplete = (string json) => {
+            onGetFiles?.Invoke(FileData.CreateListFromJsonString(json));
         };
         StartCoroutine(Get(url, onComplete));
     }

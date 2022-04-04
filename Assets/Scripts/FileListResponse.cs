@@ -22,4 +22,8 @@ public class FileData {
     public int dislikes;
     public string path;
     public string originalPath;
+
+    public static FileData[] CreateListFromJsonString(string json) {
+        return JsonConvert.DeserializeObject<FileData[]>(json);
+    }
 }

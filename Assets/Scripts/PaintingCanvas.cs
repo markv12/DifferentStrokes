@@ -1,8 +1,18 @@
-using System;
 using UnityEngine;
 
 public class PaintingCanvas : InteractiveObject {
-    public override string InteractText => PaintingStatus == PaintingStatus.Complete ? "Press 'E' to Rate" : "Press 'E' to Paint";
+    public override string InteractText {
+        get {
+            switch (paintingStatus) {
+                case PaintingStatus.Complete:
+                    return "Press 'E' to Rate";
+                case PaintingStatus.HallOfFame:
+                    return "Press 'E' to View";
+                default:
+                    return "Press 'E' to Paint";
+            }
+        }
+    }
     public override bool Interactable => !locked;
     public override bool MustBeFacing => true;
     public override void OnNearChanged(bool isNear) {}
@@ -90,7 +100,7 @@ public class PaintingCanvas : InteractiveObject {
         frameRenderer.sprite = GetFrameForStatus();
         paintMeSign.SetActive(PaintingStatus == PaintingStatus.Blank && !locked);
         fixThisSign.SetActive(PaintingStatus == PaintingStatus.NeedsFixing && !locked);
-        barrier.SetActive(PaintingStatus == PaintingStatus.Complete || locked);
+        barrier.SetActive(PaintingStatus == PaintingStatus.Complete || PaintingStatus == PaintingStatus.HallOfFame || locked);
     }
 
     private Sprite GetFrameForStatus() {
@@ -100,6 +110,7 @@ public class PaintingCanvas : InteractiveObject {
             case PaintingStatus.NeedsFixing:
                 return needsFixingFrame;
             case PaintingStatus.Complete:
+            case PaintingStatus.HallOfFame:
                 return completeFrame;
             default:
                 return completeFrame;
@@ -109,5 +120,6 @@ public class PaintingCanvas : InteractiveObject {
 public enum PaintingStatus {
     Blank,
     NeedsFixing,
-    Complete
+    Complete,
+    HallOfFame,
 }

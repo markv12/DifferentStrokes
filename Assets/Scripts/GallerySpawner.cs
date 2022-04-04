@@ -11,15 +11,13 @@ public class GallerySpawner : MonoBehaviour
     public Transform player;
 
     private static readonly HashSet<Vector2Int> OFF_LIMITS_INDICES = new HashSet<Vector2Int> {
+        new Vector2Int(0, 0),
         new Vector2Int(1, 0),
         new Vector2Int(2, 0),
         new Vector2Int(3, 0)
     };
     private GalleryChunkArray galleryChunkArray = new GalleryChunkArray();
 
-    private void Awake() {
-        galleryChunkArray.Set(0, 0, firstChunk);
-    }
 
     private void Update() {
         Vector2Int currentIndex = PlayerPosIndex;

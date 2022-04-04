@@ -71,53 +71,72 @@ public class ArtManager : MonoBehaviour {
         for (int i = 0; i < blankCount; i++) {
             Transform t = spawnLocations[index];
             index++;
-            LoadFromData(null, t, true);
+            LoadFromData(null, t, PaintingStatus.Blank);
         }
         for (int i = 0; i < step1Count; i++) {
             Transform t = spawnLocations[index];
             index++;
             FileData data = GetNextStep1FileData();
-            LoadFromData(data, t, true);
+            LoadFromData(data, t, PaintingStatus.NeedsFixing);
         }
         for (int i = 0; i < step2Count; i++) {
             Transform t = spawnLocations[index];
             index++;
             FileData data = GetNextStep2FileData();
-            LoadFromData(data, t, false);
+            LoadFromData(data, t, PaintingStatus.Complete);
         }
     }
 
-    private void LoadFromData(FileData data, Transform parent, bool step1) {
+    public void AddPaintingsForHallOfFame(Transform[] hallOfFameLocations) {
+        ArtNetworking.Instance.LoadTopFiles((FileData[] files) => {
+            if(files != null) {
+                for (int i = 0; i < files.Length; i++) {
+                    if(i < hallOfFameLocations.Length) {
+                        FileData fileData = files[i];
+                        Transform t = hallOfFameLocations[i];
+                        LoadFromData(fileData, t, PaintingStatus.HallOfFame);
+                    }
+                }
+            }
+        });
+    }
+
+    private void LoadFromData(FileData data, Transform parent, PaintingStatus status) {
         if(data == null) {
-            CreateCanvasForTexture(null, false, null, parent);
+            CreateCanvasForTexture(null, PaintingStatus.Blank, null, parent);
         } else {
             GetTexture(data.path, (Texture tex) => {
-                CreateCanvasForTexture(tex, step1, data, parent);
+                CreateCanvasForTexture(tex, status, data, parent);
             });
         }
     }
 
-    private void CreateCanvasForTexture(Texture loadedTex, bool step1, FileData data, Transform parent) {
+    private void CreateCanvasForTexture(Texture loadedTex, PaintingStatus status, FileData data, Transform parent) {
         PaintingCanvas newCanvas = Instantiate(canvasPrefab, parent);
-        //newCanvas.transform.localPosition = new Vector3(0, -2.234f, 0.562f);
-        // Y 1.766
 
         newCanvas.transform.localRotation = Quaternion.Euler(0, 180, 0);
         if (loadedTex != null) {
             newCanvas.SetCanvasTexture(loadedTex as Texture2D);
         }
-        if(data != null) {
+        if (data != null) {
             newCanvas.ImageID = data.id;
         }
-        newCanvas.PaintingStatus = (loadedTex == null) ? PaintingStatus.Blank : (step1 ? PaintingStatus.NeedsFixing : PaintingStatus.Complete);
+        newCanvas.PaintingStatus = (loadedTex == null) ? PaintingStatus.Blank : status;
 
-        if(loadedTex && !step1 && data != null && !string.IsNullOrWhiteSpace(data.originalPath)) {
+        if (ShouldLoadOriginalTexture(loadedTex, status, data)) {
             GetTexture(data.originalPath, (Texture originalTex) => {
                 newCanvas.SetOriginalTexture(originalTex as Texture2D);
             });
         }
 
         allCanvases.Add(newCanvas);
+    }
+
+    private static bool ShouldLoadOriginalTexture(Texture loadedTex, PaintingStatus status, FileData data) {
+        return loadedTex != null
+            && (status == PaintingStatus.Complete || status == PaintingStatus.HallOfFame)
+            && data != null
+            && !string.IsNullOrWhiteSpace(data.originalPath);
     }
 
     void GetTexture(string url, Action<Texture> onGetTexture) {

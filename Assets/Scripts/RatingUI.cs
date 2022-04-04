@@ -37,8 +37,8 @@ public class RatingUI : MonoBehaviour {
 
     private void ShowFront() {
         AudioManager.Instance.PlayPaperFlip(0.5f);
-        likeButton.gameObject.SetActive(true);
-        dislikeButton.gameObject.SetActive(true);
+        likeButton.gameObject.SetActive(ratingSystem.currentCanvas.PaintingStatus == PaintingStatus.Complete);
+        dislikeButton.gameObject.SetActive(ratingSystem.currentCanvas.PaintingStatus == PaintingStatus.Complete);
         showBackButton.gameObject.SetActive(true);
         showFrontButton.gameObject.SetActive(false);
         ratingSystem.ShowCompleted();
@@ -47,6 +47,7 @@ public class RatingUI : MonoBehaviour {
     private Coroutine moveRoutine;
     public void Move(bool moveIn) {
         if (moveIn) {
+            ShowFront();
             gameObject.SetActive(true);
         }
         this.EnsureCoroutineStopped(ref moveRoutine);
