@@ -11,7 +11,7 @@ public class GuardSpawner : MonoBehaviour {
     public void SpawnGuardsAtSpawnLocations(Transform[] spawnLocations) {
         for (int i = 0; i < spawnLocations.Length; i++) {
             Transform spawnLocation = spawnLocations[i];
-            if(spawnLocation != null && Random.value > 0.5f) {
+            if(spawnLocation != null && Random.value > 0.7f) {
                 NPC guardPrefab = guardPrefabs[Random.Range(0, guardPrefabs.Length)];
                 Instantiate(guardPrefab, spawnLocation);
             }
