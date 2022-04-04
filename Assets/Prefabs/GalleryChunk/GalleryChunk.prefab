@@ -260,7 +260,6 @@ Transform:
   - {fileID: 3395489762993292998}
   - {fileID: 6656633530768628716}
   - {fileID: 2485692929743118631}
-  - {fileID: 8395059160404352623}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -286,8 +285,7 @@ MonoBehaviour:
   - {fileID: 4601685272360102502}
   - {fileID: 5056980974755664361}
   - {fileID: 3662594730850465377}
-  ghostSpawnLocations:
-  - {fileID: 8395059160404352623}
+  ghostSpawnLocations: []
 --- !u!82 &7740503714430403716
 AudioSource:
   m_ObjectHideFlags: 0
@@ -428,36 +426,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 8, z: 0.6}
   m_Center: {x: 0, y: 4, z: 0}
---- !u!1 &4122315030849980640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8395059160404352623}
-  m_Layer: 0
-  m_Name: GhostLocation1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8395059160404352623
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122315030849980640}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 8.76, y: 1.1, z: -7.77}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8468440850431654553}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &5225725693984886860
 GameObject:
   m_ObjectHideFlags: 0
