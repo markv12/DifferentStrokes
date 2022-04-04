@@ -11,7 +11,7 @@ public class GalleryChunk : MonoBehaviour {
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.Play();
 
-        Vector3 startPos = endPos.SetY(endPos.y - 10f);
+        Vector3 startPos = endPos.SetY(endPos.y - 11f);
         t.position = startPos;
         this.CreateAnimationRoutine(1.5f, (float progress) => {
             float easedProgress = Easing.easeOutCubic(0f, 1f, progress);
