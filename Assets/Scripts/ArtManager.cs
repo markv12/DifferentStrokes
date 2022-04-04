@@ -63,7 +63,7 @@ public class ArtManager : MonoBehaviour {
 
     public void AddPaintingsForChunk(Transform[] spawnLocations) {
         int spawnLocationCount = spawnLocations.Length;
-        int blankCount = 1;
+        int blankCount = spawnLocations.Length > 0 ? 1 : 0;
         int step1Count = spawnLocationCount / 3;
         int step2Count = spawnLocationCount - (blankCount + step1Count);
 
