@@ -63,8 +63,12 @@ export async function getTopFiles(): Promise<
       const bLikes = b.likes
       const aDisLikes = a.dislikes
       const bDisLikes = b.dislikes
-      const aScoreRatio = aLikes / (aDisLikes || 1)
-      const bScoreRatio = bLikes / (bDisLikes || 1)
+      const aTotalRatings = aLikes + aDisLikes
+      const bTotalRatings = bLikes + bDisLikes
+      const aScoreRatio =
+        (aLikes / (aDisLikes || 1)) * (aTotalRatings / 100)
+      const bScoreRatio =
+        (bLikes / (bDisLikes || 1)) * (bTotalRatings / 100)
       const aAgeModifier =
         (a.date - Date.now()) /
         (1000 * 60 * 60 * 24 * 30 * 12)
@@ -253,28 +257,28 @@ async function uploadFile(
   })
 }
 
-export async function deleteFile(
-  path: string,
-): Promise<ResponseOrError<string>> {
-  const exists = await fileExists(path.split(bucketName)[1])
-  if (exists) {
-    c.log(`deleting ${path}`)
-    try {
-      const [file] = await storage
-        .bucket(bucketName)
-        .file(path)
-        .delete()
-      return `${(file as any).name} deleted`
-    } catch (error) {
-      return { error }
+export async function deleteAllVersionsOfFile(
+  id: string,
+): Promise<void> {
+  const pathsToCheck = [`0_` + id, `1_` + id, `2_` + id]
+  for (let path of pathsToCheck) {
+    const exists = await fileExists(bucketName + `/` + path)
+    if (exists) {
+      c.log(`deleting ${path}`)
+      try {
+        const [file] = await storage
+          .bucket(bucketName)
+          .file(path)
+          .delete()
+        console.log(`${(file as any).name} deleted`)
+      } catch (error) {
+        console.log(error)
+      }
     }
+    cachedFiles.cache = cachedFiles.cache.filter(
+      (f) => f.id !== id,
+    )
   }
-
-  cachedFiles.cache = cachedFiles.cache.filter(
-    (f) => f.path !== path && f.originalPath !== path,
-  )
-
-  return { error: `${path} does not exist` }
 }
 
 export async function updateFilePrefix(

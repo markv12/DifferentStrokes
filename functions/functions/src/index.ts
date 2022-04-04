@@ -2,6 +2,7 @@ import { File } from '@google-cloud/storage'
 import * as functions from 'firebase-functions'
 import {
   bucketName,
+  deleteAllVersionsOfFile,
   getRelevantFiles,
   getTopFiles,
   incrementDislikes,
@@ -141,6 +142,21 @@ export const uploadv2 = functions.https.onRequest(
     updateFilePrefix(`0_${id}.png`, `1`)
 
     console.log(`ok`)
+    res.send(`ok`)
+  },
+)
+
+export const deleteAll = functions.https.onRequest(
+  async (req, res): Promise<void> => {
+    res.set(`Access-Control-Allow-Origin`, `*`)
+    const id = req.params[`0`]
+      .replace(`/`, ``)
+      .replace(/^\d_/g, ``)
+    if (!id) {
+      res.send({ error: `no id` })
+      return
+    }
+    deleteAllVersionsOfFile(id)
     res.send(`ok`)
   },
 )
