@@ -190,6 +190,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8be1e251fefb34d01bedf0dbc45e34a0, type: 3}
   talk: {fileID: 8300000, guid: 26e57945d176f42148a263a83f33ba01, type: 3}
   paperFlip: {fileID: 8300000, guid: 1cf308746d3e345fb8779a9a26470030, type: 3}
+  save: {fileID: 8300000, guid: 02042bde3e8ea4d07b8b663514eacab4, type: 3}
 --- !u!1 &6057479461563318025
 GameObject:
   m_ObjectHideFlags: 0

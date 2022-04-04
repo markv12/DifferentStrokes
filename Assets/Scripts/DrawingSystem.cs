@@ -169,6 +169,8 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     public void SubmitCurrentDrawing() {
+        AudioManager.Instance.PlaySaveSound(0.6f);
+
         if (InDrawingMode) {
             Texture2D tex = currentCanvas.canvasSpriteRenderer.sprite.texture;
             switch (currentCanvas.PaintingStatus) {
@@ -187,6 +189,8 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     public void Cancel() {
+        AudioManager.Instance.PlayPaperFlip(0.4f);
+
         switch (currentCanvas.PaintingStatus) {
             case PaintingStatus.Blank:
                 currentCanvas.SetCanvasTexture(WhiteTex);

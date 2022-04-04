@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="save_data" version="1.3.0" audacityversion="2.4.1" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="0.0000000000" zoom="119.1484688755" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="COMMENTS" value=" 00000000 00000210 0000088A 00000000000455E6 00000000 0001EBD6 00000000 00000000 00000000 00000000 00000000 00000000"/>
+		<tag name="Software" value="Logic Pro X 10.4.1"/>
+	</tags>
+	<wavetrack name="save" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="89200">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f7f9.au" len="89200" min="-0.902702" max="0.984164" rms="0.148317"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="save" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="89200">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fb3c.au" len="89200" min="-0.95866" max="0.915361" rms="0.156782"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
