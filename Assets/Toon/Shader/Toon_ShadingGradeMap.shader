@@ -15,6 +15,7 @@ Shader "UnityChanToonShader/Toon_ShadingGradeMap" {
         //v.2.0.5 : Clipping/TransClipping for SSAO Problems in PostProcessing Stack.
         //If you want to go back the former SSAO results, comment out the below line.
         [HideInInspector] _Color ("Color", Color) = (1,1,1,1)
+        _WorldScale("World Scale", Vector) = (1, 1, 1, 1)
         //
         [Toggle(_)] _Is_LightColor_Base ("Is_LightColor_Base", Float ) = 1
         _1st_ShadeMap ("1st_ShadeMap", 2D) = "white" {}

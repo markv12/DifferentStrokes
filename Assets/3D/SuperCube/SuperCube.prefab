@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7011700665485107160}
   - component: {fileID: 2373098662026979089}
   - component: {fileID: 8440826266665850290}
+  - component: {fileID: 4657417330893832660}
   m_Layer: 0
   m_Name: SuperCube
   m_TagString: Untagged
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.99999994, z: 0.99999845}
   m_Center: {x: 0, y: 0.53297865, z: 0}
+--- !u!114 &4657417330893832660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770952710495496326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8727cff3de77d2a4d902492cdbac8297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 2373098662026979089}

@@ -34,6 +34,7 @@
             //Baked Normal Texture for Outline
             uniform sampler2D _BakedNormal; uniform float4 _BakedNormal_ST;
             uniform fixed _Is_BakedNormal;
+            uniform float4 _WorldScale;
             //
 //v.2.0.4
 #ifdef _IS_OUTLINE_CLIPPING_YES
@@ -84,7 +85,7 @@
 //v2.0.4
 #ifdef _OUTLINE_NML
                 //v.2.0.4.3 baked Normal Texture for Outline
-                o.pos = UnityObjectToClipPos(lerp(float4(v.vertex.xyz + v.normal*Set_Outline_Width,1), float4(v.vertex.xyz + _BakedNormalDir*Set_Outline_Width,1),_Is_BakedNormal));
+                o.pos = UnityObjectToClipPos(lerp(float4(v.vertex.xyz + (v.normal/_WorldScale)*Set_Outline_Width,1), float4(v.vertex.xyz + _BakedNormalDir*Set_Outline_Width,1),_Is_BakedNormal));
 #elif _OUTLINE_POS
                 Set_Outline_Width = Set_Outline_Width*2;
                 float signVar = dot(normalize(v.vertex),normalize(v.normal))<0 ? -1 : 1;
