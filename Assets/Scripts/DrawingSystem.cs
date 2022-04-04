@@ -169,7 +169,7 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     public void SubmitCurrentDrawing() {
-        AudioManager.Instance.PlaySaveSound(0.6f);
+        AudioManager.Instance.PlaySaveSound(0.5f);
 
         if (InDrawingMode) {
             Texture2D tex = currentCanvas.canvasSpriteRenderer.sprite.texture;

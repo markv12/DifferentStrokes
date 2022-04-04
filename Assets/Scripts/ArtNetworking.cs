@@ -34,10 +34,10 @@ public class ArtNetworking : Singleton<ArtNetworking> {
         string imageID = getFileId();
         byte[] pngData = imageTex.EncodeToPNG();
         string url = urlBase + "uploadv1/" + imageID;
-        Debug.Log(url);
+        //Debug.Log(url);
 
         Action<string> onComplete = (string result) => {
-            Debug.Log(result);
+            //Debug.Log(result);
         };
         StartCoroutine(Post(url, pngData, onComplete));
     }
