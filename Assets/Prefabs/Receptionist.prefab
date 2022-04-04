@@ -100,6 +100,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35e70a3fda27ad448a5f768fef01b907, type: 3}
   - {fileID: 21300000, guid: 99019dc41d1814342a61f265eb9d629c, type: 3}
   frameRate: 3
+  biDirectional: 1
   dialogueText: 'Thanks for visiting!
 
     <p:tiny>Here''s how the exhibition works.

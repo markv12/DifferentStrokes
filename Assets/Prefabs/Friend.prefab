@@ -100,6 +100,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0782cf532e9ba9d428474e2912727af9, type: 3}
   - {fileID: 21300000, guid: 59ae68b0569bc9246b49bbe18cbe2feb, type: 3}
   frameRate: 3
+  biDirectional: 1
   dialogueText: "<size=150%><anim:wave>Welcome to my exhibition!</anim></size><p:normal>\nI'm
     so glad you came! <p:tiny>I've been working for <i>such</i> a long time to put
     this together. \n\nThis is my <p:tiny>super-<p:tiny>spectacular <p:tiny><b><anim:wave>collaboratorium</anim>!</b>\n<p:normal><size=85%>It's

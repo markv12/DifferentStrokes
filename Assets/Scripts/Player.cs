@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
                 }
             } else if (currentNPC != null) {
                 if(currentNPC.speechBubble != null) {
-                    currentNPC.speechBubble.Fade(false);
+                    currentNPC.speechBubble.Fade(false, false);
                 }
                 SetFPSControllerActive(false);
                 dialogueSystem.TalkToNPC(currentNPC, mainCamera, () => {

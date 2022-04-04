@@ -15,7 +15,7 @@ public class InteractiveObjectManager : Singleton<InteractiveObjectManager> {
             Vector3 posDiff = playerPos - interactiveObject.t.position;
             float sqDistance = posDiff.sqrMagnitude;
             bool isNear = sqDistance < MAX_SQUARE_DISTANCE;
-            HandleEnterExitNear(isNear, interactiveObject);
+            HandleEnterExitNear(isNear, interactiveObject, playerFaceDirection);
             if (isNear && interactiveObject.Interactable && IsFacing(interactiveObject, playerFaceDirection)) {
                 float dot = Vector3.Dot(posDiff.normalized, playerFaceDirection);
                 if (dot < MAX_DOT && dot < minDot) {
@@ -35,14 +35,14 @@ public class InteractiveObjectManager : Singleton<InteractiveObjectManager> {
         }
     }
 
-    private void HandleEnterExitNear(bool isNear, InteractiveObject interactiveObject) {
+    private void HandleEnterExitNear(bool isNear, InteractiveObject interactiveObject, Vector3 playerFaceDirection) {
         bool alreadyContains = nearObjects.Contains(interactiveObject);
         if (isNear && !alreadyContains) {
             nearObjects.Add(interactiveObject);
-            interactiveObject.OnNearChanged(true);
+            interactiveObject.OnNearChanged(true, playerFaceDirection);
         } else if (!isNear && alreadyContains) {
             nearObjects.Remove(interactiveObject);
-            interactiveObject.OnNearChanged(false);
+            interactiveObject.OnNearChanged(false, playerFaceDirection);
         }
     }
 

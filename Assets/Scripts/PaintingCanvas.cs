@@ -15,7 +15,7 @@ public class PaintingCanvas : InteractiveObject {
     }
     public override bool Interactable => !locked;
     public override bool MustBeFacing => true;
-    public override void OnNearChanged(bool isNear) {}
+    public override void OnNearChanged(bool isNear, Vector3 playerFaceDirection) {}
 
     public SpriteRenderer canvasSpriteRenderer;
 

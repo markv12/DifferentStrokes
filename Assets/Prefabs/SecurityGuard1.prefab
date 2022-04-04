@@ -95,10 +95,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410e6010d22ddcf499bc07e44fb7914c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: 
-  pitchCenter: 1
   mainRenderer: {fileID: 1961299333231633577}
   sprites:
   - {fileID: 21300000, guid: 9a6af810c2c878543b518783c92b56dc, type: 3}
   - {fileID: 21300000, guid: c6d5c2db2a5bcf9478005bebb4264e84, type: 3}
   frameRate: 3
+  biDirectional: 0
+  dialogueText: 'My partner over yonder likes to sleep on the job.<p:short>
+
+    Looks
+    pretty nice, if you ask me.
+
+
+    <size=130%><i>But,</i></size> <p:short>I swore
+    an oath to <b>never</b> sleep on th'' job again.
+
+
+    <anim:shake><color=#FF6539><size=70%>Not
+    since last time...</size></color></anim>'
+  pitchCenter: 1
+  speechBubbleText: 'Howdy.
+
+
+    This is a real'' lonely
+
+    job, compadre.
+
+
+    Don''t
+    tell anyone, but I
+
+    really liked yer last painting.
+
+
+    D''you think the
+    receptionist
+
+    would go fer a fella like me?
+
+
+    People tell me I get to
+
+    starin''
+    a bit too much.
+
+
+    I wish I could talk to that
+
+    receptionist over yonder...
+
+
+    D''you
+    know the receptionist''s name?
+
+
+    Couldja give the receptionist
+
+    a message
+    for me? ...Aw, shucks,
+
+    forget I asked.
+
+
+    Say, don''t I know you?
+
+    Are
+    you an artist here?
+
+
+    Evenin'' pardner!'
+  chanceOfSpeechBubbleText: 0.151

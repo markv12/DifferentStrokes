@@ -6,6 +6,7 @@ public class NPC : InteractiveObject {
     public SpriteRenderer mainRenderer;
     public Sprite[] sprites;
     public float frameRate;
+    public bool biDirectional = false;
 
     [TextArea(4, 12)]
     public string dialogueText;
@@ -20,14 +21,19 @@ public class NPC : InteractiveObject {
     public override string InteractText => "Press 'E' to Talk";
     public override bool Interactable => !string.IsNullOrWhiteSpace(dialogueText);
     public override bool MustBeFacing => false;
-    public override void OnNearChanged(bool isNear) {
+    public override void OnNearChanged(bool isNear, Vector3 playerFaceDirection) {
+        bool facingFront = biDirectional ? IsFacingFront(t.forward, playerFaceDirection) : true;
         string text = GetSpeechBubbleText(isNear);
         if(text != null) {
-            SetSpeechBubbleActive(true);
+            SetSpeechBubbleActive(true, facingFront);
             speechBubble.SetText(text);
         } else {
-            SetSpeechBubbleActive(false);
+            SetSpeechBubbleActive(false, facingFront);
         }
+    }
+
+    private bool IsFacingFront(Vector3 forward, Vector3 playerFaceDirection) {
+        return Vector3.Dot(forward, playerFaceDirection) > 0;
     }
 
     private string GetSpeechBubbleText(bool isNear) {
@@ -42,17 +48,17 @@ public class NPC : InteractiveObject {
         return null;
     }
 
-    private void SetSpeechBubbleActive(bool active) {
+    private void SetSpeechBubbleActive(bool active, bool facingFront) {
         if (active) {
             if(speechBubble == null) {
                 speechBubble = ResourceManager.InstantiatePrefab<SpeechBubble>("SpeechBubble", Vector3.zero);
                 speechBubble.transform.SetParent(transform, false);
-                speechBubble.transform.localPosition = new Vector3(0.25f, 0.25f, 0.1f);
+                speechBubble.transform.localPosition = Vector3.zero;
             }
-            speechBubble.Fade(true);
+            speechBubble.Fade(true, facingFront);
         } else {
             if(speechBubble != null) {
-                speechBubble.Fade(false);
+                speechBubble.Fade(false, facingFront);
             }
         }
     }
