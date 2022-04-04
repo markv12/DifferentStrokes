@@ -286,6 +286,7 @@ MonoBehaviour:
   - {fileID: 5056980974755664361}
   - {fileID: 3662594730850465377}
   ghostSpawnLocations: []
+  guardSpawnLocations: []
 --- !u!82 &7740503714430403716
 AudioSource:
   m_ObjectHideFlags: 0

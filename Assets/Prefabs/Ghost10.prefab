@@ -101,6 +101,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c7704c2b5832e6946ad452e67976d37c, type: 3}
   - {fileID: 21300000, guid: 84e21bc69d173484a97623888b80dacf, type: 3}
   frameRate: 3
+  biDirectional: 0
   dialogueText: 
   pitchCenter: 1
   speechBubbleText: "Ugh, how derivative!\n\nNot my taste,\nno, not at all.\n\nOy.\n\nNo
@@ -157,7 +158,7 @@ MonoBehaviour:
     per upvote!\n\nselling dlegs 10 mil mage\npm 4 details\n\nDon't talk to me,\nI
     have my earbuds in.\n\nWho keeps adding these rooms?\n\nHave you ever read\n\"house
     of leaves\"?"
-  chanceOfSpeechBubbleText: 0.51
+  chanceOfSpeechBubbleText: 0.595
 --- !u!114 &8170057856405056246
 MonoBehaviour:
   m_ObjectHideFlags: 0

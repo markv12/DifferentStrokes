@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961299333231633575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.277, y: 1.06, z: -0.45}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3579d2817b314a949ab95c11d9b6d00a, type: 3}
   - {fileID: 21300000, guid: 68423d38d24b1a74ea325e6bed2eb72b, type: 3}
   frameRate: 3
+  biDirectional: 1
   dialogueText: 'Wh --
 
     Who, me? I''m not a main character, <p:normal>there''s
@@ -156,4 +157,4 @@ MonoBehaviour:
     I think I look better in these
 
     pants than my coworkers.'
-  chanceOfSpeechBubbleText: 0.286
+  chanceOfSpeechBubbleText: 0.252

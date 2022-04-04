@@ -5,6 +5,7 @@ public class GalleryChunk : MonoBehaviour {
     public Transform t;
     public Transform[] paintingSpawnLocations;
     public Transform[] ghostSpawnLocations;
+    public Transform[] guardSpawnLocations;
 
     public void MoveToPosition(Vector3 endPos) {
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
@@ -28,5 +29,6 @@ public class GalleryChunk : MonoBehaviour {
             ArtManager.instance.AddPaintingsForChunk(paintingSpawnLocations);
         }
         GhostSpawner.instance.SpawnGhostsAtSpawnLocations(ghostSpawnLocations);
+        GuardSpawner.instance.SpawnGuardsAtSpawnLocations(guardSpawnLocations);
     }
 }

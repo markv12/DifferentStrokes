@@ -11,7 +11,7 @@ public class GhostSpawner : MonoBehaviour {
     public void SpawnGhostsAtSpawnLocations(Transform[] spawnLocations) {
         for (int i = 0; i < spawnLocations.Length; i++) {
             Transform spawnLocation = spawnLocations[i];
-            if(spawnLocation != null) {
+            if(spawnLocation != null && Random.value > 0.2f) {
                 NPC ghostPrefab = ghostPrefabs[Random.Range(0, ghostPrefabs.Length)];
                 Instantiate(ghostPrefab, spawnLocation);
             }
