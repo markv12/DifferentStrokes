@@ -646,3 +646,15 @@ I can't be<size=150%>lieve</size> my partner dragged me here. <p:normal>I'm not 
 
 If you see my partner, please tell them off for me.
 They're the ghost with the glasses.
+
+
+
+
+
+
+My partner over yonder likes to sleep on the job.<p:short>
+Looks pretty nice, if you ask me.
+
+<size=130%><i>But,</i></size> <p:short>I swore an oath to <b>never</b> sleep on th' job again.
+
+<anim:shake><color=#FF6539><size=70%>Not since last time...</size></color></anim>
