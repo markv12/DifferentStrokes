@@ -6,8 +6,8 @@ public class GallerySpawner : MonoBehaviour
 {
     private const float CHUNK_SIZE = 22;
 
-    public GalleryChunk firstChunk;
     public GalleryChunk[] galleryChunkPrefabs;
+    public GalleryChunk specialChunk;
     public Transform player;
 
     private static readonly HashSet<Vector2Int> OFF_LIMITS_INDICES = new HashSet<Vector2Int> {
@@ -21,6 +21,10 @@ public class GallerySpawner : MonoBehaviour
         new Vector2Int(2, -1),
         new Vector2Int(3, -1),
         new Vector2Int(3, 0),
+    };
+
+    private static readonly HashSet<Vector2Int> SPECIAL_INDICES = new HashSet<Vector2Int> {
+        new Vector2Int(-10, 0)
     };
     private GalleryChunkArray galleryChunkArray = new GalleryChunkArray();
 
@@ -37,11 +41,19 @@ public class GallerySpawner : MonoBehaviour
         if (!OFF_LIMITS_INDICES.Contains(chunkIndex)) {
             GalleryChunk existingChunk = galleryChunkArray.Get(chunkIndex);
             if (existingChunk == null) {
-                GalleryChunk newChunk = Instantiate(galleryChunkPrefabs[UnityEngine.Random.Range(0, galleryChunkPrefabs.Length)]);
+                GalleryChunk newChunk = Instantiate(GetChunkPrefab(chunkIndex));
                 newChunk.t.localRotation = Quaternion.Euler(new Vector3(0, 90 * UnityEngine.Random.Range(0, 4), 0));
                 newChunk.MoveToPosition(IndexToPosition(chunkIndex));
                 galleryChunkArray.Set(chunkIndex, newChunk);
             }
+        }
+    }
+
+    private GalleryChunk GetChunkPrefab(Vector2Int chunkIndex) {
+        if (SPECIAL_INDICES.Contains(chunkIndex)) {
+            return specialChunk;
+        } else {
+            return galleryChunkPrefabs[UnityEngine.Random.Range(0, galleryChunkPrefabs.Length)];
         }
     }
 
