@@ -33,7 +33,7 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
-    private int brushSize = 1;
+    private int brushSize = 0;
     public int BrushSize {
         get {
             return brushSize;
@@ -53,7 +53,7 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
-    private static readonly float[] BRUSH_SIZES = new float[] { 0.025f, 0.05f, 0.1f, 0.3f, 0.5f, 1f };
+    private static readonly float[] BRUSH_SIZES = new float[] { 0.05f, 0.09f, 0.2f, 0.4f, 0.75f };
     private Texture2D prevTex;
     public void DrawToCanvas(PaintingCanvas paintingCanvas, Camera _mainCamera, Action _onExit) {
         currentCanvas = paintingCanvas;

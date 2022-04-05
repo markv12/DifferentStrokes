@@ -40,7 +40,7 @@ public class DrawingUI : MonoBehaviour {
 
     private void ChangeBrushSize(int change) {
         drawingSystem.BrushSize += change;
-        brushSizeText.text = drawingSystem.BrushSize.ToString();
+        brushSizeText.text = (drawingSystem.BrushSize + 1).ToString();
     }
 
     private void SetBrushColor(Color color) {
