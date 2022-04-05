@@ -56,8 +56,7 @@ public class RatingSystem : MonoBehaviour {
     void Update() {
         if (InRatingMode) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
-                ShowCompleted();
-                ReturnCameraToPlayer();
+                Cancel();
             }
         }
     }
@@ -93,6 +92,7 @@ public class RatingSystem : MonoBehaviour {
     }
 
     public void Cancel() {
+        ShowCompleted();
         ReturnCameraToPlayer();
     }
 }

@@ -6,12 +6,14 @@ public class RatingUI : MonoBehaviour {
     public RectTransform mainContainer;
     public Button likeButton;
     public Button dislikeButton;
+    public Button exitButton;
     public Button showBackButton;
     public Button showFrontButton;
 
     private void Awake() {
         likeButton.onClick.AddListener(Like);
         dislikeButton.onClick.AddListener(Dislike);
+        exitButton.onClick.AddListener(Exit);
         showBackButton.onClick.AddListener(ShowBack);
         showFrontButton.onClick.AddListener(ShowFront);
     }
@@ -24,6 +26,10 @@ public class RatingUI : MonoBehaviour {
     private void Dislike() {
         AudioManager.Instance.PlayFailureSound(0.3f);
         ratingSystem.Dislike();
+    }
+
+    private void Exit() {
+        ratingSystem.Cancel();
     }
 
     private void ShowBack() {
