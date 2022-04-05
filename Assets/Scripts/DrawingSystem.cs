@@ -33,7 +33,7 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
-    private int brushSize = 0;
+    private int brushSize = 1;
     public int BrushSize {
         get {
             return brushSize;
@@ -53,7 +53,7 @@ public class DrawingSystem : MonoBehaviour {
         }
     }
 
-    private static readonly float[] BRUSH_SIZES = new float[] { 0.05f, 0.09f, 0.2f, 0.4f, 0.75f };
+    private static readonly float[] BRUSH_SIZES = new float[] { 0.03f, 0.05f, 0.09f, 0.2f, 0.4f, 0.75f };
     private Texture2D prevTex;
     public void DrawToCanvas(PaintingCanvas paintingCanvas, Camera _mainCamera, Action _onExit) {
         currentCanvas = paintingCanvas;
@@ -105,7 +105,7 @@ public class DrawingSystem : MonoBehaviour {
     }
 
     private Vector3 lastDrawPosition;
-    private const float MAX_DOT_DISTANCE = 0.025f;
+    private const float MAX_DOT_DISTANCE = 0.018f;
     private void Draw() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 10, layerMask)) {
