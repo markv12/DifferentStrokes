@@ -38,6 +38,7 @@ export async function getFiles(
     files = filesToUsefulData(files).sort(
       (a, b) => b.date - a.date,
     )
+    files = weedOutAwfulOnes(files)
     cachedFiles.cache = files
     cachedFiles.lastUpdated = Date.now()
     console.log(`cached files`, files.length)
@@ -47,6 +48,22 @@ export async function getFiles(
     cachedFiles.lastUpdated = Date.now()
     return { error }
   }
+}
+
+function weedOutAwfulOnes(files: UsefulFileData[]) {
+  let finalFiles = [...files]
+  files.forEach((f) => {
+    // handle absolutely awful ones
+    if (
+      f.likes + f.dislikes >= 10 &&
+      f.likes / f.dislikes < 0.1
+    ) {
+      console.log(`removing`, f.id)
+      deleteAllVersionsOfFile(f.id)
+      finalFiles = finalFiles.filter((f2) => f2.id !== f.id)
+    }
+  })
+  return finalFiles
 }
 
 const topFilesCount = 6
@@ -59,22 +76,34 @@ export async function getTopFiles(): Promise<
   files = files
     .filter((file) => file.iteration === 2)
     .sort((a, b) => {
-      const aLikes = a.likes
-      const bLikes = b.likes
-      const aDisLikes = a.dislikes
-      const bDisLikes = b.dislikes
+      const aLikes = a.likes || 0
+      const bLikes = b.likes || 0
+      const aDisLikes = a.dislikes || 1
+      const bDisLikes = b.dislikes || 1
       const aTotalRatings = aLikes + aDisLikes
       const bTotalRatings = bLikes + bDisLikes
       const aScoreRatio =
-        (aLikes / (aDisLikes || 1)) * (aTotalRatings / 100)
+        (aLikes / aDisLikes) * (aTotalRatings / 100)
       const bScoreRatio =
-        (bLikes / (bDisLikes || 1)) * (bTotalRatings / 100)
+        (bLikes / bDisLikes) * (bTotalRatings / 100)
       const aAgeModifier =
         (a.date - Date.now()) /
         (1000 * 60 * 60 * 24 * 30 * 12)
       const bAgeModifier =
         (b.date - Date.now()) /
         (1000 * 60 * 60 * 24 * 30 * 12)
+      // c.log({
+      //   aLikes,
+      //   bLikes,
+      //   aDisLikes,
+      //   bDisLikes,
+      //   aTotalRatings,
+      //   bTotalRatings,
+      //   aScoreRatio,
+      //   bScoreRatio,
+      //   aAgeModifier,
+      //   bAgeModifier,
+      // })
       return (
         bScoreRatio +
         bAgeModifier -
@@ -125,19 +154,27 @@ export async function getRelevantFiles(
 
     step2Files = step2Files
       .sort((a, b) => {
-        const aLikes = a.likes
-        const bLikes = b.likes
-        const aDisLikes = a.dislikes
-        const bDisLikes = b.dislikes
-        const aScoreRatio = aLikes / (aDisLikes || 1)
-        const bScoreRatio = bLikes / (bDisLikes || 1)
+        const aLikes = a.likes || 0
+        const bLikes = b.likes || 0
+        const aDisLikes = a.dislikes || 1
+        const bDisLikes = b.dislikes || 1
+        const aTotalRatings = aLikes + aDisLikes
+        const bTotalRatings = bLikes + bDisLikes
+        const aScoreRatio =
+          (aLikes / aDisLikes) * (aTotalRatings / 100)
+        const bScoreRatio =
+          (bLikes / bDisLikes) * (bTotalRatings / 100)
+
+        // MOST of the time we use the score ratio, but sometimes we just throw in randos
+        if (Math.random() > 0.8)
+          return Math.random() > 0.5 ? -1 : 1
+
         const aAgeModifier =
           (a.date - Date.now()) /
           (1000 * 60 * 60 * 24 * 30 * 12)
         const bAgeModifier =
           (b.date - Date.now()) /
           (1000 * 60 * 60 * 24 * 30 * 12)
-        // console.log({ aAgeModifier, bAgeModifier })
         return (
           bScoreRatio +
           bAgeModifier -
@@ -445,8 +482,12 @@ function filesToUsefulData(
       iteration,
       path: `https://${bucketName}.storage.googleapis.com/${found.name}`,
       originalPath: `https://${bucketName}.storage.googleapis.com/${found.name}`,
-      likes: found.metadata?.metadata?.likes || 0,
-      dislikes: found.metadata?.metadata?.dislikes || 0,
+      likes: parseInt(
+        `${found.metadata?.metadata?.likes || 0}`,
+      ),
+      dislikes: parseInt(
+        `${found.metadata?.metadata?.dislikes || 0}`,
+      ),
       date: new Date(
         found.metadata?.updated ||
           found.metadata?.timeCreated ||
