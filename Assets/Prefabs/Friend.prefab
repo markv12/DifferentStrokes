@@ -109,10 +109,9 @@ MonoBehaviour:
     then have it finished off by another visitor! <p:tiny>Great, <p:tiny>huh?\n\n<size=70%>But...
     <p:normal>You probably think I'm naive, <p:tiny>don't you?</size>\n\nLook, I
     know that people are <i>probably</i> going to try to troll my exhibition. \n<p:short>But
-    I'm not worried!\n\nWhy do you think I invited <b>you,</b> <p:tiny>my <anim:wave>oldest,
-    dearest friend?</anim> I'm counting on you to help me keep things <color=#00F236>clean
-    and beautiful</color>! Here, take this paintbrush.\n\nPlease do your best to
-    help me <b>\n<color=#FF6539>fix the bad pieces, <p:short>\n<color=#00F236>vote
+    I'm not worried!\n\nI'm counting on <b>you</b> to help me keep things <color=#00F236>clean
+    and beautiful</color>! Help me <color=#00B5EE><anim:wave>delay the inevitable!</anim></color>\n\nPlease
+    do your best to help me <b>\n<color=#FF6539>fix the bad pieces, <p:short>\n<color=#00F236>vote
     to keep the good ones, <p:short>\n<color=#000000>and <color=#00B5EE>paint new
     pictures</b> for the exhibition!"
   pitchCenter: 1.59

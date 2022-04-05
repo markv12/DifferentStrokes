@@ -144,7 +144,7 @@ Visitors can paint their own masterpiece, <p:tiny>and then have it finished off 
 Look, I know that people are <i>probably</i> going to try to troll my exhibition. 
 <p:short>But I'm not worried!
 
-Why do you think I invited <b>you,</b> <p:tiny>my <anim:wave>oldest, dearest friend?</anim> I'm counting on you to help me keep things <color=#00F236>clean and beautiful</color>! Here, take this paintbrush.
+I'm counting on <b>you</b> to help me keep things <color=#00F236>clean and beautiful</color>! Help me <color=#00B5EE><anim:wave>delay the inevitable!</anim></color>
 
 Please do your best to help me <b>
 <color=#FF6539>fix the bad pieces, <p:short>
