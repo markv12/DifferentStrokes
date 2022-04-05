@@ -73,7 +73,7 @@ public class PaintingCanvas : InteractiveObject {
     }
 
     private void CreateAndSetSprite(Texture2D tex) {
-        canvasSpriteRenderer.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 512);
+        canvasSpriteRenderer.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 512, 0, SpriteMeshType.FullRect);
     }
 
     public void SetOriginalTexture(Texture2D tex) {

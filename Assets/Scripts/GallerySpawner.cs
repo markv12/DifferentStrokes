@@ -37,10 +37,12 @@ public class GallerySpawner : MonoBehaviour
         }
     }
 
+    private int lastChunkInstantiateFrame = 0;
     private void EnsureChunk(Vector2Int chunkIndex) {
         if (!OFF_LIMITS_INDICES.Contains(chunkIndex)) {
             GalleryChunk existingChunk = galleryChunkArray.Get(chunkIndex);
-            if (existingChunk == null) {
+            if (existingChunk == null && lastChunkInstantiateFrame != Time.frameCount) {
+                lastChunkInstantiateFrame = Time.frameCount;
                 GalleryChunk newChunk = Instantiate(GetChunkPrefab(chunkIndex));
                 newChunk.t.localRotation = Quaternion.Euler(new Vector3(0, 90 * UnityEngine.Random.Range(0, 4), 0));
                 newChunk.MoveToPosition(IndexToPosition(chunkIndex));
